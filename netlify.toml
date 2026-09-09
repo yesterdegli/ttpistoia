@@ -1,6 +1,6 @@
 [build]
   command = "npm run build"
-  # Non impostare publish qui: lo gestisce il plugin Next.js di Netlify
+  publish = ".next"
 
 [build.environment]
   NODE_VERSION = "20"
