@@ -25,7 +25,7 @@ export default function CookiePage() {
         subtitle="Informazioni sui cookie e sulle tue scelte"
       />
 
-      <SectionContainer compact className="pb-0 pt-12">
+      <SectionContainer compact className="pb-0 pt-12" reveal={false}>
         <p className="mb-2 text-sm font-semibold uppercase tracking-[0.06em] text-blue">
           Ultimo aggiornamento: {cookieMeta.lastUpdated}
         </p>
@@ -34,7 +34,7 @@ export default function CookiePage() {
         </p>
       </SectionContainer>
 
-      <SectionContainer className="pb-20 pt-9">
+      <SectionContainer className="pb-20 pt-9" reveal={false}>
         <LegalDocument sections={cookieSections} />
 
         <div className="mt-10 border-t border-line pt-10">

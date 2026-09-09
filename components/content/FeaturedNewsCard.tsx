@@ -6,6 +6,7 @@ export function FeaturedNewsCard({ article }: { article: Article }) {
   return (
     <Link
       href={`/news/${article.slug}`}
+      prefetch
       className="glow-2t glow-2t-hover block overflow-hidden rounded-[22px] bg-surface transition-[transform,box-shadow] duration-200 hover:-translate-y-1 hover:opacity-100"
     >
       <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_1fr]">

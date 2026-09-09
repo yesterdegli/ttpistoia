@@ -27,11 +27,11 @@ export default function NewsPage() {
         subtitle="Risultati, tornei e vita del circolo"
       />
 
-      <SectionContainer compact className="pb-2">
+      <SectionContainer compact className="pb-2" reveal={false}>
         <FilterChips />
       </SectionContainer>
 
-      <SectionContainer compact className="pb-2 pt-8">
+      <SectionContainer compact className="pb-2 pt-8" reveal={false}>
         <FeaturedNewsCard article={featured} />
       </SectionContainer>
 

@@ -24,7 +24,7 @@ export default function PrivacyPage() {
         subtitle="Informativa sul trattamento dei dati personali"
       />
 
-      <SectionContainer compact className="pb-0 pt-12">
+      <SectionContainer compact className="pb-0 pt-12" reveal={false}>
         <p className="mb-2 text-sm font-semibold uppercase tracking-[0.06em] text-blue">
           Ultimo aggiornamento: {privacyMeta.lastUpdated}
         </p>
@@ -33,7 +33,7 @@ export default function PrivacyPage() {
         </p>
       </SectionContainer>
 
-      <SectionContainer className="pb-20 pt-9">
+      <SectionContainer className="pb-20 pt-9" reveal={false}>
         <LegalDocument sections={privacySections} />
 
         <div className="mt-12 rounded-[18px] bg-surface-grey p-6 max-md:p-5">

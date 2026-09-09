@@ -16,7 +16,6 @@ import { MilestoneCard } from "@/components/content/MilestoneCard";
 import { NewsCard } from "@/components/content/NewsCard";
 import { HomeStatsGrid } from "@/components/content/HomeStatsGrid";
 import { HomeHero } from "@/components/layout/HomeHero";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -69,13 +68,13 @@ export default function HomePage() {
 
       <section className="section-pattern-light relative z-[2] mt-11 -mb-10 overflow-hidden bg-grad-bg py-[132px] [clip-path:polygon(0_0,100%_5.5%,100%_100%,0_94.5%)] max-lg:py-24 max-md:mt-8 max-md:py-20">
         <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(circle_at_78%_30%,rgba(255,255,255,0.10)_0%,transparent_55%)]" />
-        <ScrollReveal className="relative z-[2] mx-auto max-w-[1280px] px-10 max-md:px-5">
+        <div className="relative z-[2] mx-auto max-w-[1280px] px-10 max-md:px-5">
           <MediaSplit
             title="Chi siamo"
             text={homeAbout.text}
             link={{ href: "/storia", label: "Scopri la nostra storia" }}
           />
-        </ScrollReveal>
+        </div>
       </section>
 
       <SectionContainer bg="grey">

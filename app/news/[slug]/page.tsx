@@ -37,7 +37,7 @@ export default async function ArticoloPage({ params }: Props) {
     <>
       <ArticleHero article={article} />
 
-      <SectionContainer className="pb-20 pt-9">
+      <SectionContainer className="pb-20 pt-9" reveal={false}>
         <div className="art-body grid items-start gap-14 max-lg:gap-8 lg:grid-cols-[minmax(0,1fr)_280px]">
           <article>
             {article.body.map((para) => (

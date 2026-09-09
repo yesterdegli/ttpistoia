@@ -14,7 +14,7 @@ export type NewsCardData = {
 export function NewsCard({ article }: { article: NewsCardData }) {
   return (
     <article className="glow-2t glow-2t-hover overflow-hidden rounded-[18px] bg-surface transition-[transform,box-shadow] duration-200 hover:-translate-y-1">
-      <Link href={`/news/${article.slug}`} className="block hover:opacity-100">
+      <Link href={`/news/${article.slug}`} prefetch className="block hover:opacity-100">
         <div className="group/img overflow-hidden">
           <div className="relative h-[170px] w-full transition-transform duration-500 group-hover/img:scale-[1.06]">
             <ImagePlaceholder

@@ -79,7 +79,7 @@ export function StoriaPageClient({ seasons: storiaData }: Props) {
 
   return (
     <>
-      <SectionContainer compact className="pb-2 pt-12">
+      <SectionContainer compact className="pb-2 pt-12" reveal={false}>
         <p className="mb-5 font-display text-[26px] font-bold leading-[1.35] tracking-[-0.015em] grad-text [text-wrap:pretty] max-md:text-[22px]">
           {introFirst}
         </p>

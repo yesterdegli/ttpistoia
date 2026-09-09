@@ -19,7 +19,7 @@ export function HomeVideoBand({
   link,
 }: Props) {
   return (
-    <section className="relative isolate z-[2] flex h-[clamp(560px,72vh,880px)] w-full items-center overflow-hidden bg-black">
+    <section className="relative isolate z-[2] flex h-[clamp(320px,40vh,480px)] w-full items-center overflow-hidden bg-black md:h-[clamp(560px,72vh,880px)]">
       <HomeVideoBackground posterSrc={posterSrc} videoSrc={videoSrc} />
 
       <div

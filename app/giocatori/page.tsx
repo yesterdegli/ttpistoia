@@ -18,7 +18,7 @@ export default function GiocatoriPage() {
         title="I nostri giocatori"
       />
 
-      <SectionContainer bg="grey" compact className="pb-2 pt-11">
+      <SectionContainer bg="grey" compact className="pb-2 pt-11" reveal={false}>
         <p className="m-0 max-w-[700px] text-base leading-[1.75] text-ink-mid [text-wrap:pretty]">
           {giocatoriIntro}
         </p>

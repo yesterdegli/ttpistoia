@@ -17,6 +17,7 @@ export default function ContattiPage() {
       />
       <SectionContainer
         wide
+        reveal={false}
         innerClassName="grid grid-cols-1 gap-12 max-md:gap-8 lg:grid-cols-[1fr_1.3fr]"
       >
         <ContactBlock />

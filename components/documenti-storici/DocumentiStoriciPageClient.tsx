@@ -73,7 +73,7 @@ export function DocumentiStoriciPageClient({ sections: documentiStorici }: Props
 
   return (
     <>
-      <SectionContainer compact className="pb-2 pt-12">
+      <SectionContainer compact className="pb-2 pt-12" reveal={false}>
         <p className="mb-4 text-[17px] leading-[1.8] text-ink-body [text-wrap:pretty]">
           Rassegna stampa e documenti d&apos;archivio: articoli de{" "}
           <em>La Nazione</em>, <em>Il Tirreno</em> e altre testate, dagli

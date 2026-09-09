@@ -5,14 +5,28 @@ import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { NAV_ITEMS } from "@/lib/site";
 
+function navLinkClasses(isActive: boolean, variant: "desktop" | "mobile") {
+  const state = isActive
+    ? "grad-text font-bold !opacity-100 hover:!opacity-100"
+    : "font-semibold text-ink-muted hover:grad-text hover:!opacity-100";
+
+  if (variant === "mobile") {
+    return `w-full border-b border-line-table py-[clamp(0.5rem,1.75dvh,1.125rem)] text-center font-display text-[clamp(1rem,2.55dvh,1.375rem)] capitalize leading-[1.25] tracking-[-0.005em] transition-[opacity,color] ${state}`;
+  }
+
+  return `font-display text-lg capitalize tracking-[-0.005em] transition-[opacity,color] lg:text-[18px] ${state}`;
+}
+
 function NavLink({
   href,
   label,
   onNavigate,
+  variant = "desktop",
 }: {
   href: string;
   label: string;
   onNavigate?: () => void;
+  variant?: "desktop" | "mobile";
 }) {
   const pathname = usePathname();
   const isActive =
@@ -21,12 +35,10 @@ function NavLink({
   return (
     <Link
       href={href}
+      prefetch
       onClick={onNavigate}
-      className={`font-display text-lg capitalize tracking-[-0.005em] transition-[opacity,color] hover:!opacity-100 lg:text-[18px] ${
-        isActive
-          ? "grad-text font-bold opacity-100"
-          : "font-semibold text-ink-muted hover:grad-text"
-      }`}
+      aria-current={isActive ? "page" : undefined}
+      className={navLinkClasses(isActive, variant)}
     >
       {label}
     </Link>
@@ -116,42 +128,46 @@ export function MobileDrawer() {
         ))}
       </nav>
 
-      {/* Mobile/tablet drawer */}
+      {/* Mobile/tablet — menu canvas a schermo intero */}
       <div className="lg:hidden">
         <HamburgerButton open={open} onToggle={() => setOpen((v) => !v)} />
 
-        <div
-          role="presentation"
-          aria-hidden={!open}
-          onClick={close}
-          className={`fixed inset-0 z-50 bg-[rgb(1_1_40/0.45)] transition-opacity duration-300 ${
-            open
-              ? "pointer-events-auto opacity-100"
-              : "pointer-events-none opacity-0"
-          }`}
-        />
-
         <nav
-          className={`fixed right-0 top-0 z-[60] flex h-screen w-[min(80vw,320px)] flex-col items-stretch justify-start gap-0 overflow-y-auto bg-surface-grey px-[26px] pb-7 pt-[92px] shadow-drawer transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
-            open ? "translate-x-0" : "translate-x-[102%]"
+          aria-hidden={!open}
+          className={`section-pattern fixed inset-0 z-[60] flex h-[100dvh] flex-col overflow-hidden bg-surface-grey transition-[opacity,visibility] duration-300 ease-out ${
+            open
+              ? "visible opacity-100"
+              : "invisible pointer-events-none opacity-0"
           }`}
         >
-          {NAV_ITEMS.map((item) => (
+          <div className="relative z-[1] mx-auto flex h-full w-full max-w-[1280px] flex-col items-center justify-center px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-[max(4.75rem,calc(env(safe-area-inset-top)+3.25rem))] text-center">
             <Link
-              key={item.href}
-              href={item.href}
+              href="/"
+              prefetch
               onClick={close}
-              className={`w-full border-b border-line-table py-[15px] font-display text-xl capitalize leading-[1.3] tracking-[-0.005em] hover:!opacity-100 ${
-                (item.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(item.href))
-                  ? "grad-text font-bold opacity-100"
-                  : "font-semibold text-ink-muted hover:grad-text"
-              }`}
+              className="mb-[clamp(0.75rem,2.5dvh,2rem)] shrink-0 hover:opacity-100"
             >
-              {item.label}
+              <img
+                src="/assets/brand/logo-header.svg"
+                alt="TT Pistoia asd"
+                width={88}
+                height={88}
+                className="h-[clamp(4rem,11dvh,5.5rem)] w-[clamp(4rem,11dvh,5.5rem)] object-contain"
+              />
             </Link>
-          ))}
+
+            <div className="flex w-full max-w-[320px] shrink flex-col justify-center">
+              {NAV_ITEMS.map((item) => (
+                <NavLink
+                  key={item.href}
+                  href={item.href}
+                  label={item.label}
+                  variant="mobile"
+                  onNavigate={close}
+                />
+              ))}
+            </div>
+          </div>
         </nav>
       </div>
     </>

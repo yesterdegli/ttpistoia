@@ -11,7 +11,7 @@ type Props = {
   id?: string;
   /** Wider inner container (e.g. contatti layout). Default 1200px. */
   wide?: boolean;
-  /** Fade-in allo scroll (default). Disattivare se la sezione ha già animazioni proprie. */
+  /** Fade-in allo scroll. Attivare solo su blocchi decorativi, non su pagine di contenuto. */
   reveal?: boolean;
 };
 
@@ -22,7 +22,7 @@ export function SectionContainer({
   compact,
   id,
   wide,
-  reveal = true,
+  reveal = false,
 }: Props) {
   const inner = (
     <div

@@ -17,7 +17,7 @@ export default function RegolePage() {
         title="Le regole del gioco"
       />
 
-      <SectionContainer compact className="pb-0 pt-12">
+      <SectionContainer compact className="pb-0 pt-12" reveal={false}>
         <p className="mb-3 max-w-[820px] text-[17px] leading-[1.8] text-ink-body [text-wrap:pretty]">
           Il regolamento tecnico di gioco stabilisce come si gioca a tennistavolo:
           misure del tavolo, caratteristiche della pallina e della racchetta,
@@ -29,7 +29,7 @@ export default function RegolePage() {
         </p>
       </SectionContainer>
 
-      <SectionContainer className="pb-20 pt-9">
+      <SectionContainer className="pb-20 pt-9" reveal={false}>
         <div className="reg-split grid items-start gap-14 max-lg:gap-8 lg:grid-cols-[minmax(0,1fr)_260px]">
           <ClauseList chapters={regolamento} />
           <SideIndex chapters={regolamento} />

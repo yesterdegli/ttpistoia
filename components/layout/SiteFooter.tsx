@@ -1,12 +1,10 @@
 import Link from "next/link";
 import { CookieManageButton } from "@/components/cookies/CookieManageButton";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { FacebookIcon } from "@/components/ui/FacebookIcon";
 import { FACEBOOK_URL, SITE } from "@/lib/site";
 
 export function SiteFooter() {
   return (
-    <ScrollReveal>
     <footer className="bg-blue text-white">
       <div className="h-1 bg-footer-rule" />
       <div className="mx-auto grid max-w-[1280px] grid-cols-1 gap-7 px-10 py-12 max-md:px-5 max-md:py-10 lg:grid-cols-[1.3fr_1fr_1fr] lg:gap-8">
@@ -64,6 +62,5 @@ export function SiteFooter() {
         </div>
       </div>
     </footer>
-    </ScrollReveal>
   );
 }

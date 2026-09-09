@@ -19,7 +19,7 @@ export default function CampionatiPage() {
         title="Campionati"
       />
 
-      <SectionContainer className="pb-20">
+      <SectionContainer className="pb-20" reveal={false}>
         <div className="mb-10 flex justify-end">
           <CampionatiRankingTrigger />
         </div>
