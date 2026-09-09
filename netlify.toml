@@ -1,7 +1,11 @@
 [build]
   command = "npm run build"
+  # Non impostare publish qui: lo gestisce il plugin Next.js di Netlify
 
 [build.environment]
   NODE_VERSION = "20"
   # Tailwind, TypeScript ed ESLint sono devDependencies — servono al build
   NPM_CONFIG_PRODUCTION = "false"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
