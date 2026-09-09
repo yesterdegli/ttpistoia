@@ -1,0 +1,279 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  @keyframes hero-gradient-pan {
+    0%,
+    100% {
+      transform: translate(11%, 7%) scale(1.23);
+    }
+    50% {
+      transform: translate(-11%, -7%) scale(1.23);
+    }
+  }
+
+  .hero-grad-wrap {
+    background: linear-gradient(
+      115deg,
+      #e50d22 0%,
+      #e50d22 16%,
+      #c00c1e 30%,
+      #8c0a19 42%,
+      #0a0a8f 58%,
+      #01017b 100%
+    );
+  }
+
+  .hero-grad-pan {
+    background: linear-gradient(
+      115deg,
+      #e50d22 0%,
+      #e50d22 16%,
+      #c00c1e 30%,
+      #8c0a19 42%,
+      #0a0a8f 58%,
+      #01017b 100%
+    );
+    animation: hero-gradient-pan 6.5s linear infinite;
+    will-change: transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-grad-pan {
+      animation: none;
+      transform: none;
+    }
+  }
+
+  /* Orso hero — blur reveal in entrata */
+  @keyframes hero-bear-enter-desktop {
+    from {
+      opacity: 0;
+      filter: blur(18px);
+      transform: translate(32px, -50%) scale(0.94);
+    }
+    to {
+      opacity: 0.7;
+      filter: blur(0);
+      transform: translate(0, -50%) scale(1);
+    }
+  }
+
+  @keyframes hero-bear-enter-desktop-lg {
+    from {
+      opacity: 0;
+      filter: blur(16px);
+      transform: translate(24px, -50%) scale(0.95);
+    }
+    to {
+      opacity: 0.45;
+      filter: blur(0);
+      transform: translate(0, -50%) scale(1);
+    }
+  }
+
+  @keyframes hero-bear-enter-mobile {
+    from {
+      opacity: 0;
+      filter: blur(14px);
+      transform: translateY(12px) scale(0.95);
+    }
+    to {
+      opacity: 0.58;
+      filter: blur(0);
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .hero-bear-enter-desktop {
+    animation: hero-bear-enter-desktop 1.45s ease-out 0.45s both;
+  }
+
+  .hero-bear-enter-mobile {
+    animation: hero-bear-enter-mobile 1.45s ease-out 0.5s both;
+  }
+
+  @media (max-width: 900px) {
+    .hero-bear-enter-desktop {
+      animation-name: hero-bear-enter-desktop-lg;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-bear-enter-desktop,
+    .hero-bear-enter-mobile {
+      animation: none;
+      filter: none;
+      transform: none;
+    }
+
+    .hero-bear-enter-desktop {
+      opacity: 0.7;
+      transform: translateY(-50%);
+    }
+
+    .hero-bear-enter-mobile {
+      opacity: 0.58;
+    }
+
+    @media (max-width: 900px) {
+      .hero-bear-enter-desktop {
+        opacity: 0.45;
+      }
+    }
+  }
+
+  .grad-text {
+    @apply bg-grad-text bg-clip-text text-transparent;
+  }
+
+  .glow-2t {
+    box-shadow:
+      -10px 12px 26px -8px rgb(1 1 123 / 0.42),
+      10px 12px 26px -8px rgb(229 13 34 / 0.34),
+      0 2px 8px rgb(0 0 0 / 0.06);
+  }
+
+  .glow-2t-hover:hover {
+    box-shadow:
+      -14px 18px 34px -8px rgb(1 1 123 / 0.5),
+      14px 18px 34px -8px rgb(229 13 34 / 0.42),
+      0 3px 10px rgb(0 0 0 / 0.07);
+  }
+}
+
+/* Section pattern — dot grid (fixed, continuous across sections) */
+.section-pattern {
+  isolation: isolate;
+}
+
+.section-pattern::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: radial-gradient(
+    circle,
+    rgb(1 1 123 / 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 28px 28px;
+  background-attachment: fixed;
+}
+
+/* Dot grid on gradient sections — white dots, same fixed grid */
+.section-pattern-light {
+  isolation: isolate;
+}
+
+.section-pattern-light::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: radial-gradient(
+    circle,
+    rgb(255 255 255 / 0.12) 1px,
+    transparent 1px
+  );
+  background-size: 28px 28px;
+  background-attachment: fixed;
+}
+
+/* Scroll reveal — fade-in al primo ingresso in viewport */
+.scroll-reveal {
+  opacity: 0;
+  transition: opacity 0.6s ease-out;
+}
+
+.scroll-reveal-visible {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    transition: none;
+  }
+}
+
+/* Home stats — hidden on load, slide in from sides after 1s */
+@keyframes stat-enter-from-left {
+  from {
+    opacity: 0;
+    transform: translateX(-52px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes stat-enter-from-right {
+  from {
+    opacity: 0;
+    transform: translateX(52px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.stat-enter-left {
+  opacity: 0;
+  animation: stat-enter-from-left 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.stat-enter-right {
+  opacity: 0;
+  animation: stat-enter-from-right 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.stat-enter-delay-0 {
+  animation-delay: 1s;
+}
+
+.stat-enter-delay-1 {
+  animation-delay: 1.12s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stat-enter-left,
+  .stat-enter-right {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans text-ink-mid antialiased;
+  }
+
+  a {
+    @apply text-inherit no-underline transition-opacity duration-150;
+  }
+
+  a:hover {
+    opacity: 0.72;
+  }
+
+  [id] {
+    scroll-margin-top: 120px;
+  }
+
+  @media (max-width: 900px) {
+    [id] {
+      scroll-margin-top: 96px;
+    }
+  }
+}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./mobile-nav.js"></script>
+<style>
+body{margin:0;font-family:'Manrope',system-ui,sans-serif;background:#fff}
+.hp-a{color:inherit;text-decoration:none;transition:opacity .15s ease,color .15s ease}
+.rtc-nav a:hover{opacity:1;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.hp-a:hover{opacity:.72}
+.hp-cta{transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+.hp-cta:hover{transform:translateY(-2px)}
+
+@media (max-width:900px){
+  .rtc-header img{width:52px!important;height:52px!important}
+  .rtc-grid-3{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .rtc-grid-4{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .rtc-split{grid-template-columns:minmax(0,1fr)!important}
+  .rtc-footer-grid{grid-template-columns:minmax(0,1fr)!important;gap:28px!important}
+}
+@media (max-width:640px){
+  h2{font-size:22px!important}
+  h3{font-size:17px!important}
+  .rtc-header{padding:0!important}
+  .rtc-header>div{height:64px!important;padding:0 20px!important}
+  .rtc-header img{width:46px!important;height:46px!important}
+  .rtc-inner-hero{height:130px!important}
+  .rtc-inner-hero h1{font-size:34px!important}
+  .rtc-inner-hero{height:190px!important}
+  .rtc-home-hero{height:480px!important}
+  .rtc-home-hero-text{left:24px!important;right:24px!important;max-width:none!important}
+  .rtc-home-hero-text h1{font-size:32px!important;margin-bottom:20px!important}
+  .rtc-grid-3{grid-template-columns:minmax(0,1fr)!important}
+  .rtc-grid-4{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  section{padding-left:20px!important;padding-right:20px!important}
+  header{padding-left:16px!important;padding-right:16px!important}
+}
+@media (max-width:420px){
+  .rtc-grid-4{grid-template-columns:minmax(0,1fr)!important}
+}
+</style>
+</helmet>
+
+
+  <header class="rtc-header" style="background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.10);position:sticky;top:0;z-index:10">
+    <div style="max-width:1280px;margin:0 auto;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;box-sizing:border-box">
+    <img src="assets/logo-header.png" alt="T.T. Pistoia 1991" style="width:64px;height:64px;object-fit:contain">
+    <nav class="rtc-nav" style="display:flex;gap:18px;align-items:center">
+      <a class="hp-a" href="Home.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078">Home</a>
+      <a class="hp-a" href="Giocatori.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078">Giocatori</a>
+      <a class="hp-a" href="Storia.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078">Storia</a>
+      <a class="hp-a" href="News.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078">News</a>
+      <a class="hp-a" href="Campionati.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078">Campionati</a>
+      <a class="hp-a" href="Le Regole.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078;white-space:nowrap">Le regole</a>
+      <a class="hp-a" href="Contatti.dc.html" style="font:700 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Contatti</a>
+    </nav>
+    </div>
+  </header>
+
+  <div class="rtc-inner-hero" style="position:relative;height:210px;overflow:hidden;clip-path:polygon(0 0,100% 0,100% 88%,0 100%);background:linear-gradient(115deg,#01017b 0%,#0a0a8f 42%,#8c0a19 80%,#e50d22 100%)">
+    <div style="position:absolute;inset:0;background:radial-gradient(circle at 22% 40%,rgba(255,255,255,.10) 0%,transparent 60%);pointer-events:none"></div>
+    <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:1280px;height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 40px;box-sizing:border-box">
+      <div style="font:600 12px 'Manrope';color:rgba(255,255,255,.6);margin-bottom:8px"><a class="hp-a" href="Home.dc.html" style="color:rgba(255,255,255,.6)">Home</a> / Contatti</div>
+      <h1 style="font:700 52px 'Archivo';text-transform:none;letter-spacing:-.015em;color:#fff;margin:0">Contatti</h1>
+    </div>
+  </div>
+
+  <section class="rtc-split" style="padding:56px 40px 64px;background:#fff;display:grid;grid-template-columns:1fr 1.3fr;gap:48px;max-width:1280px;margin:0 auto;box-sizing:border-box">
+    <div>
+      <h2 style="font:700 24px 'Archivo';text-transform:none;letter-spacing:-.015em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0 0 20px;position:relative;padding-bottom:12px">Dove siamo<span style="position:absolute;left:0;bottom:0;width:56px;height:4px;background:#e50d22"></span></h2>
+      <p style="font:400 15px/1.8 'Manrope';color:#444;margin:0 0 24px">Palestra Einaudi<br>Viale Pacinotti<br>51100 Pistoia PT — Italia</p>
+
+      <div style="margin-bottom:24px">
+        <div style="font:700 12px 'Manrope';text-transform:uppercase;letter-spacing:.05em;color:#e50d22;margin-bottom:8px">Telefono</div>
+        <a class="hp-a" href="tel:+393357388152" style="font:600 17px 'Manrope';color:#01017b">335.7388152</a>
+        <div style="font:400 13px 'Manrope';color:#777;margin-top:4px">Pancani Luca</div>
+      </div>
+      <div style="margin-bottom:24px">
+        <div style="font:700 12px 'Manrope';text-transform:uppercase;letter-spacing:.05em;color:#e50d22;margin-bottom:8px">Email</div>
+        <a class="hp-a" href="mailto:ttpt@ttpistoia.it" style="font:600 17px 'Manrope';color:#01017b">ttpt@ttpistoia.it</a>
+      </div>
+
+      <div>
+        <div style="font:700 12px 'Manrope';text-transform:uppercase;letter-spacing:.05em;color:#e50d22;margin-bottom:10px">Orari di apertura</div>
+        <div style="display:flex;flex-direction:column;gap:0">
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid #eee"><span style="font:500 14px 'Manrope';color:#333">Martedì</span><span style="font:400 14px 'Manrope';color:#666">21:00 – 23:30</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid #eee"><span style="font:500 14px 'Manrope';color:#333">Giovedì</span><span style="font:400 14px 'Manrope';color:#666">21:00 – 23:30</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid #eee;border-bottom:1px solid #eee"><span style="font:500 14px 'Manrope';color:#333">Altri giorni</span><span style="font:400 14px 'Manrope';color:#666">Chiuso</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-radius:18px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.08)">
+      <iframe title="Mappa — Palestra Einaudi" src="https://www.google.com/maps?q=Palestra+Einaudi,+Viale+Pacinotti,+Pistoia&ll=43.929095,10.9104798&z=17&output=embed" style="width:100%;height:100%;min-height:360px;border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <footer style="background:#01017b;color:#fff;padding:0">
+    <div style="height:4px;background:linear-gradient(90deg,#e50d22 0 30%,rgba(255,255,255,.25) 30% 32%,transparent 32%)"></div>
+    <div class="rtc-footer-grid" style="padding:48px 40px;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px;max-width:1280px;margin:0 auto;box-sizing:border-box">
+      <div>
+        <div style="font:700 20px 'Archivo';text-transform:none;letter-spacing:-.015em;margin-bottom:12px">TT Pistoia asd</div>
+        <p style="font:400 14px/1.6 'Manrope';color:rgba(255,255,255,.75);margin:0">Palestra Einaudi<br>Viale Pacinotti<br>51100 Pistoia PT</p>
+      </div>
+      <div>
+        <div style="font:700 13px 'Manrope';text-transform:uppercase;letter-spacing:.05em;margin-bottom:14px;color:#fff">Contatti</div>
+        <p style="font:400 14px/1.9 'Manrope';color:rgba(255,255,255,.75);margin:0"><a class="hp-a" href="mailto:ttpt@ttpistoia.it" style="color:rgba(255,255,255,.75)">ttpt@ttpistoia.it</a><br><a class="hp-a" href="tel:+393357388152" style="color:rgba(255,255,255,.75)">335.7388152</a><br>Mar e Gio, 21:00–23:30</p>
+      </div>
+      <div>
+        <div style="font:700 13px 'Manrope';text-transform:uppercase;letter-spacing:.05em;margin-bottom:14px;color:#fff">Seguici</div>
+        <div style="display:flex;gap:10px">
+          <a class="hp-a hp-cta" href="#" style="width:34px;height:34px;border-radius:50%;background:#e50d22;display:flex;align-items:center;justify-content:center;font:700 12px Inter">FB</a>
+          <a class="hp-a hp-cta" href="#" style="width:34px;height:34px;border-radius:50%;background:#e50d22;display:flex;align-items:center;justify-content:center;font:700 12px Inter">IG</a>
+          <a class="hp-a hp-cta" href="#" style="width:34px;height:34px;border-radius:50%;background:#e50d22;display:flex;align-items:center;justify-content:center;font:700 12px Inter">YT</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,.15);padding:18px 40px;font:400 12px 'Manrope';color:rgba(255,255,255,.55);max-width:1280px;margin:0 auto;box-sizing:border-box">© 2026 TT Pistoia asd. Tutti i diritti riservati.</div>
+  </footer>
+
+</x-dc>
+</body>
+</html>

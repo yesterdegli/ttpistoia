@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./mobile-nav.js"></script>
+<script src="./storia-data.js"></script>
+<style>
+body{margin:0;font-family:'Manrope',system-ui,sans-serif;background:#fff}
+.hp-a{color:inherit;text-decoration:none;transition:opacity .15s ease,color .15s ease}
+.rtc-nav a:hover{opacity:1;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.hp-a:hover{opacity:.72}
+.hp-cta{transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+.hp-cta:hover{transform:translateY(-2px)}
+.hp-imgwrap{overflow:hidden}
+.hp-imgwrap image-slot{transition:transform .5s ease}
+.hp-imgwrap:hover image-slot{transform:scale(1.06)}
+.st-pillbar{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.st-pillbar::-webkit-scrollbar{height:6px}
+.st-pillbar::-webkit-scrollbar-thumb{background:rgba(1,1,123,.25);border-radius:3px}
+.st-acc-head{transition:background .15s ease}
+.st-acc-head:hover{background:#f7f8fa}
+.st-photocol{scrollbar-width:thin}
+.st-slider{-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.st-slider::-webkit-scrollbar{height:8px}
+.st-slider::-webkit-scrollbar-thumb{background:rgba(1,1,123,.22);border-radius:4px}
+.st-slider::-webkit-scrollbar-track{background:#f1f2f5;border-radius:4px}
+.st-slider figcaption{user-select:none}
+@media (max-width:900px){
+  .rtc-header img{width:52px!important;height:52px!important}
+  .rtc-grid-3{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .rtc-grid-4{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .rtc-split{grid-template-columns:minmax(0,1fr)!important}
+  .rtc-footer-grid{grid-template-columns:minmax(0,1fr)!important;gap:28px!important}
+  .st-b-split{grid-template-columns:minmax(0,1fr)!important}
+  .st-slider figure{width:260px!important}
+  .st-slider figure[style*="span 2"]{width:300px!important}
+  .st-photocol{position:static!important;max-height:none!important;overflow:visible!important}
+}
+@media (max-width:640px){
+  h2{font-size:22px!important}
+  h3{font-size:17px!important}
+  .rtc-header{padding:0!important}
+  .rtc-header>div{height:64px!important;padding:0 20px!important}
+  .rtc-header img{width:46px!important;height:46px!important}
+  .rtc-inner-hero{height:150px!important}
+  .rtc-inner-hero h1{font-size:34px!important}
+  .rtc-inner-hero{height:190px!important}
+  .rtc-grid-3{grid-template-columns:minmax(0,1fr)!important}
+  .rtc-grid-4{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  section{padding-left:20px!important;padding-right:20px!important}
+  header{padding-left:16px!important;padding-right:16px!important}
+}
+@media (max-width:420px){
+  .rtc-grid-4{grid-template-columns:minmax(0,1fr)!important}
+}
+</style>
+</helmet>
+
+  <header class="rtc-header" style="background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.10);position:sticky;top:0;z-index:20">
+    <div style="max-width:1280px;margin:0 auto;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;box-sizing:border-box">
+    <img src="assets/logo-header.png" alt="T.T. Pistoia 1991" style="width:64px;height:64px;object-fit:contain">
+    <nav class="rtc-nav" style="display:flex;gap:18px;align-items:center">
+      <a class="hp-a" href="Home.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078">Home</a>
+      <a class="hp-a" href="Giocatori.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078">Giocatori</a>
+      <a class="hp-a" href="Storia.dc.html" style="font:700 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Storia</a>
+      <a class="hp-a" href="News.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078">News</a>
+      <a class="hp-a" href="Campionati.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078">Campionati</a>
+      <a class="hp-a" href="Le Regole.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078;white-space:nowrap">Le regole</a>
+      <a class="hp-a" href="Contatti.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078">Contatti</a>
+    </nav>
+    </div>
+  </header>
+
+  <div class="rtc-inner-hero" style="position:relative;height:230px;overflow:hidden;clip-path:polygon(0 0,100% 0,100% 88%,0 100%);background:linear-gradient(115deg,#01017b 0%,#0a0a8f 42%,#8c0a19 80%,#e50d22 100%)">
+    <div style="position:absolute;inset:0;background:radial-gradient(circle at 22% 40%,rgba(255,255,255,.10) 0%,transparent 60%);pointer-events:none"></div>
+    <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:1280px;height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 40px;box-sizing:border-box">
+      <div style="font:600 12px 'Manrope';color:rgba(255,255,255,.6);margin-bottom:8px"><a class="hp-a" href="Home.dc.html" style="color:rgba(255,255,255,.6)">Home</a> / Storia</div>
+      <h1 style="font:700 52px 'Archivo';letter-spacing:-.015em;color:#fff;margin:0">La nostra storia</h1>
+      <div style="font:400 14px 'Manrope';color:rgba(255,255,255,.75);margin-top:8px">Trentadue stagioni, dal 1992 a oggi</div>
+    </div>
+  </div>
+
+  <section style="padding:48px 40px 8px;background:#fff">
+  <div style="max-width:1200px;margin:0 auto">
+    <p style="font:700 30px/1.3 'Archivo';letter-spacing:-.015em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0 0 20px;text-wrap:pretty">L'attività del gruppo sportivo Tennistavolo Pistoia comincia nell'autunno del 1992.</p>
+    <p style="font:400 17px/1.8 'Manrope';color:#33363b;margin:0 0 16px;text-wrap:pretty">Sei appassionati si ritrovavano due sere alla settimana su un unico tavolo prestato dalla parrocchia di quartiere. Non esisteva un'affiliazione, né un campionato: solo partite tra amici e un quaderno su cui si annotavano i risultati.</p>
+    <p style="font:400 17px/1.8 'Manrope';color:#33363b;margin:0;text-wrap:pretty">A dicembre arriva la prima iscrizione federale e con essa il primo nome ufficiale del club. La stagione si chiude senza competizioni, ma con una certezza: il numero dei praticanti è più che raddoppiato.</p>
+    <p style="font:400 15px/1.8 'Manrope';color:#01017b;margin:56px 0 56px">Da qui in avanti, stagione per stagione, il racconto completo. Gli archivi sono stati ricostruiti dai verbali societari, dai referti di gara e dalle fotografie conservate dai soci.</p>
+  </div>
+  </section>
+
+  <div style="position:sticky;top:76px;z-index:15;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid #e6e8ec">
+    <div style="max-width:1280px;margin:0 auto;padding:12px 40px 10px;box-sizing:border-box">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:10px;flex-wrap:wrap">
+        <div style="font:600 11px 'Manrope';text-transform:uppercase;letter-spacing:.08em;color:#8a8f98">Salta alla stagione</div>
+      </div>
+      <div class="st-pillbar" style="display:flex;gap:8px;padding-bottom:6px">
+        <sc-for list="{{ pills }}" as="p" hint-placeholder-count="12">
+          <sc-if value="{{ p.active }}">
+            <button onClick="{{ p.onClick }}" style="flex:none;font:700 12px 'Manrope';letter-spacing:.02em;padding:8px 14px;border-radius:999px;border:0;background:linear-gradient(115deg,#01017b 0%,#0a0a8f 45%,#8c0a19 82%,#e50d22 100%);color:#fff;cursor:pointer;white-space:nowrap">{{ p.label }}</button>
+          </sc-if>
+          <sc-if value="{{ p.inactive }}" hint-placeholder-val="{{ true }}">
+            <button onClick="{{ p.onClick }}" style="flex:none;font:500 12px 'Manrope';letter-spacing:.02em;padding:8px 14px;border-radius:999px;border:1px solid #dfe2e8;background:#fff;color:#4a4a4a;cursor:pointer;white-space:nowrap">{{ p.label }}</button>
+          </sc-if>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <section style="padding:40px 40px 80px;background:#fff">
+  <div style="max-width:1200px;margin:0 auto">
+    <sc-for list="{{ items }}" as="s" hint-placeholder-count="8">
+      <div id="season-{{ s.id }}" style="border-top:1px solid #e6e8ec;scroll-margin-top:180px">
+        <div class="st-acc-head" onClick="{{ s.onToggle }}" style="display:flex;align-items:center;gap:16px;padding:20px 12px;cursor:pointer">
+          <div style="width:34px;height:34px;flex:none;border-radius:50%;background:linear-gradient(115deg,#01017b 0%,#0a0a8f 45%,#8c0a19 82%,#e50d22 100%);display:flex;align-items:center;justify-content:center;font:600 17px 'Manrope';color:#fff">{{ s.sign }}</div>
+          <div style="font:700 22px 'Archivo';letter-spacing:-.01em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;flex:1">{{ s.label }}</div>
+          <sc-if value="{{ s.hasPhotos }}">
+            <div style="font:600 11px 'Manrope';text-transform:uppercase;letter-spacing:.06em;color:#e50d22;border:1px solid rgba(229,13,34,.35);border-radius:999px;padding:4px 10px;white-space:nowrap">{{ s.photoCount }}</div>
+          </sc-if>
+        </div>
+
+        <sc-if value="{{ s.isA }}">
+          <div style="padding:4px 12px 44px">
+            <div style="max-width:760px">
+              <sc-for list="{{ s.paras }}" as="t" hint-placeholder-count="3">
+                <p style="font:400 17px/1.85 'Manrope';color:#33363b;margin:0 0 18px;text-wrap:pretty">{{ t.t }}</p>
+              </sc-for>
+              <sc-if value="{{ s.showMore }}">
+                <button onClick="{{ s.onMore }}" style="font:700 12px 'Manrope';text-transform:uppercase;letter-spacing:.05em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;background-color:transparent;border:0;border-bottom:1px solid rgba(229,13,34,.4);padding:0 0 3px;cursor:pointer">{{ s.moreLabel }}</button>
+              </sc-if>
+            </div>
+            <sc-if value="{{ s.hasPhotos }}">
+              <div style="margin-top:40px">
+                <div data-slider-wrap="1" style="position:relative">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:16px">
+                  <div style="font:600 11px 'Manrope';text-transform:uppercase;letter-spacing:.08em;color:#01017b">Fotografie della stagione</div>
+                  <div style="display:flex;align-items:center;gap:10px">
+                    <span style="font:400 11px 'Manrope';color:#01017b">Trascina o usa le frecce</span>
+                    <button onClick="{{ slidePrev }}" aria-label="Foto precedenti" style="width:38px;height:38px;border-radius:50%;border:0;background:linear-gradient(115deg,#01017b 0%,#0a0a8f 45%,#8c0a19 82%,#e50d22 100%);color:#fff;font:600 16px 'Manrope';cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(1,1,123,.22)">&#8249;</button>
+                    <button onClick="{{ slideNext }}" aria-label="Foto successive" style="width:38px;height:38px;border-radius:50%;border:0;background:linear-gradient(115deg,#01017b 0%,#0a0a8f 45%,#8c0a19 82%,#e50d22 100%);color:#fff;font:600 16px 'Manrope';cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(1,1,123,.22)">&#8250;</button>
+                  </div>
+                </div>
+                <div class="st-slider" style="cursor:grab;display:grid;grid-auto-flow:column;grid-template-rows:repeat(2,minmax(0,1fr));grid-auto-columns:min-content;gap:22px;overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:14px">
+                  <sc-for list="{{ s.photos }}" as="ph" hint-placeholder-count="6">
+                    <sc-if value="{{ ph.tall }}">
+                      <figure style="margin:0;grid-row:span 2;width:420px;scroll-snap-align:start;display:flex;flex-direction:column">
+                        <div class="hp-imgwrap" style="border-radius:16px;flex:1"><image-slot id="ph-{{ ph.key }}" shape="rounded" radius="16" placeholder="Foto d'archivio" style="width:100%;height:100%;min-height:420px"></image-slot></div>
+                        <figcaption style="font:400 13px/1.5 'Manrope';color:#6d7077;margin-top:10px">{{ ph.caption }}</figcaption>
+                      </figure>
+                    </sc-if>
+                    <sc-if value="{{ ph.wide }}" hint-placeholder-val="{{ true }}">
+                      <figure style="margin:0;width:340px;scroll-snap-align:start">
+                        <div class="hp-imgwrap" style="border-radius:16px"><image-slot id="ph-{{ ph.key }}" shape="rounded" radius="16" placeholder="Foto d'archivio" style="width:100%;height:200px"></image-slot></div>
+                        <figcaption style="font:400 13px/1.5 'Manrope';color:#6d7077;margin-top:10px">{{ ph.caption }}</figcaption>
+                      </figure>
+                    </sc-if>
+                  </sc-for>
+                </div>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+
+<sc-if value="{{ s.isB }}">
+          <div class="st-b-split" style="display:grid;grid-template-columns:60% 40%;gap:44px;padding:4px 12px 44px;align-items:start">
+            <div>
+              <sc-for list="{{ s.paras }}" as="t" hint-placeholder-count="3">
+                <p style="font:400 17px/1.85 'Manrope';color:#33363b;margin:0 0 18px;text-wrap:pretty">{{ t.t }}</p>
+              </sc-for>
+              <sc-if value="{{ s.showMore }}">
+                <button onClick="{{ s.onMore }}" style="font:700 12px 'Manrope';text-transform:uppercase;letter-spacing:.05em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;background-color:transparent;border:0;border-bottom:1px solid rgba(229,13,34,.4);padding:0 0 3px;cursor:pointer">{{ s.moreLabel }}</button>
+              </sc-if>
+            </div>
+            <sc-if value="{{ s.hasPhotos }}">
+              <div class="st-photocol" style="position:sticky;top:200px;max-height:calc(100vh - 240px);overflow-y:auto;padding-right:4px">
+                <div style="font:600 11px 'Manrope';text-transform:uppercase;letter-spacing:.08em;color:#8a8f98;margin-bottom:14px">Fotografie della stagione</div>
+                <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px">
+                  <sc-for list="{{ s.photos }}" as="ph" hint-placeholder-count="4">
+                    <figure style="margin:0">
+                      <div class="hp-imgwrap" style="border-radius:14px"><image-slot id="phb-{{ ph.key }}" shape="rounded" radius="14" placeholder="Foto d'archivio" style="width:100%;height:120px"></image-slot></div>
+                      <figcaption style="font:400 12px/1.45 'Manrope';color:#6d7077;margin-top:7px">{{ ph.caption }}</figcaption>
+                    </figure>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+      </div>
+    </sc-for>
+    <div style="border-top:1px solid #e6e8ec"></div>
+  </div>
+  </section>
+
+  <footer style="background:#01017b;color:#fff;padding:0">
+    <div style="height:4px;background:linear-gradient(90deg,#e50d22 0 30%,rgba(255,255,255,.25) 30% 32%,transparent 32%)"></div>
+    <div class="rtc-footer-grid" style="padding:48px 40px;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px;max-width:1280px;margin:0 auto;box-sizing:border-box">
+      <div>
+        <div style="font:700 20px 'Archivo';letter-spacing:-.015em;margin-bottom:12px">TT Pistoia asd</div>
+        <p style="font:400 14px/1.6 'Manrope';color:rgba(255,255,255,.75);margin:0">Palestra Einaudi<br>Viale Pacinotti<br>51100 Pistoia PT</p>
+      </div>
+      <div>
+        <div style="font:700 13px 'Manrope';text-transform:uppercase;letter-spacing:.05em;margin-bottom:14px;color:#fff">Contatti</div>
+        <p style="font:400 14px/1.9 'Manrope';color:rgba(255,255,255,.75);margin:0">ttpt@ttpistoia.it<br>335.7388152<br>Mar e Gio, 21:00–23:30</p>
+      </div>
+      <div>
+        <div style="font:700 13px 'Manrope';text-transform:uppercase;letter-spacing:.05em;margin-bottom:14px;color:#fff">Seguici</div>
+        <div style="display:flex;gap:10px">
+          <a class="hp-a hp-cta" href="#" style="width:34px;height:34px;border-radius:50%;background:#e50d22;display:flex;align-items:center;justify-content:center;font:700 12px 'Manrope'">FB</a>
+          <a class="hp-a hp-cta" href="#" style="width:34px;height:34px;border-radius:50%;background:#e50d22;display:flex;align-items:center;justify-content:center;font:700 12px 'Manrope'">IG</a>
+          <a class="hp-a hp-cta" href="#" style="width:34px;height:34px;border-radius:50%;background:#e50d22;display:flex;align-items:center;justify-content:center;font:700 12px 'Manrope'">YT</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,.15);padding:18px 40px;font:400 12px 'Manrope';color:rgba(255,255,255,.55);max-width:1280px;margin:0 auto;box-sizing:border-box">© 2026 TT Pistoia asd. Tutti i diritti riservati.</div>
+  </footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280}}">
+class Component extends DCLogic {
+  state = { open: '2023-2024', more: {}, variant: 'A' };
+
+  componentDidMount() {
+    var drag = null;
+
+    this._down = function (e) {
+      var sl = e.target.closest && e.target.closest('.st-slider');
+      if (!sl) return;
+      if (e.target.closest('button')) return;
+      drag = { sl: sl, x: e.clientX, left: sl.scrollLeft, moved: false };
+      sl.style.cursor = 'grabbing';
+      sl.style.scrollSnapType = 'none';
+      sl.style.scrollBehavior = 'auto';
+    };
+    this._move = function (e) {
+      if (!drag) return;
+      var dx = e.clientX - drag.x;
+      if (Math.abs(dx) > 3) drag.moved = true;
+      drag.sl.scrollLeft = drag.left - dx;
+      if (drag.moved) e.preventDefault();
+    };
+    this._up = function () {
+      if (!drag) return;
+      drag.sl.style.cursor = '';
+      drag.sl.style.scrollSnapType = 'x proximity';
+      drag.sl.style.scrollBehavior = '';
+      drag = null;
+    };
+    this._wheel = function (e) {
+      var sl = e.target.closest && e.target.closest('.st-slider');
+      if (!sl) return;
+      if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+      var max = sl.scrollWidth - sl.clientWidth;
+      if (max <= 0) return;
+      var atStart = sl.scrollLeft <= 0 && e.deltaY < 0;
+      var atEnd = sl.scrollLeft >= max - 1 && e.deltaY > 0;
+      if (atStart || atEnd) return;
+      sl.scrollLeft += e.deltaY;
+      e.preventDefault();
+    };
+
+    document.addEventListener('pointerdown', this._down);
+    document.addEventListener('pointermove', this._move, { passive: false });
+    document.addEventListener('pointerup', this._up);
+    document.addEventListener('pointercancel', this._up);
+    document.addEventListener('wheel', this._wheel, { passive: false });
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('pointerdown', this._down);
+    document.removeEventListener('pointermove', this._move);
+    document.removeEventListener('pointerup', this._up);
+    document.removeEventListener('pointercancel', this._up);
+    document.removeEventListener('wheel', this._wheel);
+  }
+
+  nudge(e, dir) {
+    var wrap = e.currentTarget.closest('[data-slider-wrap]');
+    var sl = wrap && wrap.querySelector('.st-slider');
+    if (!sl) return;
+    var delta = dir * Math.max(320, sl.clientWidth * 0.8);
+    var max = sl.scrollWidth - sl.clientWidth;
+    var from = sl.scrollLeft;
+    var to = Math.max(0, Math.min(max, from + delta));
+    if (to === from) return;
+    sl.style.scrollBehavior = 'auto';
+    var steps = 14, i = 0, t0 = Date.now();
+    var timer = setInterval(function () {
+      i++;
+      var k = Math.min(1, i / steps);
+      var e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+      sl.scrollLeft = from + (to - from) * e;
+      if (k >= 1 || Date.now() - t0 > 800) {
+        clearInterval(timer);
+        sl.scrollLeft = to;
+        sl.style.scrollBehavior = '';
+      }
+    }, 16);
+  }
+
+  seasons() {
+    var s = (typeof window !== 'undefined' && window.STORIA_SEASONS) || [];
+    return s.slice().reverse();
+  }
+
+  scrollTo(id) {
+    var el = document.getElementById('season-' + id);
+    if (!el) return;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - 180;
+    window.scrollTo(0, y);
+  }
+
+  jump(id) {
+    var self = this;
+    this.setState({ open: id }, function () {
+      self.scrollTo(id);
+      setTimeout(function () { self.scrollTo(id); }, 60);
+    });
+  }
+
+  toggle(id) {
+    this.setState(function (st) { return { open: st.open === id ? null : id }; });
+  }
+
+  toggleMore(id) {
+    this.setState(function (st) {
+      var m = Object.assign({}, st.more);
+      m[id] = !m[id];
+      return { more: m };
+    });
+  }
+
+  renderVals() {
+    var self = this;
+    var variant = this.state.variant;
+    var seasons = this.seasons();
+
+    var items = seasons.map(function (s) {
+      var expanded = self.state.open === s.id;
+      var showAll = !!self.state.more[s.id];
+      var isLong = s.paras.length > 3;
+      var paras = (isLong && !showAll) ? s.paras.slice(0, 2) : s.paras;
+      return {
+        id: s.id,
+        label: 'Stagione ' + s.label,
+        sign: expanded ? '\u2212' : '+',
+        expanded: expanded,
+        isA: expanded,
+        hasPhotos: s.photos.length > 0,
+        photoCount: s.photos.length + (s.photos.length === 1 ? ' foto' : ' foto'),
+        photos: s.photos.map(function (p, i) {
+          var tall = i % 5 === 2;
+          return { key: s.id + '-' + i, caption: p.caption, tall: tall, wide: !tall };
+        }),
+        paras: paras.map(function (t, i) { return { key: s.id + '-p' + i, t: t }; }),
+        showMore: isLong,
+        moreLabel: showAll ? 'Mostra meno' : 'Leggi il racconto completo',
+        onToggle: function () { self.toggle(s.id); },
+        onMore: function () { self.toggleMore(s.id); }
+      };
+    });
+
+    var pills = seasons.map(function (s) {
+      var active = self.state.open === s.id;
+      return {
+        label: s.label,
+        active: active,
+        inactive: !active,
+        onClick: function () { self.jump(s.id); }
+      };
+    });
+
+    return {
+      items: items,
+      pills: pills,
+      slidePrev: function (e) { self.nudge(e, -1); },
+      slideNext: function (e) { self.nudge(e, 1); },
+      isA: true
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./mobile-nav.js"></script>
+<style>
+body{margin:0;font-family:'Manrope',system-ui,sans-serif;background:#fff}
+.hp-a{color:inherit;text-decoration:none;transition:opacity .15s ease,color .15s ease}
+.rtc-nav a:hover{opacity:1;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.hp-a:hover{opacity:.72}
+.hp-cta{transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+.hp-cta:hover{transform:translateY(-2px)}
+.hp-card{transition:transform .2s ease,box-shadow .2s ease}
+.hp-card:hover{transform:translateY(-4px);box-shadow:-14px 18px 34px -8px rgba(1,1,123,.5),14px 18px 34px -8px rgba(229,13,34,.42),0 3px 10px rgba(0,0,0,.07)!important}
+.hp-imgwrap{overflow:hidden}
+.hp-imgwrap image-slot{transition:transform .5s ease}
+.hp-imgwrap:hover image-slot{transform:scale(1.06)}
+
+@media (max-width:900px){
+  .rtc-header img{width:52px!important;height:52px!important}
+  .rtc-team-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .rtc-team-grid>div{grid-column:span 1!important}
+  .rtc-grid-3{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .rtc-grid-4{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .rtc-split{grid-template-columns:minmax(0,1fr)!important}
+  .rtc-footer-grid{grid-template-columns:minmax(0,1fr)!important;gap:28px!important}
+}
+@media (max-width:640px){
+  .rtc-team-grid{grid-template-columns:minmax(0,1fr)!important}
+  h2{font-size:22px!important}
+  h3{font-size:17px!important}
+  .rtc-header{padding:0!important}
+  .rtc-header>div{height:64px!important;padding:0 20px!important}
+  .rtc-header img{width:46px!important;height:46px!important}
+  .rtc-inner-hero{height:130px!important}
+  .rtc-inner-hero h1{font-size:34px!important}
+  .rtc-inner-hero{height:190px!important}
+  .rtc-home-hero{height:480px!important}
+  .rtc-home-hero-text{left:24px!important;right:24px!important;max-width:none!important}
+  .rtc-home-hero-text h1{font-size:32px!important;margin-bottom:20px!important}
+  .rtc-grid-3{grid-template-columns:minmax(0,1fr)!important}
+  .rtc-grid-4{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  section{padding-left:20px!important;padding-right:20px!important}
+  header{padding-left:16px!important;padding-right:16px!important}
+}
+@media (max-width:420px){
+  .rtc-grid-4{grid-template-columns:minmax(0,1fr)!important}
+}
+</style>
+</helmet>
+
+
+  <header class="rtc-header" style="background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.10);position:sticky;top:0;z-index:10">
+    <div style="max-width:1280px;margin:0 auto;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;box-sizing:border-box">
+    <img src="assets/logo-header.png" alt="T.T. Pistoia 1991" style="width:64px;height:64px;object-fit:contain">
+    <nav class="rtc-nav" style="display:flex;gap:18px;align-items:center">
+      <a class="hp-a" href="Home.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078">Home</a>
+      <a class="hp-a" href="Giocatori.dc.html" style="font:700 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Giocatori</a>
+      <a class="hp-a" href="Storia.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078">Storia</a>
+      <a class="hp-a" href="News.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078">News</a>
+      <a class="hp-a" href="Campionati.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078">Campionati</a>
+      <a class="hp-a" href="Le Regole.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078;white-space:nowrap">Le regole</a>
+      <a class="hp-a" href="Contatti.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078">Contatti</a>
+    </nav>
+    </div>
+  </header>
+
+  <div class="rtc-inner-hero" style="position:relative;height:210px;overflow:hidden;clip-path:polygon(0 0,100% 0,100% 88%,0 100%);background:linear-gradient(115deg,#01017b 0%,#0a0a8f 42%,#8c0a19 80%,#e50d22 100%)">
+    <div style="position:absolute;inset:0;background:radial-gradient(circle at 22% 40%,rgba(255,255,255,.10) 0%,transparent 60%);pointer-events:none"></div>
+    <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:1280px;height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 40px;box-sizing:border-box">
+      <div style="font:600 12px 'Manrope';color:rgba(255,255,255,.6);margin-bottom:8px"><a class="hp-a" href="Home.dc.html" style="color:rgba(255,255,255,.6)">Home</a> / Giocatori</div>
+      <h1 style="font:700 52px 'Archivo';text-transform:none;letter-spacing:-.015em;color:#fff;margin:0">I nostri giocatori</h1>
+    </div>
+  </div>
+
+  <section style="padding:44px 40px 8px;background:#f4f5f7">
+  <div style="max-width:1200px;margin:0 auto">
+    <p style="font:400 16px/1.75 'Manrope';color:#4a4d53;margin:0;max-width:700px;text-wrap:pretty">Dalla prima squadra ai gruppi giovanili, gli atleti che rappresentano il TT Pistoia asd nei campionati regionali e provinciali, divisi per categoria.</p>
+  </div>
+  </section>
+
+  <section style="padding:48px 40px 44px;background:#f4f5f7">
+  <div style="max-width:1200px;margin:0 auto">
+    <h2 style="font:700 26px 'Archivo';letter-spacing:-.015em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0 0 22px;position:relative;padding-bottom:12px">Squadra C2<span style="position:absolute;left:0;bottom:0;width:56px;height:4px;background:#e50d22"></span></h2>
+    <div class="rtc-team-grid" style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:22px">
+        <div class="hp-card" style="grid-column:span 3;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-1" shape="rect" placeholder="Foto giocatore" style="width:100%;height:240px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Marco Bellini</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">C2</div>
+          </div>
+        </div>
+        <div class="hp-card" style="grid-column:span 3;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-2" shape="rect" placeholder="Foto giocatore" style="width:100%;height:240px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Giulia Renzi</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">C2</div>
+          </div>
+        </div>
+        <div class="hp-card" style="grid-column:span 2;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-3" shape="rect" placeholder="Foto giocatore" style="width:100%;height:200px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Luca Ferretti</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">C2</div>
+          </div>
+        </div>
+        <div class="hp-card" style="grid-column:span 2;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-4" shape="rect" placeholder="Foto giocatore" style="width:100%;height:200px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Sara Conti</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">C2</div>
+          </div>
+        </div>
+        <div class="hp-card" style="grid-column:span 2;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-5" shape="rect" placeholder="Foto giocatore" style="width:100%;height:200px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Davide Moretti</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">C2</div>
+          </div>
+        </div>
+    </div>
+  </div>
+  </section>
+
+  <section style="padding:44px 40px;background:#f4f5f7">
+  <div style="max-width:1200px;margin:0 auto">
+    <h2 style="font:700 26px 'Archivo';letter-spacing:-.015em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0 0 22px;position:relative;padding-bottom:12px">Squadra D1/A<span style="position:absolute;left:0;bottom:0;width:56px;height:4px;background:#e50d22"></span></h2>
+    <div class="rtc-team-grid" style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:22px">
+        <div class="hp-card" style="grid-column:span 3;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-6" shape="rect" placeholder="Foto giocatore" style="width:100%;height:240px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Tommaso Greco</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">D1/A</div>
+          </div>
+        </div>
+        <div class="hp-card" style="grid-column:span 3;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-7" shape="rect" placeholder="Foto giocatore" style="width:100%;height:240px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Chiara Santoro</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">D1/A</div>
+          </div>
+        </div>
+        <div class="hp-card" style="grid-column:span 2;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-8" shape="rect" placeholder="Foto giocatore" style="width:100%;height:200px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Andrea Bartolini</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">D1/A</div>
+          </div>
+        </div>
+        <div class="hp-card" style="grid-column:span 2;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-9" shape="rect" placeholder="Foto giocatore" style="width:100%;height:200px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Federico Nesti</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">D1/A</div>
+          </div>
+        </div>
+        <div class="hp-card" style="grid-column:span 2;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-10" shape="rect" placeholder="Foto giocatore" style="width:100%;height:200px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Elena Rizzi</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">D1/A</div>
+          </div>
+        </div>
+    </div>
+  </div>
+  </section>
+
+  <section style="padding:44px 40px;background:#f4f5f7">
+  <div style="max-width:1200px;margin:0 auto">
+    <h2 style="font:700 26px 'Archivo';letter-spacing:-.015em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0 0 22px;position:relative;padding-bottom:12px">Squadra D1/B<span style="position:absolute;left:0;bottom:0;width:56px;height:4px;background:#e50d22"></span></h2>
+    <div class="rtc-team-grid" style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:22px">
+        <div class="hp-card" style="grid-column:span 3;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-11" shape="rect" placeholder="Foto giocatore" style="width:100%;height:240px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Matteo Innocenti</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">D1/B</div>
+          </div>
+        </div>
+        <div class="hp-card" style="grid-column:span 3;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-12" shape="rect" placeholder="Foto giocatore" style="width:100%;height:240px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Silvia Baldi</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">D1/B</div>
+          </div>
+        </div>
+        <div class="hp-card" style="grid-column:span 2;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-13" shape="rect" placeholder="Foto giocatore" style="width:100%;height:200px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Riccardo Fanti</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">D1/B</div>
+          </div>
+        </div>
+        <div class="hp-card" style="grid-column:span 2;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-14" shape="rect" placeholder="Foto giocatore" style="width:100%;height:200px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Giorgio Vannucci</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">D1/B</div>
+          </div>
+        </div>
+        <div class="hp-card" style="grid-column:span 2;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-15" shape="rect" placeholder="Foto giocatore" style="width:100%;height:200px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Laura Mecacci</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">D1/B</div>
+          </div>
+        </div>
+    </div>
+  </div>
+  </section>
+
+  <section style="padding:44px 40px;background:#f4f5f7">
+  <div style="max-width:1200px;margin:0 auto">
+    <h2 style="font:700 26px 'Archivo';letter-spacing:-.015em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0 0 22px;position:relative;padding-bottom:12px">Squadra D2/A<span style="position:absolute;left:0;bottom:0;width:56px;height:4px;background:#e50d22"></span></h2>
+    <div class="rtc-team-grid" style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:22px">
+        <div class="hp-card" style="grid-column:span 3;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-16" shape="rect" placeholder="Foto giocatore" style="width:100%;height:240px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Alessio Pacini</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">D2/A</div>
+          </div>
+        </div>
+        <div class="hp-card" style="grid-column:span 3;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-17" shape="rect" placeholder="Foto giocatore" style="width:100%;height:240px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Martina Gori</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">D2/A</div>
+          </div>
+        </div>
+        <div class="hp-card" style="grid-column:span 2;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-18" shape="rect" placeholder="Foto giocatore" style="width:100%;height:200px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Simone Lastrucci</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">D2/A</div>
+          </div>
+        </div>
+        <div class="hp-card" style="grid-column:span 2;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-19" shape="rect" placeholder="Foto giocatore" style="width:100%;height:200px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Paolo Bugiani</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">D2/A</div>
+          </div>
+        </div>
+        <div class="hp-card" style="grid-column:span 2;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-20" shape="rect" placeholder="Foto giocatore" style="width:100%;height:200px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Irene Corsini</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">D2/A</div>
+          </div>
+        </div>
+    </div>
+  </div>
+  </section>
+
+  <section style="padding:44px 40px;background:#f4f5f7">
+  <div style="max-width:1200px;margin:0 auto">
+    <h2 style="font:700 26px 'Archivo';letter-spacing:-.015em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0 0 22px;position:relative;padding-bottom:12px">Squadra D2/B<span style="position:absolute;left:0;bottom:0;width:56px;height:4px;background:#e50d22"></span></h2>
+    <div class="rtc-team-grid" style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:22px">
+        <div class="hp-card" style="grid-column:span 3;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-116" shape="rect" placeholder="Foto giocatore" style="width:100%;height:240px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Lorenzo Vivarelli</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">D2/B</div>
+          </div>
+        </div>
+        <div class="hp-card" style="grid-column:span 3;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-117" shape="rect" placeholder="Foto giocatore" style="width:100%;height:240px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Camilla Betti</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">D2/B</div>
+          </div>
+        </div>
+        <div class="hp-card" style="grid-column:span 2;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-118" shape="rect" placeholder="Foto giocatore" style="width:100%;height:200px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Stefano Puccini</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">D2/B</div>
+          </div>
+        </div>
+        <div class="hp-card" style="grid-column:span 2;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-119" shape="rect" placeholder="Foto giocatore" style="width:100%;height:200px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Michele Barni</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">D2/B</div>
+          </div>
+        </div>
+        <div class="hp-card" style="grid-column:span 2;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-120" shape="rect" placeholder="Foto giocatore" style="width:100%;height:200px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Sofia Landi</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">D2/B</div>
+          </div>
+        </div>
+    </div>
+  </div>
+  </section>
+
+  <section style="padding:44px 40px 80px;background:#f4f5f7">
+  <div style="max-width:1200px;margin:0 auto">
+    <h2 style="font:700 26px 'Archivo';letter-spacing:-.015em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0 0 22px;position:relative;padding-bottom:12px">Squadra D3<span style="position:absolute;left:0;bottom:0;width:56px;height:4px;background:#e50d22"></span></h2>
+    <div class="rtc-team-grid" style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:22px">
+        <div class="hp-card" style="grid-column:span 3;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-21" shape="rect" placeholder="Foto giocatore" style="width:100%;height:240px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Filippo Magnini</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">D3</div>
+          </div>
+        </div>
+        <div class="hp-card" style="grid-column:span 3;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-22" shape="rect" placeholder="Foto giocatore" style="width:100%;height:240px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Beatrice Salvi</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">D3</div>
+          </div>
+        </div>
+        <div class="hp-card" style="grid-column:span 2;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-23" shape="rect" placeholder="Foto giocatore" style="width:100%;height:200px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Niccolò Tonelli</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">D3</div>
+          </div>
+        </div>
+        <div class="hp-card" style="grid-column:span 2;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-24" shape="rect" placeholder="Foto giocatore" style="width:100%;height:200px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Gabriele Bianchi</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">D3</div>
+          </div>
+        </div>
+        <div class="hp-card" style="grid-column:span 2;border-radius:18px;overflow:hidden;background:#fff;box-shadow:-10px 12px 26px -8px rgba(1,1,123,.42),10px 12px 26px -8px rgba(229,13,34,.34),0 2px 8px rgba(0,0,0,.06)">
+          <div class="hp-imgwrap"><image-slot id="pl-25" shape="rect" placeholder="Foto giocatore" style="width:100%;height:200px"></image-slot></div>
+          <div style="padding:18px;text-align:center">
+            <div style="font:600 16px 'Manrope';color:#01017b">Anna Cecchi</div>
+            <div style="font:600 11px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-top:4px">D3</div>
+          </div>
+        </div>
+    </div>
+  </div>
+  </section>
+
+  <footer style="background:#01017b;color:#fff;padding:0">
+    <div style="height:4px;background:linear-gradient(90deg,#e50d22 0 30%,rgba(255,255,255,.25) 30% 32%,transparent 32%)"></div>
+    <div class="rtc-footer-grid" style="padding:48px 40px;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px;max-width:1280px;margin:0 auto;box-sizing:border-box">
+      <div>
+        <div style="font:700 20px 'Archivo';text-transform:none;letter-spacing:-.015em;margin-bottom:12px">TT Pistoia asd</div>
+        <p style="font:400 14px/1.6 'Manrope';color:rgba(255,255,255,.75);margin:0">Palestra Einaudi<br>Viale Pacinotti<br>51100 Pistoia PT</p>
+      </div>
+      <div>
+        <div style="font:700 13px 'Manrope';text-transform:uppercase;letter-spacing:.05em;margin-bottom:14px;color:#fff">Contatti</div>
+        <p style="font:400 14px/1.9 'Manrope';color:rgba(255,255,255,.75);margin:0">ttpt@ttpistoia.it<br>335.7388152<br>Mar e Gio, 21:00–23:30</p>
+      </div>
+      <div>
+        <div style="font:700 13px 'Manrope';text-transform:uppercase;letter-spacing:.05em;margin-bottom:14px;color:#fff">Seguici</div>
+        <div style="display:flex;gap:10px">
+          <a class="hp-a hp-cta" href="#" style="width:34px;height:34px;border-radius:50%;background:#e50d22;display:flex;align-items:center;justify-content:center;font:700 12px Inter">FB</a>
+          <a class="hp-a hp-cta" href="#" style="width:34px;height:34px;border-radius:50%;background:#e50d22;display:flex;align-items:center;justify-content:center;font:700 12px Inter">IG</a>
+          <a class="hp-a hp-cta" href="#" style="width:34px;height:34px;border-radius:50%;background:#e50d22;display:flex;align-items:center;justify-content:center;font:700 12px Inter">YT</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,.15);padding:18px 40px;font:400 12px 'Manrope';color:rgba(255,255,255,.55);max-width:1280px;margin:0 auto;box-sizing:border-box">© 2026 TT Pistoia asd. Tutti i diritti riservati.</div>
+  </footer>
+
+</x-dc>
+</body>
+</html>

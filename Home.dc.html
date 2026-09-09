@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./mobile-nav.js"></script>
+<style>
+body{margin:0;font-family:'Manrope',system-ui,sans-serif;background:#fff}
+.hp-a{color:inherit;text-decoration:none;transition:opacity .15s ease,color .15s ease}
+.rtc-nav a:hover{opacity:1;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.hp-a:hover{opacity:.72}
+.hp-cta{transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+.hp-cta:hover{transform:translateY(-2px)}
+.hp-card{transition:transform .2s ease,box-shadow .2s ease}
+.hp-card:hover{transform:translateY(-4px)}
+.hp-imgwrap{overflow:hidden}
+.hp-imgwrap image-slot{transition:transform .5s ease}
+.hp-imgwrap:hover image-slot{transform:scale(1.06)}
+
+@media (max-width:900px){
+  .rtc-header img{width:52px!important;height:52px!important}
+  .rtc-home-hero-wm{left:auto!important;right:0!important;width:min(62vw,420px)!important;height:auto!important;max-height:88%!important;opacity:.45!important}
+  .rtc-grid-3{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .rtc-grid-4{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .rtc-split{grid-template-columns:minmax(0,1fr)!important}
+  .rtc-footer-grid{grid-template-columns:minmax(0,1fr)!important;gap:28px!important}
+}
+@media (max-width:640px){
+  h2{font-size:22px!important}
+  h3{font-size:17px!important}
+  .rtc-header{padding:0!important}
+  .rtc-header>div{height:64px!important;padding:0 20px!important}
+  .rtc-header img{width:46px!important;height:46px!important}
+  .rtc-home-hero-wm{left:50%!important;right:auto!important;top:50%!important;transform:translate(-50%,-50%)!important;width:min(96vw,420px)!important;height:auto!important;max-height:76%!important;opacity:.3!important}
+  .rtc-home-hero-text>div>div:first-child{font:700 11px 'Manrope'!important;letter-spacing:.06em!important;margin-bottom:10px!important;text-shadow:0 2px 10px rgba(0,0,10,.6)}
+  .rtc-home-hero-veil{background:linear-gradient(100deg,rgba(0,0,10,.42) 0%,rgba(0,0,10,.30) 55%,rgba(0,0,10,.18) 100%)!important}
+  .rtc-inner-hero{height:130px!important}
+  .rtc-inner-hero h1{font-size:24px!important}
+  .rtc-home-hero{height:430px!important}
+  .rtc-home-hero-text{left:0!important;right:auto!important;transform:none!important;width:100%!important;max-width:none!important;padding:0 20px!important}
+  .rtc-home-hero-text h1{font-size:30px!important;line-height:1.12!important;margin-bottom:20px!important;text-shadow:0 3px 18px rgba(0,0,0,.55)!important}
+  .rtc-grid-3{grid-template-columns:minmax(0,1fr)!important}
+  .rtc-grid-4{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  section{padding-left:20px!important;padding-right:20px!important}
+  header{padding-left:16px!important;padding-right:16px!important}
+}
+@media (max-width:420px){
+  .rtc-grid-4{grid-template-columns:minmax(0,1fr)!important}
+}
+</style>
+</helmet>
+
+
+  <!-- HEADER -->
+  <header class="rtc-header" style="background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.10);position:sticky;top:0;z-index:20">
+    <div style="max-width:1280px;margin:0 auto;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;box-sizing:border-box">
+    <img src="assets/logo-header.png" alt="T.T. Pistoia 1991" style="width:64px;height:64px;object-fit:contain">
+    <nav class="rtc-nav" style="display:flex;gap:30px;align-items:center">
+      <a class="hp-a" href="Home.dc.html" style="font:700 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Home</a>
+      <a class="hp-a" href="Giocatori.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078">Giocatori</a>
+      <a class="hp-a" href="Storia.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078">Storia</a>
+      <a class="hp-a" href="News.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078">News</a>
+      <a class="hp-a" href="Campionati.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078">Campionati</a>
+      <a class="hp-a" href="Le Regole.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078;white-space:nowrap">Le regole</a>
+      <a class="hp-a" href="Contatti.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078">Contatti</a>
+    </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="rtc-home-hero" style="position:relative;height:600px;overflow:hidden;clip-path:polygon(0 0,100% 0,100% 93%,0 100%);background:linear-gradient(115deg,#e50d22 0%,#8c0a19 22%,#0a0a8f 62%,#01017b 100%)">
+    <div style="position:absolute;inset:0;background:radial-gradient(circle at 22% 30%,rgba(255,255,255,.12) 0%,transparent 55%);pointer-events:none"></div>
+    <img class="rtc-home-hero-wm" src="assets/logo-hero.svg" alt="" style="position:absolute;top:50%;right:-20px;transform:translateY(-50%);width:520px;height:520px;object-fit:contain;opacity:.7;pointer-events:none">
+    <div class="rtc-home-hero-veil" style="position:absolute;inset:0;background:linear-gradient(105deg,rgba(0,0,0,.28) 0%,rgba(0,0,0,.12) 45%,rgba(0,0,0,0) 75%);pointer-events:none"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,10,.35) 0%,rgba(0,0,10,0) 30%);pointer-events:none"></div>
+    <div class="rtc-home-hero-text" style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:1280px;height:100%;display:flex;align-items:center;padding:0 40px;box-sizing:border-box;pointer-events:none"><div style="max-width:620px">
+      <div style="font:700 13px 'Manrope';letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:14px">Fondato nel 1992 · Campioni del campionato regionale</div>
+      <h1 style="font:700 64px/1.05 'Archivo';color:#fff;text-transform:none;margin:0 0 30px;letter-spacing:-.02em;text-shadow:0 4px 24px rgba(0,0,0,.35)">Anni di storia, un'unica<br>passione che si tramanda.</h1>
+      <a class="hp-a hp-cta" href="#" style="display:inline-block;pointer-events:auto;background:#e50d22;color:#fff;font:700 14px 'Manrope';letter-spacing:.04em;text-transform:uppercase;padding:17px 34px;border-radius:999px;box-shadow:0 10px 28px rgba(229,13,34,.4)">Prenota una prova gratuita</a>
+    </div></div>
+  </div>
+
+
+  <section style="padding:44px 40px 8px;background:#fff">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="rtc-grid-4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px">
+      <div style="padding:22px 24px;border-radius:18px;background:#f4f5f7">
+        <div style="font:700 38px 'Archivo';letter-spacing:-.02em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">1992</div>
+        <div style="font:500 13px 'Manrope';color:#6b7078;margin-top:4px">Anno di fondazione</div>
+      </div>
+      <div style="padding:22px 24px;border-radius:18px;background:#f4f5f7">
+        <div style="font:700 38px 'Archivo';letter-spacing:-.02em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">122</div>
+        <div style="font:500 13px 'Manrope';color:#6b7078;margin-top:4px">Tesserati</div>
+      </div>
+      <div style="padding:22px 24px;border-radius:18px;background:#f4f5f7">
+        <div style="font:700 38px 'Archivo';letter-spacing:-.02em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">8</div>
+        <div style="font:500 13px 'Manrope';color:#6b7078;margin-top:4px">Squadre nei campionati</div>
+      </div>
+      <div style="padding:22px 24px;border-radius:18px;background:#f4f5f7">
+        <div style="font:700 38px 'Archivo';letter-spacing:-.02em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">2</div>
+        <div style="font:500 13px 'Manrope';color:#6b7078;margin-top:4px">Palestre di allenamento</div>
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <!-- NEWS -->
+  <section style="padding:64px 40px;background:#fff">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:32px">
+      <h2 style="font:700 32px 'Archivo';text-transform:none;letter-spacing:-.015em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0;position:relative;padding-bottom:12px">Ultime notizie<span style="position:absolute;left:0;bottom:0;width:56px;height:4px;background:#e50d22"></span></h2>
+      <a class="hp-a" href="News.dc.html" style="font:700 13px 'Manrope';text-transform:uppercase;letter-spacing:.04em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Tutte le news →</a>
+    </div>
+    <div class="rtc-grid-3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px">
+      <article class="hp-card" style="border-radius:18px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.08);background:#fff">
+        <div class="hp-imgwrap"><image-slot id="p1-news1" shape="rect" placeholder="Match photo" style="width:100%;height:170px"></image-slot></div>
+        <div style="padding:20px">
+          <div style="font:700 12px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">12 luglio 2026</div>
+          <h3 style="font:600 18px 'Manrope';background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0 0 8px">Il club vince la coppa estiva regionale</h3>
+          <p style="font:400 14px/1.5 'Manrope';color:#555;margin:0 0 12px">La nostra squadra maggiore ha conquistato il primo posto al torneo annuale tra club a Elmridge.</p>
+          <a class="hp-a" href="Articolo.dc.html" style="font:700 13px 'Manrope';background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Leggi di più →</a>
+        </div>
+      </article>
+      <article class="hp-card" style="border-radius:18px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.08);background:#fff">
+        <div class="hp-imgwrap"><image-slot id="p1-news2" shape="rect" placeholder="Training photo" style="width:100%;height:170px"></image-slot></div>
+        <div style="padding:20px">
+          <div style="font:700 12px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">3 luglio 2026</div>
+          <h3 style="font:600 18px 'Manrope';background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0 0 8px">Al via il nuovo gruppo allievi</h3>
+          <p style="font:400 14px/1.5 'Manrope';color:#555;margin:0 0 12px">Dagli 8 ai 14 anni, il martedì e il giovedì sera, con la coach Marta Vidal.</p>
+          <a class="hp-a" href="Articolo.dc.html" style="font:700 13px 'Manrope';background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Leggi di più →</a>
+        </div>
+      </article>
+      <article class="hp-card" style="border-radius:18px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.08);background:#fff">
+        <div class="hp-imgwrap"><image-slot id="p1-news3" shape="rect" placeholder="Club event photo" style="width:100%;height:170px"></image-slot></div>
+        <div style="padding:20px">
+          <div style="font:700 12px 'Manrope';color:#e50d22;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">21 giugno 2026</div>
+          <h3 style="font:600 18px 'Manrope';background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0 0 8px">Giornata porte aperte: 9 agosto</h3>
+          <p style="font:400 14px/1.5 'Manrope';color:#555;margin:0 0 12px">Porta un amico, prova un tavolo gratis e conosci lo staff tecnico.</p>
+          <a class="hp-a" href="Articolo.dc.html" style="font:700 13px 'Manrope';background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Leggi di più →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+  </section>
+
+
+  <section style="padding:56px 40px;background:#fff">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:28px">
+      <h2 style="font:700 30px 'Archivo';letter-spacing:-.015em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0;position:relative;padding-bottom:12px">Prossime partite<span style="position:absolute;left:0;bottom:0;width:56px;height:4px;background:#e50d22"></span></h2>
+      <a class="hp-a" href="Campionati.dc.html" style="font:700 13px 'Manrope';text-transform:uppercase;letter-spacing:.04em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Tutti i campionati &rarr;</a>
+    </div>
+    <div class="rtc-split" style="display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:start">
+      <div style="border-radius:18px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.08)">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:linear-gradient(115deg,#01017b 0%,#0a0a8f 45%,#8c0a19 82%,#e50d22 100%)">
+          <span style="font:700 12px 'Manrope';text-transform:uppercase;letter-spacing:.06em;color:#fff">Serie C2 &middot; girone A</span>
+          <span style="font:600 12px 'Manrope';color:rgba(255,255,255,.8)">Palestra Einaudi</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:18px;padding:16px 20px;border-bottom:1px solid #eceef1">
+          <span style="font:600 13px 'Manrope';color:#8a8f98;width:92px;flex:none">2 ago 2026</span>
+          <span style="font:600 15px 'Manrope';color:#22252a;flex:1">TT Pistoia asd &ndash; TT Elmridge Nord</span>
+          <span style="font:600 13px 'Manrope';color:#01017b;flex:none">19:00</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:18px;padding:16px 20px;border-bottom:1px solid #eceef1;background:#fafbfc">
+          <span style="font:600 13px 'Manrope';color:#8a8f98;width:92px;flex:none">9 ago 2026</span>
+          <span style="font:600 15px 'Manrope';color:#22252a;flex:1">Pongisti Valverde &ndash; TT Pistoia asd</span>
+          <span style="font:600 13px 'Manrope';color:#01017b;flex:none">18:30</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:18px;padding:16px 20px">
+          <span style="font:600 13px 'Manrope';color:#8a8f98;width:92px;flex:none">16 ago 2026</span>
+          <span style="font:600 15px 'Manrope';color:#22252a;flex:1">TT Pistoia asd &ndash; Circolo Sandon&agrave;</span>
+          <span style="font:600 13px 'Manrope';color:#01017b;flex:none">19:00</span>
+        </div>
+      </div>
+      <div style="padding:26px;border-radius:18px;background:#f4f5f7">
+        <div style="font:700 12px 'Manrope';text-transform:uppercase;letter-spacing:.06em;color:#01017b;margin-bottom:14px">Classifica C2</div>
+        <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #e2e5ea"><span style="font:700 14px 'Manrope';color:#01017b">1. TT Pistoia asd</span><span style="font:700 14px 'Manrope';color:#e50d22">28</span></div>
+        <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #e2e5ea"><span style="font:500 14px 'Manrope';color:#4a4d53">2. TT Elmridge Nord</span><span style="font:500 14px 'Manrope';color:#6b7078">24</span></div>
+        <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #e2e5ea"><span style="font:500 14px 'Manrope';color:#4a4d53">3. Pongisti Valverde</span><span style="font:500 14px 'Manrope';color:#6b7078">19</span></div>
+        <div style="display:flex;justify-content:space-between;padding:9px 0"><span style="font:500 14px 'Manrope';color:#4a4d53">4. Circolo Sandon&agrave;</span><span style="font:500 14px 'Manrope';color:#6b7078">15</span></div>
+        <div style="margin-top:18px"><a class="hp-a" href="Campionati.dc.html" style="font:700 13px 'Manrope';text-transform:uppercase;letter-spacing:.04em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Classifiche complete &rarr;</a></div>
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section style="padding:132px 40px 128px;background:linear-gradient(115deg,#01017b 0%,#0a0a8f 45%,#8c0a19 82%,#e50d22 100%);position:relative;overflow:hidden;clip-path:polygon(0 0,100% 5.5%,100% 100%,0 94.5%);margin:-40px 0;z-index:2">
+  <div style="position:absolute;inset:0;background:radial-gradient(circle at 78% 30%,rgba(255,255,255,.10) 0%,transparent 55%);pointer-events:none"></div>
+  <div style="max-width:1280px;margin:0 auto;position:relative">
+    <div class="rtc-split" style="display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:center">
+      <div class="hp-imgwrap" style="border-radius:18px;box-shadow:0 12px 40px rgba(0,0,0,.28)"><image-slot id="p1-about" shape="rounded" radius="18" placeholder="Club members photo" style="width:100%;height:320px"></image-slot></div>
+      <div>
+        <h2 style="font:700 30px 'Archivo';text-transform:none;letter-spacing:-.015em;color:#fff;margin:0 0 16px;position:relative;padding-bottom:12px">Chi siamo<span style="position:absolute;left:0;bottom:0;width:56px;height:4px;background:#fff"></span></h2>
+        <p style="font:400 16px/1.7 'Manrope';color:rgba(255,255,255,.9);margin:0 0 20px">Fondato nel 1992, il TT Pistoia asd è cresciuto da un unico tavolo in un salone parrocchiale fino a diventare uno dei club amatoriali più attivi della regione — allenando i giovani, organizzando campionati competitivi e accogliendo chiunque voglia semplicemente giocare per divertimento.</p>
+        <a class="hp-a" href="Storia.dc.html" style="font:700 13px 'Manrope';text-transform:uppercase;letter-spacing:.04em;color:#fff;border-bottom:2px solid rgba(255,255,255,.5);padding-bottom:3px">Scopri la nostra storia →</a>
+      </div>
+    </div>
+  </div>
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <section style="padding:56px 40px;background:#f4f5f7">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:28px">
+      <h2 style="font:700 30px 'Archivo';letter-spacing:-.015em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0;position:relative;padding-bottom:12px">Trentadue stagioni<span style="position:absolute;left:0;bottom:0;width:56px;height:4px;background:#e50d22"></span></h2>
+      <a class="hp-a" href="Storia.dc.html" style="font:700 13px 'Manrope';text-transform:uppercase;letter-spacing:.04em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Leggi la storia &rarr;</a>
+    </div>
+    <div class="rtc-grid-4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px">
+      <a class="hp-a hp-card" href="Storia.dc.html" style="display:block;padding:24px;border-radius:18px;background:#fff">
+        <div style="font:700 22px 'Archivo';background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">1992</div>
+        <div style="font:400 14px/1.6 'Manrope';color:#5a5e65;margin-top:8px">Sei soci, un tavolo prestato dalla parrocchia.</div>
+      </a>
+      <a class="hp-a hp-card" href="Storia.dc.html" style="display:block;padding:24px;border-radius:18px;background:#fff">
+        <div style="font:700 22px 'Archivo';background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">1997/98</div>
+        <div style="font:400 14px/1.6 'Manrope';color:#5a5e65;margin-top:8px">La prima promozione e il primo torneo aperto.</div>
+      </a>
+      <a class="hp-a hp-card" href="Storia.dc.html" style="display:block;padding:24px;border-radius:18px;background:#fff">
+        <div style="font:700 22px 'Archivo';background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">2014/15</div>
+        <div style="font:400 14px/1.6 'Manrope';color:#5a5e65;margin-top:8px">Campionato vinto con due giornate d'anticipo.</div>
+      </a>
+      <a class="hp-a hp-card" href="Storia.dc.html" style="display:block;padding:24px;border-radius:18px;background:#fff">
+        <div style="font:700 22px 'Archivo';background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">2023/24</div>
+        <div style="font:400 14px/1.6 'Manrope';color:#5a5e65;margin-top:8px">Primo posto di girone e nuova promozione.</div>
+      </a>
+    </div>
+  </div>
+  </section>
+
+
+  <section style="padding:64px 40px 72px;background:#fff">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="rtc-split" style="display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:44px;border-radius:24px;background:#f4f5f7">
+      <div>
+        <h2 style="font:700 30px 'Archivo';letter-spacing:-.015em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0;position:relative;padding-bottom:12px">Vieni a provare<span style="position:absolute;left:0;bottom:0;width:56px;height:4px;background:#e50d22"></span></h2>
+        <p style="font:400 16px/1.75 'Manrope';color:#4a4d53;margin:18px 0 26px;max-width:520px">Il marted&igrave; e il gioved&igrave; sera la palestra &egrave; aperta a chiunque voglia provare: racchette e tavoli li mettiamo noi. Prima prova gratuita, nessun impegno.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:14px">
+          <a class="hp-a hp-cta" href="Contatti.dc.html" style="display:inline-block;background:linear-gradient(115deg,#01017b 0%,#0a0a8f 45%,#8c0a19 82%,#e50d22 100%);color:#fff;font:700 14px 'Manrope';letter-spacing:.03em;text-transform:uppercase;padding:15px 30px;border-radius:999px;box-shadow:0 8px 22px rgba(1,1,123,.25)">Prenota una prova</a>
+          <a class="hp-a hp-cta" href="Le Regole.dc.html" style="display:inline-block;border:1.5px solid #01017b;color:#01017b;font:700 14px 'Manrope';letter-spacing:.03em;text-transform:uppercase;padding:14px 28px;border-radius:999px">Come si gioca</a>
+        </div>
+      </div>
+      <div style="display:grid;gap:12px">
+        <div style="display:flex;justify-content:space-between;padding:14px 18px;border-radius:14px;background:#fff"><span style="font:600 14px 'Manrope';color:#22252a">Marted&igrave;</span><span style="font:500 14px 'Manrope';color:#6b7078">21:00 &ndash; 23:30</span></div>
+        <div style="display:flex;justify-content:space-between;padding:14px 18px;border-radius:14px;background:#fff"><span style="font:600 14px 'Manrope';color:#22252a">Gioved&igrave;</span><span style="font:500 14px 'Manrope';color:#6b7078">21:00 &ndash; 23:30</span></div>
+        <div style="display:flex;justify-content:space-between;padding:14px 18px;border-radius:14px;background:#fff"><span style="font:600 14px 'Manrope';color:#22252a">Palestra Einaudi</span><span style="font:500 14px 'Manrope';color:#6b7078">Viale Pacinotti, Pistoia</span></div>
+        <div style="padding:14px 18px"><a class="hp-a" href="Contatti.dc.html" style="font:700 13px 'Manrope';text-transform:uppercase;letter-spacing:.04em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent">Contatti e mappa &rarr;</a></div>
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <footer style="background:#01017b;color:#fff;padding:0">
+    <div style="height:4px;background:linear-gradient(90deg,#e50d22 0 30%,rgba(255,255,255,.25) 30% 32%,transparent 32%)"></div>
+    <div class="rtc-footer-grid" style="padding:48px 40px;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px;max-width:1280px;margin:0 auto;box-sizing:border-box">
+      <div>
+        <div style="font:700 20px 'Archivo';text-transform:none;letter-spacing:-.015em;margin-bottom:12px">TT Pistoia asd</div>
+        <p style="font:400 14px/1.6 'Manrope';color:rgba(255,255,255,.75);margin:0">Palestra Einaudi<br>Viale Pacinotti<br>51100 Pistoia PT</p>
+      </div>
+      <div>
+        <div style="font:700 13px 'Manrope';text-transform:uppercase;letter-spacing:.05em;margin-bottom:14px;color:#fff">Contatti</div>
+        <p style="font:400 14px/1.9 'Manrope';color:rgba(255,255,255,.75);margin:0">ttpt@ttpistoia.it<br>335.7388152<br>Mar e Gio, 21:00–23:30</p>
+      </div>
+      <div>
+        <div style="font:700 13px 'Manrope';text-transform:uppercase;letter-spacing:.05em;margin-bottom:14px;color:#fff">Seguici</div>
+        <div style="display:flex;gap:10px">
+          <a class="hp-a hp-cta" href="#" style="width:34px;height:34px;border-radius:50%;background:#e50d22;display:flex;align-items:center;justify-content:center;font:700 12px Inter">FB</a>
+          <a class="hp-a hp-cta" href="#" style="width:34px;height:34px;border-radius:50%;background:#e50d22;display:flex;align-items:center;justify-content:center;font:700 12px Inter">IG</a>
+          <a class="hp-a hp-cta" href="#" style="width:34px;height:34px;border-radius:50%;background:#e50d22;display:flex;align-items:center;justify-content:center;font:700 12px Inter">YT</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,.15);padding:18px 40px;font:400 12px 'Manrope';color:rgba(255,255,255,.55);max-width:1280px;margin:0 auto;box-sizing:border-box">© 2026 TT Pistoia asd. Tutti i diritti riservati.</div>
+  </footer>
+
+</x-dc>
+</body>
+</html>

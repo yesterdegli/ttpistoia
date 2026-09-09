@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<script src="./mobile-nav.js"></script>
+<style>
+body{margin:0;font-family:'Manrope',system-ui,sans-serif;background:#fff}
+.hp-a{color:inherit;text-decoration:none;transition:opacity .15s ease,color .15s ease}
+.rtc-nav a:hover{opacity:1;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.hp-a:hover{opacity:.72}
+.hp-cta{transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+.hp-cta:hover{transform:translateY(-2px)}
+
+@media (max-width:900px){
+  .rtc-header img{width:52px!important;height:52px!important}
+  .rtc-grid-3{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .rtc-grid-4{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .rtc-split{grid-template-columns:minmax(0,1fr)!important}
+  .rtc-footer-grid{grid-template-columns:minmax(0,1fr)!important;gap:28px!important}
+}
+@media (max-width:640px){
+  h2{font-size:22px!important}
+  h3{font-size:17px!important}
+  .rtc-header{padding:0!important}
+  .rtc-header>div{height:64px!important;padding:0 20px!important}
+  .rtc-header img{width:46px!important;height:46px!important}
+  .rtc-inner-hero{height:130px!important}
+  .rtc-inner-hero h1{font-size:34px!important}
+  .rtc-inner-hero{height:190px!important}
+  .rtc-home-hero{height:480px!important}
+  .rtc-home-hero-text{left:24px!important;right:24px!important;max-width:none!important}
+  .rtc-home-hero-text h1{font-size:32px!important;margin-bottom:20px!important}
+  .rtc-grid-3{grid-template-columns:minmax(0,1fr)!important}
+  .rtc-grid-4{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  section{padding-left:20px!important;padding-right:20px!important}
+  header{padding-left:16px!important;padding-right:16px!important}
+}
+@media (max-width:420px){
+  .rtc-grid-4{grid-template-columns:minmax(0,1fr)!important}
+}
+
+.reg-idx:hover{opacity:1;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+@media (max-width:900px){
+  .reg-split{grid-template-columns:minmax(0,1fr)!important;gap:32px!important}
+  .reg-aside{position:static!important;order:-1}
+}
+</style>
+</helmet>
+
+  <header class="rtc-header" style="background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.10);position:sticky;top:0;z-index:10">
+    <div style="max-width:1280px;margin:0 auto;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;box-sizing:border-box">
+    <img src="assets/logo-header.png" alt="T.T. Pistoia 1991" style="width:64px;height:64px;object-fit:contain">
+    <nav class="rtc-nav" style="display:flex;gap:18px;align-items:center">
+      <a class="hp-a" href="Home.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078">Home</a>
+      <a class="hp-a" href="Giocatori.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078">Giocatori</a>
+      <a class="hp-a" href="Storia.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078">Storia</a>
+      <a class="hp-a" href="News.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078">News</a>
+      <a class="hp-a" href="Campionati.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078">Campionati</a>
+      <a class="hp-a" href="Le Regole.dc.html" style="font:700 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;white-space:nowrap">Le regole</a>
+      <a class="hp-a" href="Contatti.dc.html" style="font:600 18px 'Archivo';letter-spacing:-.005em;text-transform:capitalize;color:#6b7078">Contatti</a>
+    </nav>
+    </div>
+  </header>
+
+  <div class="rtc-inner-hero" style="position:relative;height:210px;overflow:hidden;clip-path:polygon(0 0,100% 0,100% 88%,0 100%);background:linear-gradient(115deg,#01017b 0%,#0a0a8f 42%,#8c0a19 80%,#e50d22 100%)">
+    <div style="position:absolute;inset:0;background:radial-gradient(circle at 22% 40%,rgba(255,255,255,.10) 0%,transparent 60%);pointer-events:none"></div>
+    <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:1280px;height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 40px;box-sizing:border-box">
+      <div style="font:600 12px 'Manrope';color:rgba(255,255,255,.6);margin-bottom:8px"><a class="hp-a" href="Home.dc.html" style="color:rgba(255,255,255,.6)">Home</a> / Le regole</div>
+      <h1 style="font:700 52px 'Archivo';text-transform:none;letter-spacing:-.015em;color:#fff;margin:0">Le regole del gioco</h1>
+    </div>
+  </div>
+
+
+  <section style="padding:48px 40px 0;background:#fff">
+  <div style="max-width:1200px;margin:0 auto">
+    <p style="font:400 17px/1.8 'Manrope';color:#33363b;margin:0 0 12px;max-width:820px;text-wrap:pretty">Il regolamento tecnico di gioco stabilisce come si gioca a tennistavolo: misure del tavolo, caratteristiche della pallina e della racchetta, servizio, punteggio e casi particolari.</p>
+    <p style="font:400 14px/1.7 'Manrope';color:#01017b;margin:0 0 8px">Fonte: Federazione Italiana Tennistavolo &mdash; Regolamento Tecnico di Gioco, versione 2021.</p>
+  </div>
+  </section>
+
+  <section style="padding:36px 40px 80px;background:#fff">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="reg-split" style="display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:56px;align-items:start">
+      <div>
+      <div id="cap-1" style="scroll-margin-top:120px;padding:0 0 40px">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px">
+          <span style="font:700 15px 'Manrope';color:#fff;background:linear-gradient(115deg,#01017b 0%,#0a0a8f 45%,#8c0a19 82%,#e50d22 100%);min-width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:none">1</span>
+          <h2 style="font:700 26px 'Archivo';letter-spacing:-.015em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0">Il Tavolo</h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0">
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">1.1</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">La superficie superiore del tavolo chiamata “superficie di gioco”, deve essere rettangolare di metri 2,74 di lunghezza e di metri 1,525 di larghezza e deve trovarsi su un piano orizzontale a metri 0,76 dal pavimento.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">1.2</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">La superficie di gioco comprende i bordi superiori del tavolo ma non i lati del tavolo sotto i bordi.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">1.3</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">La superficie di gioco può essere di qualsiasi materiale e deve produrre un rimbalzo uniforme di circa 23,00 centimetri. quando una pallina regolamentare è lasciata cadere da un’altezza di centimetri 30,00.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">1.4</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">La superficie di gioco deve essere di colore uniformemente scuro e opaco, ma con una “ linea laterale ” bianca, di centimetri 2,00 di larghezza, lungo ogni bordo di metri 2,74 ed una “linea di fondo ” bianca, larga 2,00 centimetri, lungo ogni bordo di metri 1,525.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">1.5</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">La superficie di gioco deve essere divisa in due “campi” uguali da una rete verticale parallela alle linee di fondo e deve essere continua per tutta l’estensione di ciascun campo.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec;border-bottom:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">1.6</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Per il doppio, ogni campo deve essere diviso in due “metà campo” uguali da una linea centrale bianca di millimetri 3 di larghezza parallela alle linee laterali; la linea centrale deve essere considerata parte di ciascuna metà campo destra.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="cap-2" style="scroll-margin-top:120px;padding:0 0 40px">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px">
+          <span style="font:700 15px 'Manrope';color:#fff;background:linear-gradient(115deg,#01017b 0%,#0a0a8f 45%,#8c0a19 82%,#e50d22 100%);min-width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:none">2</span>
+          <h2 style="font:700 26px 'Archivo';letter-spacing:-.015em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0">La Rete</h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0">
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">2.1</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">La “rete” consiste nella rete, la sua sospensione ed i paletti di sostegno, inclusi i morsetti di fissaggio al tavolo.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">2.2</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">La rete deve essere sospesa ad una corda fissata a ciascuna estremità ad un paletto verticale alto centimetri 15,25; i limiti esterni del paletto si devono trovare a centimetri 15,25 dalla linea laterale.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">2.3</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Il bordo superiore della rete, per tutta la sua lunghezza, deve essere a centimetri 15,25 della superficie di gioco.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec;border-bottom:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">2.4</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">La parte inferiore della rete, per tutta la sua lunghezza, deve essere il più possibile a contatto con la superficie di gioco e le sue estremità devono essere il più possibile a contatto con i paletti di sostegno.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="cap-3" style="scroll-margin-top:120px;padding:0 0 40px">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px">
+          <span style="font:700 15px 'Manrope';color:#fff;background:linear-gradient(115deg,#01017b 0%,#0a0a8f 45%,#8c0a19 82%,#e50d22 100%);min-width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:none">3</span>
+          <h2 style="font:700 26px 'Archivo';letter-spacing:-.015em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0">La Pallina</h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0">
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">3.1</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">La pallina deve essere sferica con un diametro di millimetri 40.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">3.2</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">La pallina deve pesare grammi 2,7.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec;border-bottom:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">3.3</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">La pallina deve essere di celluloide o analogo materiale plastico e deve essere bianca o arancione ed opaca.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="cap-4" style="scroll-margin-top:120px;padding:0 0 40px">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px">
+          <span style="font:700 15px 'Manrope';color:#fff;background:linear-gradient(115deg,#01017b 0%,#0a0a8f 45%,#8c0a19 82%,#e50d22 100%);min-width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:none">4</span>
+          <h2 style="font:700 26px 'Archivo';letter-spacing:-.015em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0">La Racchetta</h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0">
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">4.1</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">La racchetta può essere di qualsiasi dimensione, forma e peso ma il telaio deve essere piatto e rigido.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">4.2</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Almeno l’85% dello spessore del telaio deve essere di legno naturale; uno strato adesivo all’interno del telaio può essere rinforzato con materiale fibroso come: fibra di carbonio, fibra di vetro o carta compressa, ma non deve essere più spesso del 7,5% dello spessore totale o di mm. 0,35, quale che sia il più piccolo.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">4.3</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Un lato del telaio usato per colpire la pallina deve essere ricoperto, o con normale gomma puntinata con puntinatura esterna avente uno spessore totale, compreso l’adesivo, di non più di 2 millimetri, o con gomma sandwich con puntinatura interna o esterna avente uno spessore totale, compreso l’adesivo, di non più di 4 millimetri.</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">4.3.1</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">La “normale gomma puntinata” è un singolo strato di gomma non cellulare, naturale o sintetica, con puntinatura uniformemente distribuita sulla sua superficie con una densità non inferiore a 10 per centimetri quadrato e non superiore a 30 per centimetri quadrato.</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">4.3.2</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">La “gomma sandwich” è un singolo strato di gomma cellulare ricoperto con un singolo strato esterno di normale gomma puntinata; lo spessore della gomma puntinata non deve superare i 2 millimetri.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">4.4</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Il materiale di copertura deve estendersi per tutta la superficie del telaio ma non oltre i bordi, ad eccezione della parte più vicina al manico ed impugnata dalle dita, che può essere non ricoperta o coperta con qualsiasi materiale.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">4.5</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Il telaio, qualsiasi strato all’interno del telaio e qualsiasi strato di materiale di copertura o adesivo, sul lato usato per colpire la pallina, devono essere continui e di spessore uniforme.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">4.6</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">A partire dal 1 ottobre 2021 la superficie del materiale di copertura su un lato del telaio o la superficie di un lato del telaio, se esso non è ricoperto, dev’essere colorata in modo opaco, nero su di un lato e sull’altro di un colore vivo chiaramente distinguibile dal nero e dal colore della pallina.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">4.7</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">La copertura della racchetta dev’essere utilizzata senza alcun trattamento fisico, chimico o di altra natura.</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">4.7.1</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">Leggere variazioni della continuità della superficie o dell’uniformità del colore dovute a danno accidentale o logorio, possono essere concesse purché non costituiscano un cambiamento significativo delle caratteristiche della superficie.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec;border-bottom:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">4.8</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">All’inizio di una partita e ogni qualvolta cambi la racchetta durante una partita, un giocatore deve mostrare al suo avversario e all’arbitro la racchetta che intende usare e deve permettere loro di esaminarla.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="cap-5" style="scroll-margin-top:120px;padding:0 0 40px">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px">
+          <span style="font:700 15px 'Manrope';color:#fff;background:linear-gradient(115deg,#01017b 0%,#0a0a8f 45%,#8c0a19 82%,#e50d22 100%);min-width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:none">5</span>
+          <h2 style="font:700 26px 'Archivo';letter-spacing:-.015em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0">Definizioni</h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0">
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">5.1</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Uno scambio (rally) è il periodo durante il quale la pallina è in gioco.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">5.2</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">La pallina è in gioco dall’ultimo momento nel quale essa è ferma sul palmo della mano libera prima di essere intenzionalmente proiettata verso l’alto nell’esecuzione del servizio, fino a quando lo scambio si conclude con un punto o con un colpo nullo.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">5.3</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Un colpo nullo (let) è uno scambio il cui punto non viene conteggiato.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">5.4</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Un punto (point) è uno scambio che viene conteggiato.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">5.5</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">La mano della racchetta (racket hand) è la mano che tiene la racchetta.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">5.6</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">La mano libera (free hand) è la mano che non tiene la racchetta. Il braccio libero è il braccio della mano libera.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">5.7</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Un giocatore colpisce (strikes) la pallina se la tocca con la racchetta tenuta con la mano, o con la mano che tiene la racchetta sotto il polso.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">5.8</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Un giocatore ostruisce la pallina se egli, o qualsiasi cosa indossi o porti, la tocca in gioco quando la stessa è al di sopra o in movimento verso la superficie di gioco e non ha ancora oltrepassato la sua linea di fondo, sempreché non abbia già toccato la sua metà campo dopo essere stata colpita dal giocatore avversario.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">5.9</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Il battitore (server) è il giocatore tenuto a colpire per primo la pallina in uno scambio.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">5.10</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Il ribattitore (receiver) è il giocatore tenuto a colpire per secondo la pallina in uno scambio.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">5.11</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">L’arbitro (umpire) è la persona nominata per controllare un incontro.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">5.12</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">L’assistente arbitro (assistant umpire) è la persona nominata ad assistere l’arbitro in determinate decisioni.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">5.13</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Ogni cosa che un giocatore indossa o porta (wears or carries) comprende ogni cosa che questi indossava o portava diversa dalla pallina all’inizio dello scambio.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec;border-bottom:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">5.14</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">La linea di fondo (end line) si considera prolungata indefinitamente in entrambe le direzioni.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="cap-6" style="scroll-margin-top:120px;padding:0 0 40px">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px">
+          <span style="font:700 15px 'Manrope';color:#fff;background:linear-gradient(115deg,#01017b 0%,#0a0a8f 45%,#8c0a19 82%,#e50d22 100%);min-width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:none">6</span>
+          <h2 style="font:700 26px 'Archivo';letter-spacing:-.015em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0">Il Servizio</h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0">
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">6.1</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Il servizio inizia con la pallina liberamente posta sul palmo aperto della mano libera, ed immobile, del battitore.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">6.2</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Il battitore deve quindi lanciare la pallina quasi verticalmente verso l’alto e senza imprimere effetto così che si sollevi dal palmo della mano libera di almeno 16 centimetri e ricadere senza che abbia toccato nulla prima di essere colpita dal battitore.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">6.3</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Mentre la pallina sta discendendo il battitore la deve colpire in modo che nel singolo essa tocchi dapprima il suo campo e poi, dopo essere passata al di sopra o attorno alla rete, tocchi il campo del ribattitore; nel doppio, la pallina deve toccare successivamente la metà campo destra del battitore e del ribattitore.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">6.4</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Dall’inizio del servizio finché è colpita, la pallina deve essere al di sopra del livello della superficie di gioco e oltre la linea di fondo del battitore, ed essa non deve essere nascosta al ribattitore da nessuna parte del corpo o dall’abbigliamento del battitore o del suo compagno di doppio.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">6.5</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Appena la pallina è stata lanciata, il braccio e la mano libera del battitore devono essere rimosse dallo spazio fra la pallina e la rete. Lo spazio tra la pallina e la rete è delimitato dalla pallina, dalla rete e dalla proiezione verticale dei suoi sostegni.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">6.6</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">E’ responsabilità del giocatore servire in modo che l’arbitro o l’assistente arbitro possano accertarsi che egli rispetti tutti i requisiti di un servizio valido e inoltre possano decidere che il servizio è scorretto.</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">6.6.1</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">Se l’arbitro o l’assistente arbitro sono in dubbio sulla regolarità di un servizio, possono, la prima volta che questo capita in una partita, interrompere il gioco e avvisare il battitore; ma ogni servizio successivo dello stesso giocatore o del suo compagno di doppio che è di dubbia correttezza, verrà considerato scorretto.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec;border-bottom:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">6.7</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Eccezionalmente l’arbitro può disattendere i requisiti di un servizio valido se è convinto che l’ottemperanza è impedita da un problema fisico.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="cap-7" style="scroll-margin-top:120px;padding:0 0 40px">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px">
+          <span style="font:700 15px 'Manrope';color:#fff;background:linear-gradient(115deg,#01017b 0%,#0a0a8f 45%,#8c0a19 82%,#e50d22 100%);min-width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:none">7</span>
+          <h2 style="font:700 26px 'Archivo';letter-spacing:-.015em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0">Il Rinvio</h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0">
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec;border-bottom:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">7.1</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">La pallina, servita o rinviata, deve essere colpita così che tocchi il campo dell’avversario, o direttamente o dopo aver toccato la “ rete ”.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="cap-8" style="scroll-margin-top:120px;padding:0 0 40px">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px">
+          <span style="font:700 15px 'Manrope';color:#fff;background:linear-gradient(115deg,#01017b 0%,#0a0a8f 45%,#8c0a19 82%,#e50d22 100%);min-width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:none">8</span>
+          <h2 style="font:700 26px 'Archivo';letter-spacing:-.015em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0">L’Ordine di Gioco</h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0">
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">8.1</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Nel singolare, il battitore deve prima effettuare un servizio, il ribattitore deve poi effettuare un rinvio e quindi battitore e ribattitore alternativamente devono effettuare ciascuno un rinvio.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">8.2</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Nel doppio, il battitore deve prima effettuare un servizio, il ribattitore deve poi effettuare un rinvio, il compagno del battitore deve quindi effettuare un rinvio, il compagno del ribattitore deve effettuare un rinvio e quindi ciascun giocatore, secondo questa sequenza, deve effettuare un rinvio.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec;border-bottom:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">8.3</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Nel doppio, quando almeno un giocatore di una coppia è in carrozzina a causa di una disabilità fisica, il battitore deve prima effettuare un servizio, il ribattitore deve poi effettuare un rinvio ma successivamente qualsiasi giocatore della coppia disabile può rinviare la pallina.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="cap-9" style="scroll-margin-top:120px;padding:0 0 40px">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px">
+          <span style="font:700 15px 'Manrope';color:#fff;background:linear-gradient(115deg,#01017b 0%,#0a0a8f 45%,#8c0a19 82%,#e50d22 100%);min-width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:none">9</span>
+          <h2 style="font:700 26px 'Archivo';letter-spacing:-.015em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0">Un Colpo Nullo</h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0">
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">9.1</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Lo scambio deve considerarsi colpo nullo:</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">9.1.1</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">se la pallina, nel servizio, nel passare sopra o intorno alla “rete”, la tocchi, sempre che il servizio sia per il resto valido, o sia stata ostruita dal ribattitore o dal suo compagno;</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">9.1.2</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">se il servizio è eseguito quando, il giocatore o coppia che ribatte non sia pronto sempre che né il ribattitore né il suo compagno tentino di colpire la pallina;</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">9.1.3</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">se la mancata effettuazione di un servizio valido o un rinvio valido o altrimenti la mancata osservanza delle regole, è dovuta ad un disturbo fuori del controllo del giocatore;</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">9.1.4</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">se il gioco è interrotto dall’arbitro o dall’assistente arbitro;</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">9.1.5</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">se il ribattitore è in carrozzina a causa di una disabilità fisica e la pallina, durante il servizio, sempre che questo sia per il resto valido:</p>
+          </div>
+          <div style="padding-left:52px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">9.1.5.1</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">ritorna verso la rete dopo aver toccato la metà campo del ribattitore oppure;</p>
+          </div>
+          <div style="padding-left:52px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">9.1.5.2</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">si ferma nella metà campo del ribattitore oppure;</p>
+          </div>
+          <div style="padding-left:52px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">9.1.5.3</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">in una gara di singolo rimbalza sulla metà campo del ribattitore uscendo poi da una delle sue linee laterali.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">9.2</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">il gioco può essere interrotto per:</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">9.2.1</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">correggere un errore nell’ordine di servizio, risposta o cambio campo;</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">9.2.2</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">introdurre il sistema accelerato;</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">9.2.3</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">ammonire o penalizzare un giocatore o un tecnico/accompagnatore;</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec;border-bottom:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">9.2.4</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">perché le condizioni di gioco sono disturbate in modo tale che potrebbero influenzare l’esito dello scambio.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="cap-10" style="scroll-margin-top:120px;padding:0 0 40px">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px">
+          <span style="font:700 15px 'Manrope';color:#fff;background:linear-gradient(115deg,#01017b 0%,#0a0a8f 45%,#8c0a19 82%,#e50d22 100%);min-width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:none">10</span>
+          <h2 style="font:700 26px 'Archivo';letter-spacing:-.015em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0">Il Punto</h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0">
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">10.1</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Salvo il caso dello scambio dichiarato colpo nullo, un giocatore acquisisce un punto:</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">10.1.1</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">se il suo avversario non esegue un servizio corretto;</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">10.1.2</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">se il suo avversario non esegue un rinvio corretto;</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">10.1.3</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">se la pallina, dopo essere stata servita o rinviata, tocca qualunque cosa tranne che la rete prima di essere colpita dal suo avversario;</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">10.1.4</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">se la pallina, dopo essere stata colpita dal suo avversario, passa al di sopra della sua parte del tavolo o oltre la linea di fondo senza aver toccato il suo campo;</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">10.1.5</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">se la pallina, dopo essere stata colpita dal suo avversario, passa attraverso la rete oppure tra la rete e i paletti di sostegno oppure tra la rete e la superficie di gioco.</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">10.1.6</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">se il suo avversario ostruisce la pallina;</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">10.1.7</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">se il suo avversario colpisce intenzionalmente la pallina più di una volta in successione;</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">10.1.8</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">se il suo avversario colpisce la pallina con un lato del telaio della racchetta la cui superficie non risponde ai requisiti del punto 4.3, 4.4, 4.5;</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">10.1.9</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">se il suo avversario, o qualsiasi cosa indossi o porti, muove la superficie di gioco;</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">10.1.10</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">se il suo avversario, o qualsiasi cosa indossi o porti, tocca la rete;</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">10.1.11</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">se la mano libera del suo avversario tocca la superficie di gioco;</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">10.1.12</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">se, nel doppio, il suo avversario colpisce la pallina fuori dal proprio turno;</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">10.1.13</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">se si verifica quanto riportato nell’articolo 15.4 sul sistema accelerato;</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">10.1.14</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">se uno o entrambi i giocatori sono in carrozzina a causa di una disabilità fisica e:</p>
+          </div>
+          <div style="padding-left:52px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">10.1.14.1</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">il loro avversario non mantiene un minimo contatto tra la seduta o il cuscino e la parte posteriore della coscia quando la pallina viene colpita;</p>
+          </div>
+          <div style="padding-left:52px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">10.1.14.2</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">il loro avversario tocca il tavolo con una qualsiasi mano prima di colpire la pallina;</p>
+          </div>
+          <div style="padding-left:52px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">10.1.14.3</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">i piedi o la pedana del loro avversario toccano il pavimento durante il gioco;</p>
+          </div>
+          <div style="padding-left:26px;display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec;border-bottom:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">10.1.15</span>
+            <p style="font:400 15px/1.75 'Manrope';color:#4a4d53;margin:0;text-wrap:pretty">se, quando la coppia avversaria comprende almeno un giocatore in carrozzina, qualsiasi parte di essa o il piede del suo compagno in piedi superano l’immaginario prolungamento della linea mediana del tavolo</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="cap-11" style="scroll-margin-top:120px;padding:0 0 40px">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px">
+          <span style="font:700 15px 'Manrope';color:#fff;background:linear-gradient(115deg,#01017b 0%,#0a0a8f 45%,#8c0a19 82%,#e50d22 100%);min-width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:none">11</span>
+          <h2 style="font:700 26px 'Archivo';letter-spacing:-.015em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0">Un Set</h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0">
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec;border-bottom:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">11.1</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Un set sarà vinto da un giocatore o coppia che per prima totalizza 11 punti, ma quando entrambi i giocatori o coppie totalizzano 10 punti, il set sarà vinto dal giocatore o coppia che per primo totalizza 2 punti consecutivi più del suo avversario o coppia.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="cap-12" style="scroll-margin-top:120px;padding:0 0 40px">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px">
+          <span style="font:700 15px 'Manrope';color:#fff;background:linear-gradient(115deg,#01017b 0%,#0a0a8f 45%,#8c0a19 82%,#e50d22 100%);min-width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:none">12</span>
+          <h2 style="font:700 26px 'Archivo';letter-spacing:-.015em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0">Una Partita</h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0">
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec;border-bottom:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">12.1</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Una partita deve essere disputata al meglio di qualsiasi numero dispari di set.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="cap-13" style="scroll-margin-top:120px;padding:0 0 40px">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px">
+          <span style="font:700 15px 'Manrope';color:#fff;background:linear-gradient(115deg,#01017b 0%,#0a0a8f 45%,#8c0a19 82%,#e50d22 100%);min-width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:none">13</span>
+          <h2 style="font:700 26px 'Archivo';letter-spacing:-.015em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0">La Scelta del Servizio, della Risposta e del Campo</h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0">
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">13.1</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Il diritto di scegliere l’ordine iniziale di servizio, di risposta ed il campo deve essere deciso per sorteggio, e il vincitore può scegliere di servire o ricevere per primo o di iniziare in un determinato campo.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">13.2</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Quando un giocatore od una coppia hanno scelto di servire o di ricevere per primi o il campo, all’altro giocatore o coppia resterà l’altra scelta.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">13.3</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Dopo che sono stati conteggiati 2 punti il giocatore o coppia che ribatte diverrà battitore e così fino al termine del set o finché entrambi i giocatori o coppie raggiungano i 10 punti, o fino all’introduzione dell’Expedite System, nel qual caso la successione del servizio e della risposta deve rimanere la stessa, ma ogni giocatore o coppia deve servire per un solo punto a turno.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">13.4</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">In ciascun set di una partita di doppio, la coppia che ha diritto di servire per prima deve decidere quale dei giocatori inizierà a servire e la coppia avversaria deve decidere poi quale dei giocatori riceverà per primo; nelle successivi set dell’incontro, scelto il primo battitore, il primo ribattitore deve essere il giocatore che serviva su di lui nel set immediatamente precedente.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">13.5</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Nel doppio, a ciascun cambio di servizio il precedente ribattitore diventerà battitore e il compagno del precedente battitore diventerà ribattitore.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">13.6</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Il giocatore o coppia che serve per primo in un set deve ricevere per primo nel set immediatamente successivo della partita e, nell’ultimo possibile set di una partita di doppio, la coppia che deve ricevere successivamente, deve cambiare l’ordine di ribattuta quando una coppia raggiunge i 5 punti.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec;border-bottom:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">13.7</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Il giocatore o coppia che inizia un set in un campo deve cambiare campo nel set immediatamente seguente dell’incontro e, nell’ultimo possibile set di un incontro, i giocatori devono cambiare campo quando il primo giocatore o coppia raggiunge i 5 punti.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="cap-14" style="scroll-margin-top:120px;padding:0 0 40px">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px">
+          <span style="font:700 15px 'Manrope';color:#fff;background:linear-gradient(115deg,#01017b 0%,#0a0a8f 45%,#8c0a19 82%,#e50d22 100%);min-width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:none">14</span>
+          <h2 style="font:700 26px 'Archivo';letter-spacing:-.015em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0">Errori nell’Ordine di Servizio, di Risposta o di Campo</h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0">
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">14.1</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Se un giocatore serve o riceve fuori turno, il gioco deve essere interrotto dall’arbitro appena l’errore viene rilevato e deve riprendere con quei giocatori che avrebbero dovuto rispettivamente servire e ricevere al punteggio raggiunto, seguendo la successione stabilita all’inizio della partita e, nel doppio, l’ordine di servizio scelto dalla coppia che aveva il diritto di servire per prima nel set durante il quale è stato scoperto l’errore.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">14.2</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Se i giocatori non hanno cambiato il campo quando avrebbero dovuto farlo, il gioco deve essere interrotto dall’arbitro appena l’errore viene scoperto e deve riprendere con i giocatori nel campo che avrebbero dovuto occupare al punteggio raggiunto secondo la successione stabilita all’inizio della partita.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec;border-bottom:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">14.3</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">In ogni caso, tutti i punti assegnati prima della scoperta di un errore devono essere considerati acquisiti.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="cap-15" style="scroll-margin-top:120px;padding:0 0 40px">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px">
+          <span style="font:700 15px 'Manrope';color:#fff;background:linear-gradient(115deg,#01017b 0%,#0a0a8f 45%,#8c0a19 82%,#e50d22 100%);min-width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex:none">15</span>
+          <h2 style="font:700 26px 'Archivo';letter-spacing:-.015em;background:linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin:0">Il Sistema Accelerato (Expedite System)</h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0">
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">15.1</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Eccetto quanto disposto dal successivo articolo 15.2, il Sistema Accelerato deve essere introdotto se un set non è terminato dopo 10 minuti di gioco o in qualunque momento su richiesta di entrambi i giocatori o coppie.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">15.2</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Il Sistema Accelerato non verrà introdotto se nel set sono stati assegnati almeno 18 punti.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">15.3</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Se la pallina è in gioco quando viene raggiunto il tempo limite, e viene introdotto il Sistema Accelerato, il gioco deve essere “interrotto dall’arbitro” e ripreso con il servizio al giocatore che serviva nello scambio interrotto; se la pallina non è in gioco quando viene raggiunto il tempo limite, il gioco deve essere ripreso con il servizio al giocatore che riceveva nello scambio immediatamente precedente.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">15.4</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Quindi ciascun giocatore deve servire per un punto a turno sino alla fine del set e se il giocatore o la coppia che ribatte effettua tredici (13) rinvii validi, il ribattitore acquisirà il punto.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">15.5</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">L’introduzione del Sistema Accelerato non dovrà alterare l’ordine del servizio e risposta nella partita come definito nell’articolo 13.6.</p>
+          </div>
+          <div style="display:flex;gap:14px;padding:13px 0;border-top:1px solid #e6e8ec;border-bottom:1px solid #e6e8ec">
+            <span style="font:600 12px 'Manrope';color:#a6abb3;width:44px;flex:none;padding-top:4px">15.6</span>
+            <p style="font:400 16px/1.75 'Manrope';color:#33363b;margin:0;text-wrap:pretty">Una volta introdotto, il Sistema Accelerato resterà in vigore fino al termine della partita.</p>
+          </div>
+        </div>
+      </div>
+      </div>
+      <aside class="reg-aside" style="position:sticky;top:110px;padding:24px;border-radius:18px;background:#f4f5f7">
+        <div style="font:600 11px 'Manrope';text-transform:uppercase;letter-spacing:.08em;color:#01017b;margin-bottom:12px">Indice</div>
+        <a class="hp-a reg-idx" href="#cap-1" style="display:flex;gap:10px;padding:7px 0;font:500 13.5px/1.4 'Manrope';color:#5a5e65"><span style="font:700 12px 'Manrope';color:#a6abb3;width:20px;flex:none">1</span>Il Tavolo</a>
+        <a class="hp-a reg-idx" href="#cap-2" style="display:flex;gap:10px;padding:7px 0;font:500 13.5px/1.4 'Manrope';color:#5a5e65"><span style="font:700 12px 'Manrope';color:#a6abb3;width:20px;flex:none">2</span>La Rete</a>
+        <a class="hp-a reg-idx" href="#cap-3" style="display:flex;gap:10px;padding:7px 0;font:500 13.5px/1.4 'Manrope';color:#5a5e65"><span style="font:700 12px 'Manrope';color:#a6abb3;width:20px;flex:none">3</span>La Pallina</a>
+        <a class="hp-a reg-idx" href="#cap-4" style="display:flex;gap:10px;padding:7px 0;font:500 13.5px/1.4 'Manrope';color:#5a5e65"><span style="font:700 12px 'Manrope';color:#a6abb3;width:20px;flex:none">4</span>La Racchetta</a>
+        <a class="hp-a reg-idx" href="#cap-5" style="display:flex;gap:10px;padding:7px 0;font:500 13.5px/1.4 'Manrope';color:#5a5e65"><span style="font:700 12px 'Manrope';color:#a6abb3;width:20px;flex:none">5</span>Definizioni</a>
+        <a class="hp-a reg-idx" href="#cap-6" style="display:flex;gap:10px;padding:7px 0;font:500 13.5px/1.4 'Manrope';color:#5a5e65"><span style="font:700 12px 'Manrope';color:#a6abb3;width:20px;flex:none">6</span>Il Servizio</a>
+        <a class="hp-a reg-idx" href="#cap-7" style="display:flex;gap:10px;padding:7px 0;font:500 13.5px/1.4 'Manrope';color:#5a5e65"><span style="font:700 12px 'Manrope';color:#a6abb3;width:20px;flex:none">7</span>Il Rinvio</a>
+        <a class="hp-a reg-idx" href="#cap-8" style="display:flex;gap:10px;padding:7px 0;font:500 13.5px/1.4 'Manrope';color:#5a5e65"><span style="font:700 12px 'Manrope';color:#a6abb3;width:20px;flex:none">8</span>L’Ordine di Gioco</a>
+        <a class="hp-a reg-idx" href="#cap-9" style="display:flex;gap:10px;padding:7px 0;font:500 13.5px/1.4 'Manrope';color:#5a5e65"><span style="font:700 12px 'Manrope';color:#a6abb3;width:20px;flex:none">9</span>Un Colpo Nullo</a>
+        <a class="hp-a reg-idx" href="#cap-10" style="display:flex;gap:10px;padding:7px 0;font:500 13.5px/1.4 'Manrope';color:#5a5e65"><span style="font:700 12px 'Manrope';color:#a6abb3;width:20px;flex:none">10</span>Il Punto</a>
+        <a class="hp-a reg-idx" href="#cap-11" style="display:flex;gap:10px;padding:7px 0;font:500 13.5px/1.4 'Manrope';color:#5a5e65"><span style="font:700 12px 'Manrope';color:#a6abb3;width:20px;flex:none">11</span>Un Set</a>
+        <a class="hp-a reg-idx" href="#cap-12" style="display:flex;gap:10px;padding:7px 0;font:500 13.5px/1.4 'Manrope';color:#5a5e65"><span style="font:700 12px 'Manrope';color:#a6abb3;width:20px;flex:none">12</span>Una Partita</a>
+        <a class="hp-a reg-idx" href="#cap-13" style="display:flex;gap:10px;padding:7px 0;font:500 13.5px/1.4 'Manrope';color:#5a5e65"><span style="font:700 12px 'Manrope';color:#a6abb3;width:20px;flex:none">13</span>La Scelta del Servizio, della Risposta e del Campo</a>
+        <a class="hp-a reg-idx" href="#cap-14" style="display:flex;gap:10px;padding:7px 0;font:500 13.5px/1.4 'Manrope';color:#5a5e65"><span style="font:700 12px 'Manrope';color:#a6abb3;width:20px;flex:none">14</span>Errori nell’Ordine di Servizio, di Risposta o di Campo</a>
+        <a class="hp-a reg-idx" href="#cap-15" style="display:flex;gap:10px;padding:7px 0;font:500 13.5px/1.4 'Manrope';color:#5a5e65"><span style="font:700 12px 'Manrope';color:#a6abb3;width:20px;flex:none">15</span>Il Sistema Accelerato (Expedite System)</a>
+      </aside>
+    </div>
+  </div>
+  </section>
+
+  <footer style="background:#01017b;color:#fff;padding:0">
+    <div style="height:4px;background:linear-gradient(90deg,#e50d22 0 30%,rgba(255,255,255,.25) 30% 32%,transparent 32%)"></div>
+    <div class="rtc-footer-grid" style="padding:48px 40px;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px;max-width:1280px;margin:0 auto;box-sizing:border-box">
+      <div>
+        <div style="font:700 20px 'Archivo';text-transform:none;letter-spacing:-.015em;margin-bottom:12px">TT Pistoia asd</div>
+        <p style="font:400 14px/1.6 'Manrope';color:rgba(255,255,255,.75);margin:0">Palestra Einaudi<br>Viale Pacinotti<br>51100 Pistoia PT</p>
+      </div>
+      <div>
+        <div style="font:700 13px 'Manrope';text-transform:uppercase;letter-spacing:.05em;margin-bottom:14px;color:#fff">Contatti</div>
+        <p style="font:400 14px/1.9 'Manrope';color:rgba(255,255,255,.75);margin:0">ttpt@ttpistoia.it<br>335.7388152<br>Mar e Gio, 21:00–23:30</p>
+      </div>
+      <div>
+        <div style="font:700 13px 'Manrope';text-transform:uppercase;letter-spacing:.05em;margin-bottom:14px;color:#fff">Seguici</div>
+        <div style="display:flex;gap:10px">
+          <a class="hp-a hp-cta" href="#" style="width:34px;height:34px;border-radius:50%;background:#e50d22;display:flex;align-items:center;justify-content:center;font:700 12px Inter">FB</a>
+          <a class="hp-a hp-cta" href="#" style="width:34px;height:34px;border-radius:50%;background:#e50d22;display:flex;align-items:center;justify-content:center;font:700 12px Inter">IG</a>
+          <a class="hp-a hp-cta" href="#" style="width:34px;height:34px;border-radius:50%;background:#e50d22;display:flex;align-items:center;justify-content:center;font:700 12px Inter">YT</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,.15);padding:18px 40px;font:400 12px 'Manrope';color:rgba(255,255,255,.55);max-width:1280px;margin:0 auto;box-sizing:border-box">© 2026 TT Pistoia asd. Tutti i diritti riservati.</div>
+  </footer>
+
+
+</x-dc>
+</body>
+</html>

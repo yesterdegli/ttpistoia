@@ -1,0 +1,24 @@
+Carica qui TUTTE le foto dell'archivio
+======================================
+
+1. Copia in questa cartella (o in sottocartelle) le foto che hai:
+   uploads/gallery-incoming/
+
+   Accettati: .webp .jpg .jpeg .png .gif .avif
+
+2. Dalla root del progetto esegui:
+
+   npm run sync-gallery
+
+3. Lo script:
+   - cerca di abbinare ogni foto al posto giusto in real-data/storia.ts
+   - copia i file in public/images/gallery/ con il nome che il sito si aspetta
+   - se trova .jpg al posto di .webp, aggiorna il path in storia.ts
+   - scrive il report in public/images/gallery/SYNC-REPORT.txt
+
+4. Ricarica /storia nel browser (Ctrl+F5).
+
+Abbinamento automatico funziona meglio se i nomi file sono uguali o simili
+a quelli del vecchio sito (vedi ELENCO-FILE-RICHIESTI.txt).
+Se hai nomi tipo IMG_1234.jpg, compaiono come "non abbinati" nel report:
+in quel caso rinominale o incollami l'elenco e li mappiamo a mano.

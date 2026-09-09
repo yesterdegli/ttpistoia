@@ -1,0 +1,18 @@
+Foto archivio stagioni — cartella di consegna
+============================================
+
+I path in real-data/storia.ts puntano qui:
+  public/images/gallery/<nome-file>.webp
+
+Copia in questa cartella i file del vecchio sito / archivio,
+rispettando ESATTAMENTE i nomi elencati in:
+
+  ELENCO-FILE-RICHIESTI.txt  (108 file)
+
+Formato atteso: WebP (.webp)
+
+Nota: la stagione aperta di default (2023-2024) non ha foto.
+Per provare il carosello apri una stagione con badge foto, es.:
+  1993-1994, 1994-1995, 2000, 2003, …
+
+Dopo aver copiato i file, ricarica /storia (Ctrl+F5).

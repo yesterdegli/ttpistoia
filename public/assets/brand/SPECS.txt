@@ -1,0 +1,22 @@
+TT Pistoia asd — asset da consegnare in questa cartella
+============================================================
+
+LOGO HEADER
+-----------
+File:  logo-header.svg
+
+Una sola versione SVG, sfondo trasparente, colori reali del crest.
+(display: 64 / 52 / 46 px — il vectoriale si adatta da solo)
+
+FAVICON
+-------
+File:  favicon.svg
+
+Va benissimo SVG (niente .ico necessario).
+Consiglio: stesso stemma del logo, eventualmente semplificato se a 16px si legge male.
+Quadrato o con margine — il browser la riduce automaticamente.
+
+Opzionale:
+  apple-touch-icon.png  →  180 × 180 px  (solo se vuoi icona iPhone “Aggiungi a Home”)
+
+Dopo aver copiato i file, avvisa per verifica visiva.
