@@ -183,6 +183,19 @@
   background-attachment: fixed;
 }
 
+/* Menu canvas mobile — portal su body; fix iOS Safari (fixed dentro header) */
+.mobile-menu-canvas.section-pattern::before {
+  background-attachment: scroll;
+}
+
+html.mobile-menu-open header {
+  z-index: 110;
+}
+
+html.mobile-menu-open .site-header-logo {
+  visibility: hidden;
+}
+
 /* Scroll reveal — fade-in al primo ingresso in viewport */
 .scroll-reveal {
   opacity: 0;

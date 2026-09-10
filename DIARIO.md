@@ -1,7 +1,7 @@
 # Diario di progetto — TT Pistoia asd
 
 Documento di lavoro per tenere traccia di avanzamento, decisioni e pendenti.
-Aggiornato: **7 settembre 2026**.
+Aggiornato: **9 settembre 2026**.
 
 ---
 
@@ -34,12 +34,15 @@ Aggiornato: **7 settembre 2026**.
 | `/contatti` | ✅ | Dati reali; mappa Google dietro consenso cookie |
 | `/privacy` | ✅ | Privacy policy |
 | `/cookie` | ✅ | Cookie policy |
+| `/documenti-storici` | ✅ | Rassegna stampa / archivio; accordion + pill come Storia |
 
-**Build:** `npm run build` OK (20 route statiche/SSG).
+**Build:** `npm run build` OK (~26 route statiche/SSG).
+
+**Deploy:** sito su **Netlify** collegato a GitHub (`yesterdegli/ttpistoia`); runtime Next.js; `netlify.toml` con `publish = ".next"` e plugin `@netlify/plugin-nextjs`.
 
 ### Componenti condivisi
 
-Layout: `SiteHeader`, `SiteFooter`, `MobileDrawer`, `HomeHero`, `HeroBear`, `PageHero`, `SectionContainer`, `SectionHeading`.
+Layout: `SiteHeader`, `SiteFooter`, `MobileDrawer` (canvas full-screen mobile/tablet), `HomeHero`, `HeroBear`, `PageHero`, `GradientHeaderShell`, `SectionContainer`, `SectionHeading`, `ScrollReveal`.
 
 Contenuti home: `HomeVideoBand`, `HomeVideoBackground`, `HomeStatsGrid`, `StatCard`.
 
@@ -208,6 +211,86 @@ Problema segnalato: video background “saltato” / non visibile.
 
 **Nota ricorrente dev:** CSS corrotto / 404 → `npm run dev:clean` + hard refresh (`Ctrl+Shift+R`).
 
+### Documenti storici, menu e contenuti (9 set 2026)
+
+- Nuova route **`/documenti-storici`**: dati `real-data/documenti-storici.ts` (22 sezioni, immagini in `public/images/documenti-storici/`); client `DocumentiStoriciPageClient` con pill + accordion condivisi con Storia.
+- **Ordine menu finale:** Home → Storia → Giocatori → Campionati → News → Le regole → Documenti storici → Contatti (`lib/site.ts`).
+- **Home:** testo intro dopo stats; stat aggiornate (1991, 35 tesserati, 6 squadre, 2 palestre); griglia stats 2 colonne su mobile.
+- **News:** tutti gli articoli placeholder («Titolo in arrivo», …) fino a contenuti reali.
+- **Footer:** solo link Facebook (icona brand); rimossi IG/YT. `FACEBOOK_URL = "#"` finché non c’è URL reale.
+- **Campionati:** un solo pulsante «Ranking individuale»; sezioni continue senza gap `border-t`.
+
+### SEO e metadata (9 set 2026)
+
+Preparato per staging/produzione (`lib/site-seo.ts`):
+
+| Elemento | Dettaglio |
+|---|---|
+| Meta / OG / Twitter | `buildSiteMetadata()`, immagini dinamiche `opengraph-image`, `twitter-image`, `apple-icon` |
+| JSON-LD | `OrganizationJsonLd` in layout |
+| `robots.txt` / sitemap | Gated da `NEXT_PUBLIC_ALLOW_INDEX` |
+| Env | `.env.example`: `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_ALLOW_INDEX=false` (staging) → `true` in produzione |
+
+### Scroll reveal (9 set 2026)
+
+Fade-in allo scroll (`ScrollReveal` + `SectionContainer`):
+
+- **Default `reveal={false}`** — attivo solo dove esplicito (evita sezioni «vuote»).
+- **Disattivato** su pagine di contenuto: Regole, Privacy, Cookie, Contatti, articoli news, Campionati (embed), intro Storia/Documenti/Giocatori/News.
+- **Fix tecnici:** check viewport al mount (`useLayoutEffect`); contenuto visibile al load, nascosto solo se sotto piega; `prefers-reduced-motion` rispettato.
+- Home: nessun fade sulle sezioni principali (stats hanno animazione slide-in dedicata).
+
+### Performance navigazione (9 set 2026)
+
+- `scroll-behavior: auto` (prima `smooth` rallentava il cambio pagina).
+- `app/loading.tsx`: barra sottile in cima durante la navigazione.
+- `prefetch` esplicito su menu e card news.
+
+### Deploy Netlify (9 set 2026)
+
+| Impostazione | Valore |
+|---|---|
+| Build | `npm run build` |
+| Publish | `.next` (in `netlify.toml`; **non** root repo) |
+| Runtime | Next.js |
+| Node | 20 |
+| Env staging | `NEXT_PUBLIC_SITE_URL` = URL `.netlify.app` · `NEXT_PUBLIC_ALLOW_INDEX=false` |
+| Env produzione | URL dominio definitivo · `ALLOW_INDEX=true` |
+
+**Problemi risolti in deploy:**
+1. Repo GitHub vuota → push completo codice via GitHub Desktop.
+2. `publish: /opt/build/repo` → errore plugin Next.js; fix con `publish = ".next"`.
+3. `NEXT_PUBLIC_SITE_URL` senza `https://` → build `Invalid URL`; normalizzazione in `getSiteUrl()`.
+
+**Workflow:** GitHub Desktop (commit + push) → deploy automatico Netlify.
+
+### Menu mobile/tablet — canvas (9 set 2026)
+
+Sostituito drawer laterale con **menu a schermo intero**:
+
+| Aspetto | Dettaglio |
+|---|---|
+| Layout | `100dvh`, `overflow-hidden`, niente scroll (spacing/font con `clamp` + `dvh`) |
+| Sfondo | `section-pattern` + `bg-surface-grey` (come header desktop) |
+| Contenuto | Logo centrato in alto → voci menu centrate |
+| Voce attiva | `grad-text` + `font-bold` + `!opacity-100` (identico desktop) |
+| Logo menu | `clamp(4rem, 11dvh, 5.5rem)` |
+| Voci | `text-[clamp(1rem, 2.55dvh, 1.375rem)]`, padding verticale adattivo |
+| Animazione | Fade in/out (non slide da destra) |
+| Chiusura | Hamburger/X z-70, Escape, click voce, cambio route |
+
+Breakpoint menu canvas: `< 901px` (`lg:hidden`).
+
+### Home — altezza banda video mobile (9 set 2026)
+
+Solo **mobile** (`max-md` / sotto `md`), desktop invariato:
+
+| | Desktop | Mobile |
+|---|---|---|
+| Altezza | `clamp(560px, 72vh, 880px)` | `clamp(320px, 40vh, 480px)` |
+
+Motivo: su telefono `object-cover` tagliava troppo ai lati con banda troppo alta.
+
 ---
 
 ## 4. Dati
@@ -219,28 +302,33 @@ Problema segnalato: video background “saltato” / non visibile.
 | News | `lib/content/news.ts` | ⚠️ Placeholder |
 | Giocatori / roster | `lib/content/giocatori.ts` | ⚠️ Parziale — C2, D1/A–D2/B reali (D1/A: 1 nome fittizio); D3 demo |
 | Campionati (risultati/classifiche) | `lib/content/campionati.ts` | ⚠️ Placeholder (posizioni demo variate per home) |
-| Home stats (1992, 8 squadre, …) | `lib/content/home.ts` | ⚠️ Da confermare con il club (altrove 6 squadre) |
+| Home stats | `lib/content/home.ts` | ⚠️ 1991, 35 tesserati, 6 squadre, 2 palestre — da confermare con il club |
+| Documenti storici | `real-data/documenti-storici.ts` | ✅ Reale (immagini in `public/images/documenti-storici/`) |
 
 ---
 
 ## 5. Pendenti (da HANDOFF + lavoro recente)
 
 ### Contenuti e asset
-- [ ] Logo header SVG (oggi PNG in `/assets/brand/`).
+- [x] Logo header SVG (`public/assets/brand/logo-header.svg`).
 - [ ] Fotografia reale: giocatori, news, chi siamo, gallerie stagioni.
 - [ ] Roster **D3** + quinto giocatore **D1/A** (sostituire Luca Ferretti).
 - [ ] Calendari e classifiche FITeT reali.
 - [ ] Testi stagioni mancanti in `/storia`.
-- [ ] URL social reali (FB / IG / YT).
-- [ ] Allineare statistiche home (tesserati, n. squadre, anno fondazione).
+- [ ] Testi news reali (oggi placeholder).
+- [ ] URL Facebook reale (`FACEBOOK_URL` in `lib/site.ts` ancora `#`).
+- [ ] Confermare statistiche home con il club.
 
 ### Prodotto / tech
 - [ ] Paginazione `/news` (visuale only) — collegare o rimuovere.
-- [ ] SEO meta, Open Graph, analytics (non in scope design originale).
+- [x] SEO meta, Open Graph, robots, sitemap (gated da env).
+- [ ] Dominio custom `www.ttpistoia.it` + env produzione (`ALLOW_INDEX=true`).
+- [ ] Analytics (non in scope design originale).
 - [ ] Eventuale rifinitura hero mobile (vedi §3).
-- [ ] Conferma comportamento `100dvh` vs barra browser su device reali (DevTools ≠ sempre fedele).
-- [ ] Fine-tuning banda video home: overlay, altezza, poster reale.
+- [ ] Conferma menu canvas su device reali molto piccoli (SE, mini).
+- [ ] Fine-tuning banda video: overlay, poster JPG reale.
 - [ ] Eventuale enrichment pattern dot grid (bicolor, grain) — opzionale.
+- [ ] Verificare `palestra.mp4` committato e pushato su GitHub (necessario per video su Netlify).
 
 ### Completato rispetto al design originale
 - [x] Cookie banner e policy (extra rispetto al handoff §3).
@@ -250,6 +338,10 @@ Problema segnalato: video background “saltato” / non visibile.
 - [x] Banda video full-width in home (extra rispetto al handoff).
 - [x] Pattern dot grid su sezioni grigie e gradiente (`section-pattern` / `section-pattern-light`).
 - [x] Stat cards home: entrance ritardata 1 s, slide da sinistra/destra, replay al ritorno in home.
+- [x] Pagina Documenti storici.
+- [x] Deploy Netlify + GitHub Desktop workflow.
+- [x] Menu mobile canvas full-screen con pattern dots.
+- [x] Scroll reveal (opt-in, non su pagine contenuto).
 
 ### Deviazioni deliberate dal HANDOFF
 - [x] Hero mobile: layout a blocco compatto centrato (non filigrana @30% dietro testo).
@@ -274,30 +366,37 @@ npm run sync-gallery # sync galleria storia (se usato)
 
 ```
 app/
-  layout.tsx            # Footer sticky; body bg-surface-grey
-  page.tsx              # Home — ordine sezioni incl. HomeVideoBand, HomeStatsGrid
-  giocatori/page.tsx    # Griglia 2+3 centrata per squadra
-  globals.css           # hero-grad-*, hero-bear-enter-*, section-pattern*, stat-enter-*
+  layout.tsx              # Footer sticky; body bg-surface-grey; JSON-LD
+  page.tsx                # Home — ordine sezioni incl. HomeVideoBand, HomeStatsGrid
+  loading.tsx             # Barra navigazione
+  robots.ts · sitemap.ts  # Gated da NEXT_PUBLIC_ALLOW_INDEX
+  opengraph-image.tsx · twitter-image.tsx · apple-icon.tsx
+  documenti-storici/      # Pagina archivio
+  globals.css             # hero-grad-*, section-pattern*, stat-enter-*, scroll-reveal
 components/
-  layout/HomeHero.tsx   # Hero home (desktop + mobile); section-pattern-light
-  layout/HeroBear.tsx   # Orso hero + anim entrance
-  layout/SiteHeader.tsx # Header grigio + pattern
-  ui/SectionContainer.tsx  # bg-surface-grey + section-pattern
-  content/HomeVideoBand.tsx
-  content/HomeVideoBackground.tsx
-  content/HomeStatsGrid.tsx   # Client: anim stat + replay pathname
-  content/StatCard.tsx        # Card bianca glow-2t
-  content/CtaPanel.tsx        # Bianca su sezione grigia
-  cookies/              # Banner e consenso
-lib/content/
-  home.ts               # homeVideo, homeStats, news, …
-  giocatori.ts          # Roster (parziale)
-real-data/storia.ts     # Fonte unica dati stagioni
+  layout/MobileDrawer.tsx # Canvas menu mobile/tablet (<901px)
+  layout/GradientHeaderShell.tsx
+  layout/HomeHero.tsx · HeroBear.tsx · SiteHeader.tsx
+  ui/SectionContainer.tsx · ScrollReveal.tsx
+  documenti-storici/DocumentiStoriciPageClient.tsx
+  content/HomeVideoBand.tsx · HomeVideoBackground.tsx
+  content/HomeStatsGrid.tsx · StatCard.tsx · CtaPanel.tsx
+  cookies/                # Banner e consenso
+  seo/OrganizationJsonLd.tsx
+lib/
+  site.ts                 # NAV_ITEMS, SITE, FACEBOOK_URL
+  site-seo.ts             # Metadata, getSiteUrl, JSON-LD
+  content/home.ts · news.ts · giocatori.ts · campionati.ts
+real-data/
+  storia.ts               # Fonte unica dati stagioni
+  documenti-storici.ts    # Archivio stampa/documenti
 public/assets/
-  video/palestra.mp4    # Banda video home
-  brand/                # logo, favicon
-tailwind.config.ts      # Safelist pattern + stat-enter-*
-scripts/dev.mjs         # Avvio dev stabilizzato
+  video/palestra.mp4      # Banda video home (~1.2 MB — committare per Netlify)
+  brand/logo-header.svg
+netlify.toml              # Node 20, publish .next, plugin Next.js
+.env.example              # NEXT_PUBLIC_SITE_URL, NEXT_PUBLIC_ALLOW_INDEX
+tailwind.config.ts
+scripts/dev.mjs
 HANDOFF.md · STYLEGUIDE.md · DIARIO.md
 ```
 
@@ -305,13 +404,14 @@ HANDOFF.md · STYLEGUIDE.md · DIARIO.md
 
 ## 8. Note per la prossima sessione
 
-1. **Giocatori:** inserire quinto nome D1/A e roster D3; eventuali foto quando disponibili.
-2. **Home video:** feedback su overlay, crop e altezza; sostituire poster SVG con JPG reale se disponibile.
-3. **Pattern:** eventuale enrichment dot grid (bicolor, grain) se si vuole più profondità — corner glow resta escluso.
-4. **Stat cards:** confermare timing 1 s e intensità slide; verificare replay navigando News → Home.
-5. Hero mobile: stato accettato provvisorio — blocco centrato, CTA più distante dall’orso (`mt-10`).
-6. Prima di go-live: passata sui dati placeholder e incongruenze (1991 vs 1992, 6 vs 8 squadre).
-7. Un solo dev server in locale durante lo sviluppo UI (`npm run dev:clean`).
+1. **Go-live Netlify:** dominio `www.ttpistoia.it`, aggiornare env (`SITE_URL` + `ALLOW_INDEX=true`), verificare video e asset su deploy remoto.
+2. **Facebook:** URL reale in `lib/site.ts`.
+3. **Contenuti:** news reali, roster D3, quinto giocatore D1/A, testi stagioni mancanti.
+4. **Giocatori:** foto quando disponibili.
+5. **Home video:** poster JPG reale; eventuale fine-tuning overlay mobile.
+6. **Menu canvas:** test su iPhone SE / device bassi — spacing `dvh` dovrebbe evitare scroll.
+7. Dev locale: un solo `npm run dev:clean`; hard refresh se CSS/video «saltano».
+8. Push su GitHub Desktop dopo ogni modifica → deploy automatico Netlify.
 
 ---
 

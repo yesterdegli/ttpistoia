@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { NAV_ITEMS } from "@/lib/site";
 
 function navLinkClasses(isActive: boolean, variant: "desktop" | "mobile") {
@@ -82,23 +83,24 @@ function HamburgerButton({
 export function MobileDrawer() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   const close = useCallback(() => setOpen(false), []);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     close();
   }, [pathname, close]);
 
   useEffect(() => {
-    if (open) {
-      document.documentElement.classList.add("overflow-hidden");
-      document.body.classList.add("overflow-hidden");
-    } else {
-      document.documentElement.classList.remove("overflow-hidden");
-      document.body.classList.remove("overflow-hidden");
-    }
+    document.documentElement.classList.toggle("mobile-menu-open", open);
+    document.documentElement.classList.toggle("overflow-hidden", open);
+    document.body.classList.toggle("overflow-hidden", open);
     return () => {
-      document.documentElement.classList.remove("overflow-hidden");
+      document.documentElement.classList.remove("mobile-menu-open", "overflow-hidden");
       document.body.classList.remove("overflow-hidden");
     };
   }, [open]);
@@ -128,47 +130,52 @@ export function MobileDrawer() {
         ))}
       </nav>
 
-      {/* Mobile/tablet — menu canvas a schermo intero */}
+      {/* Mobile/tablet — hamburger in header; canvas portato su body (fix iOS Safari) */}
       <div className="lg:hidden">
         <HamburgerButton open={open} onToggle={() => setOpen((v) => !v)} />
 
-        <nav
-          aria-hidden={!open}
-          className={`section-pattern fixed inset-0 z-[60] flex h-[100dvh] flex-col overflow-hidden bg-surface-grey transition-[opacity,visibility] duration-300 ease-out ${
-            open
-              ? "visible opacity-100"
-              : "invisible pointer-events-none opacity-0"
-          }`}
-        >
-          <div className="relative z-[1] mx-auto flex h-full w-full max-w-[1280px] flex-col items-center justify-center px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-[max(4.75rem,calc(env(safe-area-inset-top)+3.25rem))] text-center">
-            <Link
-              href="/"
-              prefetch
-              onClick={close}
-              className="mb-[clamp(0.75rem,2.5dvh,2rem)] shrink-0 hover:opacity-100"
-            >
-              <img
-                src="/assets/brand/logo-header.svg"
-                alt="TT Pistoia asd"
-                width={88}
-                height={88}
-                className="h-[clamp(4rem,11dvh,5.5rem)] w-[clamp(4rem,11dvh,5.5rem)] object-contain"
-              />
-            </Link>
+        {mounted
+          ? createPortal(
+              <nav
+                aria-hidden={!open}
+                className={`mobile-menu-canvas section-pattern fixed inset-0 z-[100] flex min-h-[100svh] flex-col overflow-hidden bg-surface-grey transition-[opacity,visibility] duration-300 ease-out ${
+                  open
+                    ? "visible opacity-100"
+                    : "invisible pointer-events-none opacity-0"
+                }`}
+              >
+                <div className="relative z-[1] mx-auto flex h-full min-h-[100svh] w-full max-w-[1280px] flex-col items-center justify-center px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-[max(4.75rem,calc(env(safe-area-inset-top)+3.25rem))] text-center">
+                  <Link
+                    href="/"
+                    prefetch
+                    onClick={close}
+                    className="mb-[clamp(0.75rem,2.5dvh,2rem)] shrink-0 hover:opacity-100"
+                  >
+                    <img
+                      src="/assets/brand/logo-header.svg"
+                      alt="TT Pistoia asd"
+                      width={88}
+                      height={88}
+                      className="h-[clamp(4rem,11dvh,5.5rem)] w-[clamp(4rem,11dvh,5.5rem)] object-contain"
+                    />
+                  </Link>
 
-            <div className="flex w-full max-w-[320px] shrink flex-col justify-center">
-              {NAV_ITEMS.map((item) => (
-                <NavLink
-                  key={item.href}
-                  href={item.href}
-                  label={item.label}
-                  variant="mobile"
-                  onNavigate={close}
-                />
-              ))}
-            </div>
-          </div>
-        </nav>
+                  <div className="flex w-full max-w-[320px] shrink flex-col justify-center">
+                    {NAV_ITEMS.map((item) => (
+                      <NavLink
+                        key={item.href}
+                        href={item.href}
+                        label={item.label}
+                        variant="mobile"
+                        onNavigate={close}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </nav>,
+              document.body,
+            )
+          : null}
       </div>
     </>
   );
