@@ -1,3 +1,7 @@
+import { FitetIframe } from "@/components/content/FitetIframe";
+import { FITET_SEASON_ANNO } from "@/lib/content/campionati";
+import { fitetStandingsEmbedUrl } from "@/lib/fitet-embed";
+
 type Props = {
   camId: number;
   category: string;
@@ -6,12 +10,9 @@ type Props = {
 const FITET_BASE = "https://portale.fitet.org/risultati/campionati";
 
 function fitetCalendarUrl(camId: number) {
-  return `${FITET_BASE}/calendario.php?CAM=${camId}`;
+  return `${FITET_BASE}/Calendario.asp?CAM=${camId}&ANNO=${FITET_SEASON_ANNO}`;
 }
 
-function fitetStandingsUrl(camId: number) {
-  return `${FITET_BASE}/classifica_squadre.php?CAM=${camId}`;
-}
 
 export function FitetEmbed({ camId, category }: Props) {
   if (camId <= 0) {
@@ -33,23 +34,21 @@ export function FitetEmbed({ camId, category }: Props) {
         Prossime partite
       </h3>
       <div className="mb-6 overflow-hidden rounded-2xl shadow-[0_4px_16px_rgb(0_0_0/0.06)]">
-        <iframe
+        <FitetIframe
           title={`Calendario FITeT — ${category}`}
           src={fitetCalendarUrl(camId)}
-          className="h-[min(520px,70vh)] w-full border-0 bg-white"
-          loading="lazy"
+          variant="calendar"
         />
       </div>
 
       <h3 className="mb-3 mt-6 scroll-mt-[140px] text-sm font-bold uppercase tracking-[0.05em] text-[#888]">
         Classifica
       </h3>
-      <div className="overflow-hidden rounded-2xl shadow-[0_4px_16px_rgb(0_0_0/0.06)]">
-        <iframe
+      <div className="overflow-hidden rounded-2xl shadow-[0_4px_16px_rgb(0_0_0/0.06)] [&_.overflow-x-auto]:rounded-2xl">
+        <FitetIframe
           title={`Classifica FITeT — ${category}`}
-          src={fitetStandingsUrl(camId)}
-          className="h-[min(640px,80vh)] w-full border-0 bg-white"
-          loading="lazy"
+          src={fitetStandingsEmbedUrl(camId)}
+          variant="standings"
         />
       </div>
     </>

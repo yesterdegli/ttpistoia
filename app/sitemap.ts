@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { articles } from "@/lib/content/news";
+import { NEWS_SECTION_ENABLED } from "@/lib/site";
 import { getSiteUrl, shouldAllowIndexing } from "@/lib/site-seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -13,9 +14,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/storia",
     "/giocatori",
     "/campionati",
-    "/news",
+    ...(NEWS_SECTION_ENABLED ? ["/news"] : []),
     "/regole",
     "/documenti-storici",
+    "/documenti-storici/norme-del-pongista",
     "/contatti",
     "/privacy",
     "/cookie",
@@ -25,14 +27,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...staticRoutes.map((path) => ({
       url: `${siteUrl}${path}`,
       lastModified: now,
-      changeFrequency: path === "" || path === "/news" ? ("weekly" as const) : ("monthly" as const),
+      changeFrequency:
+        path === "" || path === "/news" ? ("weekly" as const) : ("monthly" as const),
       priority: path === "" ? 1 : 0.7,
     })),
-    ...articles.map((article) => ({
-      url: `${siteUrl}/news/${article.slug}`,
-      lastModified: now,
-      changeFrequency: "monthly" as const,
-      priority: 0.5,
-    })),
+    ...(NEWS_SECTION_ENABLED
+      ? articles.map((article) => ({
+          url: `${siteUrl}/news/${article.slug}`,
+          lastModified: now,
+          changeFrequency: "monthly" as const,
+          priority: 0.5,
+        }))
+      : []),
   ];
 }

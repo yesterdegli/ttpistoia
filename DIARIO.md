@@ -1,7 +1,7 @@
 # Diario di progetto — TT Pistoia asd
 
 Documento di lavoro per tenere traccia di avanzamento, decisioni e pendenti.
-Aggiornato: **9 settembre 2026**.
+Aggiornato: **10 settembre 2026**.
 
 ---
 
@@ -42,7 +42,7 @@ Aggiornato: **9 settembre 2026**.
 
 ### Componenti condivisi
 
-Layout: `SiteHeader`, `SiteFooter`, `MobileDrawer` (canvas full-screen mobile/tablet), `HomeHero`, `HeroBear`, `PageHero`, `GradientHeaderShell`, `SectionContainer`, `SectionHeading`, `ScrollReveal`.
+Layout: `SiteHeader`, `SiteFooter`, `MobileDrawer` (canvas full-screen mobile/tablet, portal su `body` per iOS Safari), `HomeHero`, `HeroBear`, `PageHero`, `GradientHeaderShell`, `SectionContainer`, `SectionHeading`, `ScrollReveal`.
 
 Contenuti home: `HomeVideoBand`, `HomeVideoBackground`, `HomeStatsGrid`, `StatCard`.
 
@@ -270,7 +270,8 @@ Sostituito drawer laterale con **menu a schermo intero**:
 
 | Aspetto | Dettaglio |
 |---|---|
-| Layout | `100dvh`, `overflow-hidden`, niente scroll (spacing/font con `clamp` + `dvh`) |
+| Layout | `100svh`, `overflow-hidden`, niente scroll (spacing/font con `clamp` + `dvh`) |
+| Rendering | Portal su `document.body` (fix clipping iOS Safari nell’header) |
 | Sfondo | `section-pattern` + `bg-surface-grey` (come header desktop) |
 | Contenuto | Logo centrato in alto → voci menu centrate |
 | Voce attiva | `grad-text` + `font-bold` + `!opacity-100` (identico desktop) |
@@ -290,6 +291,30 @@ Solo **mobile** (`max-md` / sotto `md`), desktop invariato:
 | Altezza | `clamp(560px, 72vh, 880px)` | `clamp(320px, 40vh, 480px)` |
 
 Motivo: su telefono `object-cover` tagliava troppo ai lati con banda troppo alta.
+
+### Menu mobile — fix iOS Safari (10 set 2026)
+
+**Problema segnalato (screenshot iPhone):** menu visibile solo nella striscia dell’header; hero sotto ancora visibile; logo assente; compariva solo la X.
+
+**Causa:** su iOS Safari, un elemento `position: fixed` dentro `<header>` con `overflow-hidden` e `section-pattern` (`isolation: isolate`) viene **clippato** ai confini dell’header invece di coprire il viewport.
+
+**Fix applicati:**
+
+| Intervento | File | Dettaglio |
+|---|---|---|
+| Portal su `body` | `MobileDrawer.tsx` | `createPortal(..., document.body)` — menu fuori dall’header |
+| Altezza viewport | `MobileDrawer.tsx` | `100svh` al posto di `100dvh` (Safari iOS più stabile) |
+| Z-index hamburger | `globals.css` | `html.mobile-menu-open header { z-index: 110 }` — X sopra il canvas |
+| Logo header nascosto | `globals.css` + `SiteHeader.tsx` | `.site-header-logo { visibility: hidden }` quando menu aperto (evita doppio logo) |
+| Pattern su iOS | `globals.css` | `.mobile-menu-canvas.section-pattern::before { background-attachment: scroll }` |
+| Mount client | `MobileDrawer.tsx` | `mounted` state prima del portal (SSR/hydration pulita) |
+
+**Verifica (10 set 2026):**
+- Emulazione Chrome: iPhone 12 Pro (390×844), iPhone SE (375×667) — menu full-screen, logo + 8 voci, hero nascosto.
+- Test locale con `npm run dev:clean`: **confermato OK dall’utente**.
+- Safari/iPhone fisico: non testato direttamente; fix allineato ai bug noti di Safari. Per certezza al 100%: URL Netlify a qualcuno con iPhone o trial BrowserStack.
+
+**Nota dev — hydration warning in Cursor:** attributi `data-cursor-ref` iniettati dal browser integrato di Cursor possono generare falsi errori di hydration su `SiteHeader`/footer. In Chrome/Edge normale non compaiono; **non è un bug del sito**.
 
 ---
 
@@ -325,7 +350,8 @@ Motivo: su telefono `object-cover` tagliava troppo ai lati con banda troppo alta
 - [ ] Dominio custom `www.ttpistoia.it` + env produzione (`ALLOW_INDEX=true`).
 - [ ] Analytics (non in scope design originale).
 - [ ] Eventuale rifinitura hero mobile (vedi §3).
-- [ ] Conferma menu canvas su device reali molto piccoli (SE, mini).
+- [x] Fix menu canvas iOS Safari (portal + CSS); verificato in emulazione e in dev locale.
+- [ ] Conferma opzionale su iPhone Safari fisico (non bloccante se staging OK).
 - [ ] Fine-tuning banda video: overlay, poster JPG reale.
 - [ ] Eventuale enrichment pattern dot grid (bicolor, grain) — opzionale.
 - [ ] Verificare `palestra.mp4` committato e pushato su GitHub (necessario per video su Netlify).
@@ -341,6 +367,7 @@ Motivo: su telefono `object-cover` tagliava troppo ai lati con banda troppo alta
 - [x] Pagina Documenti storici.
 - [x] Deploy Netlify + GitHub Desktop workflow.
 - [x] Menu mobile canvas full-screen con pattern dots.
+- [x] Fix menu mobile iOS Safari (portal `body`, `100svh`, z-index, pattern scroll).
 - [x] Scroll reveal (opt-in, non su pagine contenuto).
 
 ### Deviazioni deliberate dal HANDOFF
@@ -360,6 +387,10 @@ npm run sync-gallery # sync galleria storia (se usato)
 
 **Anteprima mobile in DevTools:** `Ctrl+Shift+M` → device (es. iPhone 12 Pro 390×844, SE 375×667, 14 Pro Max 430×932) → zoom 100% → hard refresh se il CSS non aggiorna.
 
+**Test menu mobile:** apri hamburger → verifica logo centrato + 8 voci + X in alto a destra; chiudi con X, voce o Escape.
+
+**Safari iPhone senza device:** deploy su Netlify → link a chi ha iPhone; oppure [BrowserStack](https://www.browserstack.com) / LambdaTest (trial) con URL staging.
+
 ---
 
 ## 7. File chiave
@@ -372,11 +403,11 @@ app/
   robots.ts · sitemap.ts  # Gated da NEXT_PUBLIC_ALLOW_INDEX
   opengraph-image.tsx · twitter-image.tsx · apple-icon.tsx
   documenti-storici/      # Pagina archivio
-  globals.css             # hero-grad-*, section-pattern*, stat-enter-*, scroll-reveal
+  globals.css             # hero-grad-*, section-pattern*, stat-enter-*, scroll-reveal, mobile-menu-open
 components/
-  layout/MobileDrawer.tsx # Canvas menu mobile/tablet (<901px)
+  layout/MobileDrawer.tsx # Canvas menu mobile/tablet (<901px); portal body (iOS)
   layout/GradientHeaderShell.tsx
-  layout/HomeHero.tsx · HeroBear.tsx · SiteHeader.tsx
+  layout/HomeHero.tsx · HeroBear.tsx · SiteHeader.tsx  # site-header-logo
   ui/SectionContainer.tsx · ScrollReveal.tsx
   documenti-storici/DocumentiStoriciPageClient.tsx
   content/HomeVideoBand.tsx · HomeVideoBackground.tsx
@@ -409,9 +440,10 @@ HANDOFF.md · STYLEGUIDE.md · DIARIO.md
 3. **Contenuti:** news reali, roster D3, quinto giocatore D1/A, testi stagioni mancanti.
 4. **Giocatori:** foto quando disponibili.
 5. **Home video:** poster JPG reale; eventuale fine-tuning overlay mobile.
-6. **Menu canvas:** test su iPhone SE / device bassi — spacing `dvh` dovrebbe evitare scroll.
-7. Dev locale: un solo `npm run dev:clean`; hard refresh se CSS/video «saltano».
+6. **Menu canvas:** fix iOS applicato e verificato in locale; opzionale test Safari fisico post-deploy Netlify.
+7. Dev locale: un solo `npm run dev:clean`; hard refresh se CSS/video «saltano»; ignorare hydration `data-cursor-ref` nel browser Cursor.
 8. Push su GitHub Desktop dopo ogni modifica → deploy automatico Netlify.
+9. **Go-live:** quando pronti — dominio, env produzione, URL Facebook, contenuti news reali.
 
 ---
 

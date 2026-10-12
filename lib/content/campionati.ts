@@ -47,6 +47,19 @@ const baseStandings: StandingsRow[] = [
   { position: 8, team: "Amatori Rovereto", points: 2, id: 14, iv: 2, ipa: 0, ip: 12, pav: 21, pap: 46, sv: 149, sp: 198, pv: 602, pp: 741, pe: 1 },
 ];
 
+/** Codice stagione FITeT (parametro ANNO in Calendario.asp) — aggiornare a ogni stagione. */
+export const FITET_SEASON_ANNO = 41;
+
+/** Gironi Portale FITeT Toscana (stagione corrente) — aggiornare CAM a inizio campionato. */
+const FITET_CAM_BY_CODE: Record<string, number> = {
+  C2: 1002,
+  "D1/A": 1006,
+  "D1/B": 1007,
+  "D2/A": 1011,
+  "D2/B": 1012,
+  D3: 0,
+};
+
 export const categories: CategoryData[] = [
   "C2",
   "D1/A",
@@ -56,7 +69,7 @@ export const categories: CategoryData[] = [
   "D3",
 ].map((code, index) => ({
   code,
-  camId: 0,
+  camId: FITET_CAM_BY_CODE[code] ?? 0,
   fixtures: baseFixtures,
   standings: baseStandings.map((row) =>
     row.team === "TT Pistoia asd"

@@ -1,9 +1,12 @@
+/** false = nasconde news in home/menu; pagine /news restano nel progetto ma noindex. */
+export const NEWS_SECTION_ENABLED = false;
+
 export const NAV_ITEMS = [
   { href: "/", label: "Home" },
   { href: "/storia", label: "Storia" },
   { href: "/giocatori", label: "Giocatori" },
   { href: "/campionati", label: "Campionati" },
-  { href: "/news", label: "News" },
+  ...(NEWS_SECTION_ENABLED ? [{ href: "/news", label: "News" as const }] : []),
   { href: "/regole", label: "Le regole" },
   { href: "/documenti-storici", label: "Documenti storici" },
   { href: "/contatti", label: "Contatti" },

@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import { execSync, spawn } from "node:child_process";
 
 const PORT = Number(process.env.PORT ?? 3000);
@@ -57,6 +59,17 @@ function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+/** Dopo build+dev sovrapposti, chunk CSS in .next/static restano inconsistenti. */
+function cleanDevCssArtifacts() {
+  const nextDir = path.join(process.cwd(), ".next");
+  for (const sub of ["cache", "static"]) {
+    const target = path.join(nextDir, sub);
+    if (fs.existsSync(target)) {
+      fs.rmSync(target, { recursive: true, force: true });
+    }
+  }
+}
+
 if (clean) {
   await import("./clean-next.mjs");
 }
@@ -67,6 +80,8 @@ if (stalePids.size > 0) {
   console.warn(`Port ${PORT} is already in use (PIDs: ${[...stalePids].join(", ")}).`);
   console.warn("Stopping previous dev server(s) to avoid broken CSS and cache errors...");
   freePort(PORT);
+  cleanDevCssArtifacts();
+  console.warn("Cleared .next/cache and .next/static (CSS dev).");
   await delay(1000);
 }
 

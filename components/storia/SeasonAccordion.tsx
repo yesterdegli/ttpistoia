@@ -39,7 +39,7 @@ export function SeasonAccordion({
             <button
               type="button"
               onClick={() => onToggle(season.id)}
-              className="st-acc-head relative z-[2] flex w-full cursor-pointer flex-wrap items-center gap-x-4 gap-y-2 px-3 py-5 text-left transition-colors hover:bg-surface-tint max-md:px-2 max-md:py-4"
+              className="st-acc-head relative z-[1] flex w-full cursor-pointer flex-wrap items-center gap-x-4 gap-y-2 px-3 py-5 text-left transition-colors hover:bg-surface-tint touch-manipulation max-md:px-2 max-md:py-4"
             >
               <div className="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full bg-grad-bg text-[17px] font-semibold text-white">
                 {isOpen ? "−" : "+"}

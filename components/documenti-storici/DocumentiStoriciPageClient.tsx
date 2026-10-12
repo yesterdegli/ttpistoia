@@ -2,11 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { DocumentoSection } from "@/real-data/documenti-storici";
-import {
-  getSeasonsNewestFirst,
-  scrollSeasonIntoViewAfterExpand,
-  seasonAnchorId,
-} from "@/lib/storia-utils";
+import { scrollSeasonIntoViewAfterExpand } from "@/lib/storia-scroll";
+import { getSeasonsNewestFirst, seasonAnchorId } from "@/lib/storia-utils";
 import { SeasonAccordion } from "@/components/storia/SeasonAccordion";
 import { YearPills } from "@/components/storia/YearPills";
 import { SectionContainer } from "@/components/ui/SectionContainer";

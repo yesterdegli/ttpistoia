@@ -2,10 +2,10 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { StoriaSeason } from "@/real-data/storia";
+import { scrollSeasonIntoViewAfterExpand } from "@/lib/storia-scroll";
 import {
   getFirstSentence,
   getSeasonsNewestFirst,
-  scrollSeasonIntoViewAfterExpand,
   seasonAnchorId,
   splitParagraphs,
 } from "@/lib/storia-utils";

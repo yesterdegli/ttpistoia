@@ -17,8 +17,9 @@ export function YearPills({
   heading = "Salta alla stagione",
 }: Props) {
   return (
-    <div className="pointer-events-none sticky top-[76px] z-[15] w-full self-start border-b border-line bg-white/96 backdrop-blur-sm max-lg:top-16">
-      <div className="pointer-events-auto mx-auto max-w-[1280px] px-10 py-3 max-md:px-5">
+    <div className="sticky top-[76px] z-[15] w-full self-start border-b border-line bg-white/96 backdrop-blur-sm max-lg:top-16">
+      {/* Solo i bottoni pillola ricevono click: il resto lascia passare i tap agli accordion sotto */}
+      <div className="pointer-events-none mx-auto max-w-[1280px] px-10 py-3 max-md:px-5">
         <div className="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-ink-dim">
           {heading}
         </div>
@@ -30,7 +31,7 @@ export function YearPills({
                 key={season.id}
                 type="button"
                 onClick={() => onSelect(season.id)}
-                className={`shrink-0 whitespace-nowrap rounded-full px-3.5 py-2 text-xs tracking-[0.02em] ${
+                className={`pointer-events-auto shrink-0 whitespace-nowrap rounded-full px-3.5 py-2 text-xs tracking-[0.02em] touch-manipulation ${
                   active
                     ? "border-0 bg-grad-bg font-bold text-white"
                     : "border border-line-control bg-surface font-medium text-ink-mid"

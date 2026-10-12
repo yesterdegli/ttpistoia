@@ -6,6 +6,7 @@ import {
   homeStats,
   homeVideo,
 } from "@/lib/content/home";
+import { NEWS_SECTION_ENABLED } from "@/lib/site";
 import { categories } from "@/lib/content/campionati";
 import { getClubStandingPosition } from "@/lib/campionati-utils";
 import { ChampionshipCard } from "@/components/content/ChampionshipCard";
@@ -24,30 +25,36 @@ export default function HomePage() {
     <>
       <HomeHero />
 
-      <SectionContainer compact className="pb-2 pt-11" reveal={false}>
+      <SectionContainer
+        className="pb-14 pt-16 max-md:pb-12 max-md:pt-14 md:pb-[4.5rem] md:pt-20"
+        reveal={false}
+      >
         <HomeStatsGrid stats={homeStats} />
-        <div className="mt-10">
-          {homeIntro.paragraphs.map((paragraph) => (
-            <p
-              key={paragraph.slice(0, 40)}
-              className="mb-4 text-[17px] leading-[1.8] text-ink-body [text-wrap:pretty] last:mb-0"
-            >
-              {paragraph}
-            </p>
-          ))}
+        <div className="mt-12 md:mt-14">
+          <p className="m-0 font-display text-[21px] font-semibold leading-[1.55] tracking-[-0.012em] text-ink-strong [text-wrap:pretty] md:text-[26px] md:leading-[1.48]">
+            {homeIntro.lead}
+          </p>
+          <p className="mb-0 mt-6 text-[18px] font-medium leading-[1.82] text-ink-body [text-wrap:pretty] md:mt-7 md:text-[20px] md:leading-[1.78]">
+            {homeIntro.body}
+          </p>
+          <p className="mb-0 mt-5 font-display text-[19px] font-bold leading-[1.45] tracking-[-0.01em] grad-text [text-wrap:pretty] md:mt-6 md:text-[22px]">
+            {homeIntro.closing}
+          </p>
         </div>
       </SectionContainer>
 
-      <SectionContainer>
-        <SectionHeading link={{ href: "/news", label: "Tutte le news" }}>
-          Ultime notizie
-        </SectionHeading>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {homeNews.map((article) => (
-            <NewsCard key={article.slug} article={article} />
-          ))}
-        </div>
-      </SectionContainer>
+      {NEWS_SECTION_ENABLED ? (
+        <SectionContainer>
+          <SectionHeading link={{ href: "/news", label: "Tutte le news" }}>
+            Ultime notizie
+          </SectionHeading>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {homeNews.map((article) => (
+              <NewsCard key={article.slug} article={article} />
+            ))}
+          </div>
+        </SectionContainer>
+      ) : null}
 
       <HomeVideoBand {...homeVideo} />
 

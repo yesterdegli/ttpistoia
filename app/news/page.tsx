@@ -10,9 +10,12 @@ import {
   getFeaturedArticle,
   getGridArticles,
 } from "@/lib/content/news";
+import { NEWS_SECTION_ENABLED } from "@/lib/site";
+import { newsDraftRobotsMetadata } from "@/lib/site-seo";
 
 export const metadata: Metadata = {
   title: "News",
+  ...(!NEWS_SECTION_ENABLED ? newsDraftRobotsMetadata() : {}),
 };
 
 export default function NewsPage() {

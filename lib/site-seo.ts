@@ -34,6 +34,17 @@ export function shouldAllowIndexing(): boolean {
   return process.env.NEXT_PUBLIC_ALLOW_INDEX === "true";
 }
 
+/** Pagine news mock — esclusi dall’indice finché NEWS_SECTION_ENABLED è false. */
+export function newsDraftRobotsMetadata(): Metadata {
+  return {
+    robots: {
+      index: false,
+      follow: true,
+      googleBot: { index: false, follow: true },
+    },
+  };
+}
+
 export function buildSiteMetadata(): Metadata {
   const siteUrl = getSiteUrl();
   const allowIndex = shouldAllowIndexing();

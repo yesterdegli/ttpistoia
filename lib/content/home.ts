@@ -8,10 +8,12 @@ export const homeStats = [
 ] as const;
 
 export const homeIntro = {
-  paragraphs: [
+  lead:
     "Dal 1992, il Tennistavolo Pistoia è la casa di chi ama il ping pong in città. Affiliati alla FITeT, ogni stagione le nostre squadre competono nei campionati regionali e nazionali, dalla serie D alla C2, portando in giro il nome di Pistoia con impegno e passione.",
-    "Ma non c'è bisogno di essere agonisti per trovare posto tra noi: le nostre porte sono aperte a chiunque voglia semplicemente divertirsi con una racchetta in mano, a qualsiasi età e livello. Perché in fondo, davanti al tavolo, quello che conta davvero è esserci.",
-  ],
+  body:
+    "Ma non c'è bisogno di essere agonisti per trovare posto tra noi: le nostre porte sono aperte a chiunque voglia semplicemente divertirsi con una racchetta in mano, a qualsiasi età e livello.",
+  closing:
+    "Perché in fondo, davanti al tavolo, quello che conta davvero è esserci.",
 } as const;
 
 export const homeNews = getHomeNews();

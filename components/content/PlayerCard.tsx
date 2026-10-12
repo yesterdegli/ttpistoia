@@ -24,7 +24,9 @@ export function PlayerCard({
           <ImagePlaceholder
             src={imageSrc}
             alt={`Foto ${name}`}
-            label="Foto giocatore"
+            label="Foto con maglie nuove in arrivo"
+            hideUnavailableCaption
+            labelClassName="max-w-[12rem] text-[13px] font-bold leading-snug text-blue md:text-[15px]"
             fill
           />
         </div>

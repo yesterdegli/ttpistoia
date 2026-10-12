@@ -9,6 +9,8 @@ import { NewsCard } from "@/components/content/NewsCard";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { articles, getArticle } from "@/lib/content/news";
+import { NEWS_SECTION_ENABLED } from "@/lib/site";
+import { newsDraftRobotsMetadata } from "@/lib/site-seo";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -21,7 +23,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const article = getArticle(slug);
-  return { title: article?.title ?? "Articolo" };
+  return {
+    title: article?.title ?? "Articolo",
+    ...(!NEWS_SECTION_ENABLED ? newsDraftRobotsMetadata() : {}),
+  };
 }
 
 export default async function ArticoloPage({ params }: Props) {
