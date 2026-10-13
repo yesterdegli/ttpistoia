@@ -35,8 +35,8 @@ export function SectionContainer({
   return (
     <section
       id={id}
-      className={`section-pattern relative bg-surface-grey px-10 py-14 max-md:px-5 max-md:py-11 ${
-        compact ? "md:py-11" : ""
+      className={`section-pattern relative bg-surface-grey px-10 py-16 max-md:px-5 max-md:py-14 md:py-[5.5rem] ${
+        compact ? "md:py-14 max-md:py-12" : ""
       } ${className}`}
     >
       {reveal ? <ScrollReveal>{inner}</ScrollReveal> : inner}

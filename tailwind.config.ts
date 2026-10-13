@@ -17,8 +17,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        blue: { DEFAULT: "#01017b", light: "#0a0a8f" },
-        red: { DEFAULT: "#e50d22", deep: "#8c0a19", text: "#c00c1e" },
+        blue: {
+          DEFAULT: "var(--brand-blue)",
+          light: "var(--brand-blue-light)",
+        },
+        red: {
+          DEFAULT: "var(--brand-red)",
+          deep: "var(--brand-red-deep)",
+          text: "var(--brand-red-text)",
+        },
         ink: {
           strong: "#22252a",
           body: "#33363b",
@@ -53,15 +60,15 @@ const config: Config = {
       },
       backgroundImage: {
         "grad-bg":
-          "linear-gradient(115deg,#01017b 0%,#0a0a8f 45%,#8c0a19 82%,#e50d22 100%)",
+          "linear-gradient(115deg,var(--brand-blue) 0%,var(--brand-blue-light) 45%,var(--brand-red-deep) 82%,var(--brand-red) 100%)",
         "grad-hero":
-          "linear-gradient(115deg,#01017b 0%,#0a0a8f 42%,#8c0a19 80%,#e50d22 100%)",
+          "linear-gradient(115deg,var(--brand-blue) 0%,var(--brand-blue-light) 42%,var(--brand-red-deep) 80%,var(--brand-red) 100%)",
         "grad-text":
-          "linear-gradient(100deg,#01017b 0%,#0a0a8f 45%,#c00c1e 88%,#e50d22 100%)",
+          "linear-gradient(100deg,var(--brand-blue) 0%,var(--brand-blue-light) 45%,var(--brand-red-text) 88%,var(--brand-red) 100%)",
         "grad-hamburger":
-          "linear-gradient(100deg,#01017b 0%,#c00c1e 100%)",
+          "linear-gradient(100deg,var(--brand-blue) 0%,var(--brand-red-text) 100%)",
         "footer-rule":
-          "linear-gradient(90deg,#e50d22 0 30%,rgba(255,255,255,.25) 30% 32%,transparent 32%)",
+          "linear-gradient(90deg,var(--brand-red) 0 30%,rgba(255,255,255,.25) 30% 32%,transparent 32%)",
       },
       screens: {
         md: "641px",

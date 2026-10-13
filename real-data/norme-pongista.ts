@@ -90,6 +90,26 @@ const SLIDES: Omit<NormePongistaPage, "page" | "src">[] = [
     title: "17 — Chiedi scusa quando è dovuto",
     alt: "Vignetta 17: Chiedi scusa quando è dovuto. Un giocatore si scusa ironicamente perché il dito medio «è ritto per caso».",
   },
+  {
+    title: "18 — Intimorire l'avversario",
+    alt: "Vignetta 18: Intimorire l'avversario. Un giocatore in maglia TT Pistoia provoca l'avversario: «E allora? Prova a battere, se hai il coraggio! Ti spappolo, citrullo!!!»",
+  },
+  {
+    title: "19 — Accogli con gentilezza gli ospiti",
+    alt: "Vignetta 19: Accogli con gentilezza gli ospiti. I pistoiesi mostrano i trofei mentre un ospite del CIATT Firenze pensa ai «cornuti pistoiesi che vengono a fregarci i premi».",
+  },
+  {
+    title: "20 — Ogni tanto, gioca per la platea",
+    alt: "Vignetta 20: Ogni tanto, gioca per la platea. Un giocatore tenta il colpo dietro la schiena pensando: «Lo so che farò una figura a piro, ma DEVO provare…»",
+  },
+  {
+    title: "21 — Il decoro innanzitutto!",
+    alt: "Vignetta 21: Il decoro innanzitutto! Mirko gioca in mutande e maglietta; l'avversario commenta: «Sì, vabbè'… I pantaloncini li compro per la D2!»",
+  },
+  {
+    title: "22 — Rispettate gli arbitri!",
+    alt: "Vignetta 22: Rispettate gli arbitri! Un giocatore chiede perché all'arbitro non abbiano dato un tavolino; lui risponde: «Perché son dei sudici, ecco perché…»",
+  },
 ];
 
 export const normePongistaPages: NormePongistaPage[] = SLIDES.map((slide, i) => ({

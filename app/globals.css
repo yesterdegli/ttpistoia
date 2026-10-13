@@ -1,3 +1,5 @@
+@import "./brand-tokens.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -25,24 +27,24 @@
   .hero-grad-wrap {
     background: linear-gradient(
       115deg,
-      #e50d22 0%,
-      #e50d22 16%,
-      #c00c1e 30%,
-      #8c0a19 42%,
-      #0a0a8f 58%,
-      #01017b 100%
+      var(--brand-red) 0%,
+      var(--brand-red) 16%,
+      var(--brand-red-text) 30%,
+      var(--brand-red-deep) 42%,
+      var(--brand-blue-light) 58%,
+      var(--brand-blue) 100%
     );
   }
 
   .hero-grad-pan {
     background: linear-gradient(
       115deg,
-      #e50d22 0%,
-      #e50d22 16%,
-      #c00c1e 30%,
-      #8c0a19 42%,
-      #0a0a8f 58%,
-      #01017b 100%
+      var(--brand-red) 0%,
+      var(--brand-red) 16%,
+      var(--brand-red-text) 30%,
+      var(--brand-red-deep) 42%,
+      var(--brand-blue-light) 58%,
+      var(--brand-blue) 100%
     );
     animation: hero-gradient-pan 6.5s linear infinite;
     will-change: transform;
@@ -139,15 +141,15 @@
 
   .glow-2t {
     box-shadow:
-      -10px 12px 26px -8px rgb(1 1 123 / 0.42),
-      10px 12px 26px -8px rgb(229 13 34 / 0.34),
+      -10px 12px 26px -8px rgb(var(--brand-blue-rgb) / 0.42),
+      10px 12px 26px -8px rgb(var(--brand-red-rgb) / 0.34),
       0 2px 8px rgb(0 0 0 / 0.06);
   }
 
   .glow-2t-hover:hover {
     box-shadow:
-      -14px 18px 34px -8px rgb(1 1 123 / 0.5),
-      14px 18px 34px -8px rgb(229 13 34 / 0.42),
+      -14px 18px 34px -8px rgb(var(--brand-blue-rgb) / 0.5),
+      14px 18px 34px -8px rgb(var(--brand-red-rgb) / 0.42),
       0 3px 10px rgb(0 0 0 / 0.07);
   }
 }
@@ -165,7 +167,7 @@
   z-index: 0;
   background-image: radial-gradient(
     circle,
-    rgb(1 1 123 / 0.1) 1px,
+    rgb(var(--brand-blue-rgb) / 0.1) 1px,
     transparent 1px
   );
   background-size: 28px 28px;

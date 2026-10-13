@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/page-metadata";
 import { PlayerCard } from "@/components/content/PlayerCard";
 import { PageHero } from "@/components/layout/PageHero";
 import { SectionContainer } from "@/components/ui/SectionContainer";
@@ -6,9 +7,13 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { teamAnchor } from "@/lib/campionati-utils";
 import { giocatoriIntro, teams } from "@/lib/content/giocatori";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "I nostri giocatori",
-};
+  description:
+    "Rosa e squadre del Tennistavolo Pistoia: giocatori FITeT nei campionati di serie D, C e B in Toscana. Atleti del TT Pistoia asd.",
+  path: "/giocatori",
+  keywords: ["giocatori tennistavolo Pistoia", "rosa TT Pistoia", "squadre FITeT"],
+});
 
 export default function GiocatoriPage() {
   return (

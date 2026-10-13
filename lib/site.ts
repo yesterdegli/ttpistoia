@@ -23,8 +23,8 @@ export const SITE = {
   phone: "335.7388152",
   phoneHref: "tel:+393357388152",
   emailHref: "mailto:ttpt@ttpistoia.it",
-  hours: "Mar e Gio, 21:00–23:30",
+  hours: "Pistoia mar/gio 21–23:30 · Quarrata lun/mer 21–23",
   copyright: `© ${new Date().getFullYear()} TT Pistoia asd. Tutti i diritti riservati.`,
 } as const;
 
-export const FACEBOOK_URL = "#";
+export const FACEBOOK_URL = "https://www.facebook.com/groups/57029708768/";

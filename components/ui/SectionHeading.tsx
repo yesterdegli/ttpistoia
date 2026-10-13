@@ -22,7 +22,7 @@ export function SectionHeading({
 
   return (
     <div
-      className={`mb-7 flex flex-wrap gap-x-4 gap-y-3 max-md:mb-5 ${
+      className={`mb-9 flex flex-wrap gap-x-4 gap-y-3 max-md:mb-7 md:mb-10 ${
         centered
           ? "items-center justify-center max-md:flex-col max-md:items-center"
           : "items-baseline justify-between max-md:flex-col max-md:items-start"

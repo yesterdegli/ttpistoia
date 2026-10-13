@@ -1,7 +1,7 @@
 # Diario di progetto — TT Pistoia asd
 
 Documento di lavoro per tenere traccia di avanzamento, decisioni e pendenti.
-Aggiornato: **10 settembre 2026**.
+Aggiornato: **12 ottobre 2026**.
 
 ---
 
@@ -26,15 +26,16 @@ Aggiornato: **10 settembre 2026**.
 |---|---|---|
 | `/` | ✅ | Hero animato, stats animate, news, **banda video**, campionati, chi siamo, milestone, CTA; pattern dot grid su sezioni |
 | `/giocatori` | ✅ | Roster reali C2, D1/A–D2/B; D3 ancora demo; griglia 2+3 centrata |
-| `/storia` | ✅ | Dati da `real-data/storia.ts`; accordion, pill, slider, lightbox |
-| `/news` | ✅ | Lista + articoli SSG |
-| `/news/[slug]` | ✅ | 7 articoli placeholder |
-| `/campionati` | ✅ | Tabella/classifica/fixture (dati demo); anchor `#campionato-*` |
+| `/storia` | ✅ | Dati da `real-data/storia.ts`; accordion, pill, slider, lightbox (fix tap pillole sticky, ott 2026) |
+| `/news` | ⏸️ | Route attive ma **nascoste** (`NEWS_SECTION_ENABLED=false`): no menu/home, noindex in sitemap |
+| `/news/[slug]` | ⏸️ | Come sopra — 7 articoli placeholder |
+| `/campionati` | ✅ | Embed FITeT calendario + classifica (proxy API); ranking modale; anchor `#campionato-*` |
 | `/regole` | ✅ | Regolamento FITeT |
 | `/contatti` | ✅ | Dati reali; mappa Google dietro consenso cookie |
 | `/privacy` | ✅ | Privacy policy |
 | `/cookie` | ✅ | Cookie policy |
-| `/documenti-storici` | ✅ | Rassegna stampa / archivio; accordion + pill come Storia |
+| `/documenti-storici` | ✅ | Rassegna stampa / archivio; accordion + pill come Storia; box «Norme del pongista» |
+| `/documenti-storici/norme-del-pongista` | ✅ | Opuscolo vignette Roberto Morassi — slider autoplay 5s, 18 pagine WebP + PDF |
 
 **Build:** `npm run build` OK (~26 route statiche/SSG).
 
@@ -316,6 +317,37 @@ Motivo: su telefono `object-cover` tagliava troppo ai lati con banda troppo alta
 
 **Nota dev — hydration warning in Cursor:** attributi `data-cursor-ref` iniettati dal browser integrato di Cursor possono generare falsi errori di hydration su `SiteHeader`/footer. In Chrome/Edge normale non compaiono; **non è un bug del sito**.
 
+### Sessione — FITeT, Storia, Home, archivio Morassi (12 ott 2026)
+
+#### Campionati FITeT
+- **`lib/content/campionati.ts`**: ID CAM e `FITET_SEASON_ANNO` per calendario (`Calendario.asp`) e classifiche.
+- **`FitetIframe.tsx`**: altezza auto; calendario con «← Torna al calendario» (reset iframe); classifica con scroll orizzontale (`overflow-x-auto`, `scrolling="auto"`, larghezza da `scrollWidth`).
+- **`app/api/fitet/classifica/route.ts`**: proxy HTML classifica same-origin; decode Windows-1252 + BOM; **fix `<base href>`** (FITeT aveva solo `target="_self"`) e rewrite `../../images/` → portale FITeT (evita 404 su localhost e errori console Next).
+- **`lib/fitet-embed.ts`**: URL embed classifica via proxy.
+
+#### News nascosta (non eliminata)
+- **`lib/site.ts`**: `NEWS_SECTION_ENABLED = false` — menu e sezione home senza News; riattivare con `true`.
+- **`lib/site-seo.ts`**, **`app/sitemap.ts`**, pagine `/news*`: noindex quando flag false.
+
+#### Home e Giocatori
+- **Home**: intro stats in tipografia più grande; sezione grigia post-hero con più padding verticale.
+- **`PlayerCard`**: placeholder unico «Foto con maglie nuove in arrivo» (blu, bold); `ImagePlaceholder` con opzione `hideUnavailableCaption`.
+
+#### Storia — accordion non cliccabili
+- **Causa:** barra pillole sticky con `pointer-events-auto` su tutto il contenitore intercettava i tap sulle testate sotto.
+- **Fix:** `YearPills.tsx` — `pointer-events-auto` solo sui bottoni pillola; scroll client in `lib/storia-scroll.ts`; utils puri in `lib/storia-utils.ts`.
+
+#### Norme del bravo pongista (Roberto Morassi)
+- Route **`/documenti-storici/norme-del-pongista`**: hero + intro + © Morassi + download PDF.
+- Asset: **`public/images/norme-pongista/pagina-01…18.webp`** (export da PDF con trim bordi bianchi; **pagina PDF 2 bianca omessa**); **`public/docs/norme-pongista.pdf`**.
+- UX finale: **una vignetta alla volta**, frecce, autoplay ogni 5 s (pausa dopo click manuale); pallini navigazione.
+- Script: **`npm run export-norme-pongista`** (`scripts/export-norme-pongista-pdf.mjs`).
+- Dati + alt: **`real-data/norme-pongista.ts`**; componenti `components/norme-pongista/`.
+
+#### Dev — CSS «saltato»
+- **`scripts/dev.mjs`**: se la porta 3000 è occupata, oltre a killare il processo precedente cancella `.next/cache` e `.next/static` (chunk CSS inconsistenti dopo `build` + `dev` sovrapposti).
+- Reminder: **`npm run dev:clean`** + hard refresh se gli stili spariscono; non lanciare `npm run build` con il dev ancora acceso.
+
 ---
 
 ## 4. Dati
@@ -326,7 +358,8 @@ Motivo: su telefono `object-cover` tagliava troppo ai lati con banda troppo alta
 | Contatti | `lib/content/contatti.ts` | ✅ Reale |
 | News | `lib/content/news.ts` | ⚠️ Placeholder |
 | Giocatori / roster | `lib/content/giocatori.ts` | ⚠️ Parziale — C2, D1/A–D2/B reali (D1/A: 1 nome fittizio); D3 demo |
-| Campionati (risultati/classifiche) | `lib/content/campionati.ts` | ⚠️ Placeholder (posizioni demo variate per home) |
+| Campionati (embed live) | `lib/content/campionati.ts` + FITeT | ✅ Calendario/classifica embed; posizioni home da `getClubStandingPosition()` su dati demo finché non allineati al live |
+| Norme del pongista | `real-data/norme-pongista.ts` | ✅ 18 slide WebP + PDF Morassi |
 | Home stats | `lib/content/home.ts` | ⚠️ 1991, 35 tesserati, 6 squadre, 2 palestre — da confermare con il club |
 | Documenti storici | `real-data/documenti-storici.ts` | ✅ Reale (immagini in `public/images/documenti-storici/`) |
 
@@ -338,7 +371,9 @@ Motivo: su telefono `object-cover` tagliava troppo ai lati con banda troppo alta
 - [x] Logo header SVG (`public/assets/brand/logo-header.svg`).
 - [ ] Fotografia reale: giocatori, news, chi siamo, gallerie stagioni.
 - [ ] Roster **D3** + quinto giocatore **D1/A** (sostituire Luca Ferretti).
-- [ ] Calendari e classifiche FITeT reali.
+- [x] Calendari e classifiche FITeT embed (aggiornare CAM/ANNO a inizio stagione; D3 quando girone attivo).
+- [ ] Allineare posizioni badge home card campionati ai dati FITeT live.
+- [ ] Scegliere UX definitiva opuscolo Morassi se si vuole cambiare autoplay/intervallo.
 - [ ] Testi stagioni mancanti in `/storia`.
 - [ ] Testi news reali (oggi placeholder).
 - [ ] URL Facebook reale (`FACEBOOK_URL` in `lib/site.ts` ancora `#`).
@@ -365,6 +400,10 @@ Motivo: su telefono `object-cover` tagliava troppo ai lati con banda troppo alta
 - [x] Pattern dot grid su sezioni grigie e gradiente (`section-pattern` / `section-pattern-light`).
 - [x] Stat cards home: entrance ritardata 1 s, slide da sinistra/destra, replay al ritorno in home.
 - [x] Pagina Documenti storici.
+- [x] Sotto-pagina Norme del bravo pongista (Morassi).
+- [x] Embed FITeT campionati (calendario + classifica proxy).
+- [x] Fix accordion Storia / pillole sticky (pointer-events).
+- [x] News nascosta via flag (noindex, fuori menu).
 - [x] Deploy Netlify + GitHub Desktop workflow.
 - [x] Menu mobile canvas full-screen con pattern dots.
 - [x] Fix menu mobile iOS Safari (portal `body`, `100svh`, z-index, pattern scroll).
@@ -383,6 +422,7 @@ npm run dev:clean    # dev server pulito (porta 3000)
 npm run build        # build produzione
 npm run lint         # ESLint
 npm run sync-gallery # sync galleria storia (se usato)
+npm run export-norme-pongista   # rigenera WebP da PDF (path opzionale)
 ```
 
 **Anteprima mobile in DevTools:** `Ctrl+Shift+M` → device (es. iPhone 12 Pro 390×844, SE 375×667, 14 Pro Max 430×932) → zoom 100% → hard refresh se il CSS non aggiorna.
@@ -402,9 +442,12 @@ app/
   loading.tsx             # Barra navigazione
   robots.ts · sitemap.ts  # Gated da NEXT_PUBLIC_ALLOW_INDEX
   opengraph-image.tsx · twitter-image.tsx · apple-icon.tsx
-  documenti-storici/      # Pagina archivio
+  documenti-storici/      # Pagina archivio + norme-del-pongista/
+  api/fitet/classifica/   # Proxy HTML classifica FITeT
   globals.css             # hero-grad-*, section-pattern*, stat-enter-*, scroll-reveal, mobile-menu-open
 components/
+  norme-pongista/         # NormePongistaPageClient (slider autoplay)
+  content/FitetIframe.tsx · FitetEmbed.tsx
   layout/MobileDrawer.tsx # Canvas menu mobile/tablet (<901px); portal body (iOS)
   layout/GradientHeaderShell.tsx
   layout/HomeHero.tsx · HeroBear.tsx · SiteHeader.tsx  # site-header-logo
@@ -415,19 +458,24 @@ components/
   cookies/                # Banner e consenso
   seo/OrganizationJsonLd.tsx
 lib/
-  site.ts                 # NAV_ITEMS, SITE, FACEBOOK_URL
+  site.ts                 # NAV_ITEMS, SITE, NEWS_SECTION_ENABLED, FACEBOOK_URL
+  fitet-embed.ts          # URL proxy classifica
   site-seo.ts             # Metadata, getSiteUrl, JSON-LD
   content/home.ts · news.ts · giocatori.ts · campionati.ts
 real-data/
   storia.ts               # Fonte unica dati stagioni
   documenti-storici.ts    # Archivio stampa/documenti
+  norme-pongista.ts       # Slide opuscolo Morassi
+public/images/norme-pongista/   # WebP export (18 file)
+public/docs/norme-pongista.pdf
 public/assets/
   video/palestra.mp4      # Banda video home (~1.2 MB — committare per Netlify)
   brand/logo-header.svg
 netlify.toml              # Node 20, publish .next, plugin Next.js
 .env.example              # NEXT_PUBLIC_SITE_URL, NEXT_PUBLIC_ALLOW_INDEX
 tailwind.config.ts
-scripts/dev.mjs
+scripts/dev.mjs           # Kill porta 3000 + pulizia CSS cache se stale
+scripts/export-norme-pongista-pdf.mjs
 HANDOFF.md · STYLEGUIDE.md · DIARIO.md
 ```
 
@@ -441,9 +489,11 @@ HANDOFF.md · STYLEGUIDE.md · DIARIO.md
 4. **Giocatori:** foto quando disponibili.
 5. **Home video:** poster JPG reale; eventuale fine-tuning overlay mobile.
 6. **Menu canvas:** fix iOS applicato e verificato in locale; opzionale test Safari fisico post-deploy Netlify.
-7. Dev locale: un solo `npm run dev:clean`; hard refresh se CSS/video «saltano»; ignorare hydration `data-cursor-ref` nel browser Cursor.
-8. Push su GitHub Desktop dopo ogni modifica → deploy automatico Netlify.
-9. **Go-live:** quando pronti — dominio, env produzione, URL Facebook, contenuti news reali.
+7. Dev locale: preferire `npm run dev:clean` se CSS «salta»; non mixare `build` e `dev` contemporaneamente; hard refresh; ignorare hydration `data-cursor-ref` nel browser Cursor.
+8. Push su GitHub Desktop dopo ogni modifica → deploy automatico Netlify (includere WebP/PDF Morassi se nuovi).
+9. **News:** riattivare con `NEWS_SECTION_ENABLED = true` in `lib/site.ts` quando pronti.
+10. **FITeT:** a ogni stagione aggiornare `FITET_CAM_BY_CODE` e `FITET_SEASON_ANNO` in `lib/content/campionati.ts`.
+11. **Go-live:** dominio, env produzione, URL Facebook, contenuti news reali.
 
 ---
 

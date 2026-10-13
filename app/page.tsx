@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import {
   homeAbout,
   homeIntro,
@@ -17,8 +18,18 @@ import { MilestoneCard } from "@/components/content/MilestoneCard";
 import { NewsCard } from "@/components/content/NewsCard";
 import { HomeStatsGrid } from "@/components/content/HomeStatsGrid";
 import { HomeHero } from "@/components/layout/HomeHero";
+import { GradientHeaderShell } from "@/components/layout/GradientHeaderShell";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { buildPageMetadata } from "@/lib/page-metadata";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Tennistavolo Pistoia — ping pong e campionati FITeT",
+  description:
+    "ASD Tennistavolo Pistoia: ping pong a Pistoia (Palestra Einaudi) e Quarrata. Dal 1992, campionati FITeT, allenamenti per tutti. Prova gratuita martedì e giovedì.",
+  path: "",
+  keywords: ["prova gratuita ping pong", "scuola tennistavolo Pistoia"],
+});
 
 export default function HomePage() {
   return (
@@ -48,7 +59,7 @@ export default function HomePage() {
           <SectionHeading link={{ href: "/news", label: "Tutte le news" }}>
             Ultime notizie
           </SectionHeading>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {homeNews.map((article) => (
               <NewsCard key={article.slug} article={article} />
             ))}
@@ -58,11 +69,11 @@ export default function HomePage() {
 
       <HomeVideoBand {...homeVideo} />
 
-      <SectionContainer compact className="pb-14" id="campionati">
+      <SectionContainer id="campionati" className="py-20 md:py-24" reveal={false}>
         <SectionHeading link={{ href: "/campionati", label: "Tutti i campionati" }}>
-          Campionati
+          Campionati FITeT
         </SectionHeading>
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-7 xl:grid-cols-3">
           {categories.map((cat) => (
             <ChampionshipCard
               key={cat.code}
@@ -73,45 +84,35 @@ export default function HomePage() {
         </div>
       </SectionContainer>
 
-      <section className="section-pattern-light relative z-[2] mt-11 -mb-10 overflow-hidden bg-grad-bg py-[132px] [clip-path:polygon(0_0,100%_5.5%,100%_100%,0_94.5%)] max-lg:py-24 max-md:mt-8 max-md:py-20">
-        <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(circle_at_78%_30%,rgba(255,255,255,0.10)_0%,transparent_55%)]" />
-        <div className="relative z-[2] mx-auto max-w-[1280px] px-10 max-md:px-5">
-          <MediaSplit
-            title="Chi siamo"
-            text={homeAbout.text}
-            link={{ href: "/storia", label: "Scopri la nostra storia" }}
-          />
+      <GradientHeaderShell className="relative z-[2] -my-4 py-[132px] [clip-path:polygon(0_0,100%_5.5%,100%_100%,0_94.5%)] max-md:py-28 md:-my-6">
+        <div className="mx-auto max-w-[1280px] px-10 max-md:px-5">
+          <MediaSplit {...homeAbout} />
         </div>
-      </section>
+      </GradientHeaderShell>
 
-      <SectionContainer bg="grey">
+      <SectionContainer reveal={false}>
         <SectionHeading link={{ href: "/storia", label: "Leggi la storia" }}>
           Trentadue stagioni
         </SectionHeading>
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {homeMilestones.map((m) => (
-            <MilestoneCard
-              key={m.year}
-              year={m.year}
-              description={m.description}
-              href={m.href}
-            />
+            <MilestoneCard key={m.year} {...m} />
           ))}
         </div>
       </SectionContainer>
 
-      <SectionContainer className="pb-[72px]">
+      <SectionContainer className="pb-20 md:pb-24">
         <CtaPanel
           title="Vieni a provare"
-          text="Il martedì e il giovedì sera la palestra è aperta a chiunque voglia provare: racchette e tavoli li mettiamo noi. Prima prova gratuita, nessun impegno."
+          text="Il martedì e il giovedì a Pistoia, lunedì e mercoledì a Quarrata: racchette e tavoli li mettiamo noi. Prima prova gratuita, nessun impegno."
           primaryCta={{ href: "/contatti", label: "Prenota una prova" }}
           secondaryCta={{ href: "/regole", label: "Come si gioca" }}
           infoRows={[
-            { label: "Martedì", value: "21:00 – 23:30" },
-            { label: "Giovedì", value: "21:00 – 23:30" },
-            { label: "Palestra Einaudi", value: "Viale Pacinotti, Pistoia" },
+            { label: "Pistoia", value: "Mar e gio 21:00 – 23:30 · Einaudi" },
+            { label: "Quarrata", value: "Lun e mer 21:00 – 23:00 · Manzi" },
+            { label: "Contatti", value: "335.7388152 · ttpt@ttpistoia.it" },
           ]}
-          footerLink={{ href: "/contatti", label: "Contatti e mappa" }}
+          footerLink={{ href: "/contatti", label: "Contatti e mappe" }}
         />
       </SectionContainer>
     </>

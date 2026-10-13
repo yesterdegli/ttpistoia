@@ -6,6 +6,123 @@
   NODE_VERSION = "20"
   # Tailwind, TypeScript ed ESLint sono devDependencies — servono al build
   NPM_CONFIG_PRODUCTION = "false"
+  #
+  # SEO / go-live su ttpistoia.it (impostare in Netlify → Environment variables → Production):
+  #   NEXT_PUBLIC_SITE_URL = https://www.ttpistoia.it
+  #   NEXT_PUBLIC_ALLOW_INDEX = false   ← fino al puntamento DNS
+  #   NEXT_PUBLIC_ALLOW_INDEX = true    ← il giorno del cutover (poi redeploy)
+  #
+  # Dopo il cutover: Search Console → inviare https://www.ttpistoia.it/sitemap.xml
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# Canonical host (www + HTTPS)
+[[redirects]]
+  from = "http://ttpistoia.it/*"
+  to = "https://www.ttpistoia.it/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://ttpistoia.it/*"
+  to = "https://www.ttpistoia.it/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.ttpistoia.it/*"
+  to = "https://www.ttpistoia.it/:splat"
+  status = 301
+  force = true
+
+# Migrazione sito FrontPage (.htm → App Router)
+[[redirects]]
+  from = "/index.htm"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/info.htm"
+  to = "/contatti"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/giocatori.htm"
+  to = "/giocatori"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Storia.htm"
+  to = "/storia"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/storia.htm"
+  to = "/storia"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Regole.htm"
+  to = "/regole"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/regole.htm"
+  to = "/regole"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/campionati.htm"
+  to = "/campionati"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Calenda.htm"
+  to = "/campionati"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/calenda.htm"
+  to = "/campionati"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Foto.htm"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/foto.htm"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Links.htm"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/links.htm"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/lore.htm"
+  to = "/"
+  status = 301
+  force = true

@@ -9,7 +9,7 @@ export const homeStats = [
 
 export const homeIntro = {
   lead:
-    "Dal 1992, il Tennistavolo Pistoia è la casa di chi ama il ping pong in città. Affiliati alla FITeT, ogni stagione le nostre squadre competono nei campionati regionali e nazionali, dalla serie D alla C2, portando in giro il nome di Pistoia con impegno e passione.",
+    "Dal 1992, il Tennistavolo Pistoia è la casa di chi ama il ping pong a Pistoia e in provincia: alleniamo in due palestre, a Pistoia e a Quarrata. Affiliati alla FITeT, ogni stagione le nostre squadre competono nei campionati regionali e nazionali, dalla serie D alla C2.",
   body:
     "Ma non c'è bisogno di essere agonisti per trovare posto tra noi: le nostre porte sono aperte a chiunque voglia semplicemente divertirsi con una racchetta in mano, a qualsiasi età e livello.",
   closing:
@@ -46,8 +46,10 @@ export const homeMilestones = [
 ] as const;
 
 export const homeAbout = {
+  title: "Chi siamo",
   text: "Fondato nel 1992, il TT Pistoia asd è cresciuto da un unico tavolo in un salone parrocchiale fino a diventare uno dei club amatoriali più attivi della regione — allenando i giovani, organizzando campionati competitivi e accogliendo chiunque voglia semplicemente giocare per divertimento.",
-};
+  link: { href: "/storia", label: "Scopri la nostra storia" },
+} as const;
 
 export const homeVideo = {
   eyebrow: "TT Pistoia asd",

@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/page-metadata";
 import Link from "next/link";
 import { DocumentiStoriciPageClient } from "@/components/documenti-storici/DocumentiStoriciPageClient";
 import { PageHero } from "@/components/layout/PageHero";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { documentiStorici } from "@/real-data/documenti-storici";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Documenti storici",
-};
+  description:
+    "Archivio storico del Tennistavolo Pistoia: documenti, opuscoli e materiali del club dal 1992. Patrimonio della società di ping pong pistoiese.",
+  path: "/documenti-storici",
+  keywords: ["archivio TT Pistoia", "documenti storici tennistavolo"],
+});
 
 export default function DocumentiStoriciPage() {
   return (

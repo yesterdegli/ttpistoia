@@ -72,6 +72,10 @@ function cleanDevCssArtifacts() {
 
 if (clean) {
   await import("./clean-next.mjs");
+} else if (!process.argv.includes("--no-css-clean")) {
+  // Dopo `next build` + dev sulla stessa cartella .next il CSS in dev spesso non carica (chunk stale).
+  cleanDevCssArtifacts();
+  console.log("Cleared .next/cache and .next/static (dev CSS).");
 }
 
 const stalePids = listListeningPids(PORT);
@@ -80,8 +84,10 @@ if (stalePids.size > 0) {
   console.warn(`Port ${PORT} is already in use (PIDs: ${[...stalePids].join(", ")}).`);
   console.warn("Stopping previous dev server(s) to avoid broken CSS and cache errors...");
   freePort(PORT);
-  cleanDevCssArtifacts();
-  console.warn("Cleared .next/cache and .next/static (CSS dev).");
+  if (process.argv.includes("--no-css-clean")) {
+    cleanDevCssArtifacts();
+    console.warn("Cleared .next/cache and .next/static (CSS dev).");
+  }
   await delay(1000);
 }
 

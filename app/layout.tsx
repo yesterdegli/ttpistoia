@@ -4,6 +4,7 @@ import { CookieConsentRoot } from "@/components/cookies/CookieConsentRoot";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
+import { resolveBrandPalette } from "@/lib/brand-palette";
 import { buildSiteMetadata } from "@/lib/site-seo";
 import "./globals.css";
 
@@ -28,8 +29,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const brandPalette = resolveBrandPalette();
+
   return (
-    <html lang="it" className={`${archivo.variable} ${manrope.variable}`}>
+    <html
+      lang="it"
+      data-brand-palette={brandPalette}
+      className={`${archivo.variable} ${manrope.variable}`}
+    >
       <body className="flex min-h-screen flex-col bg-surface-grey">
         <OrganizationJsonLd />
         <CookieConsentRoot>

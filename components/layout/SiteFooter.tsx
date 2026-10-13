@@ -40,13 +40,15 @@ export function SiteFooter() {
           <div className="mb-3.5 text-[13px] font-bold uppercase tracking-[0.05em] text-white">
             Seguici
           </div>
-          <Link
+          <a
             href={FACEBOOK_URL}
-            aria-label="Facebook — TT Pistoia asd"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook — gruppo TT Pistoia (si apre in una nuova scheda)"
             className="inline-flex text-red transition-transform duration-[180ms] hover:translate-y-[-2px] hover:opacity-100"
           >
             <FacebookIcon className="h-[34px] w-[34px]" />
-          </Link>
+          </a>
         </div>
       </div>
       <div className="mx-auto flex max-w-[1280px] flex-wrap items-center justify-between gap-3 border-t border-white/15 px-10 py-[18px] text-xs text-white/55 max-md:px-5">

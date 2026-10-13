@@ -11,7 +11,7 @@ export function CampionatiRankingTrigger() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="rounded-full bg-[#e50d22] px-5 py-2.5 text-sm font-bold uppercase tracking-[0.03em] text-white shadow-[0_8px_22px_rgb(229_13_34/0.35)] transition-transform duration-[180ms] hover:-translate-y-0.5"
+        className="rounded-full bg-red px-5 py-2.5 text-sm font-bold uppercase tracking-[0.03em] text-white shadow-[0_8px_22px_rgb(var(--brand-red-rgb)/0.35)] transition-transform duration-[180ms] hover:-translate-y-0.5"
       >
         Ranking individuale
       </button>

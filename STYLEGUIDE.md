@@ -18,6 +18,32 @@ Regola generale: **non introdurre colori, font, raggi o ombre non elencati in qu
 | Bordeaux | `#8c0a19` | **solo** come stop intermedio del gradiente |
 | Rosso sociale | `#e50d22` | Accento: filetti, badge, bordi social, sottolineature titolo |
 
+### 1.1b Palette alternativa
+
+| Nome | HEX | Uso in palette alt |
+|---|---|---|
+| Blu alternativo | `#2f3347` | Blu sociale (`#343a52` stop chiaro nei gradienti) |
+| Rosso alternativo | `#552929` | Rosso sociale, bordeaux, testo gradiente e accenti rossi |
+
+**File:** `app/brand-tokens.css` (`html[data-brand-palette="alt"]`), riferimento in `lib/brand-palette.ts`.
+
+**Attivare:** `NEXT_PUBLIC_BRAND_PALETTE=alt` (locale o Netlify), poi riavvio dev / redeploy.
+
+**Rollback:** variabile assente o `NEXT_PUBLIC_BRAND_PALETTE=default`.
+
+### 1.1c Orso hero alternativo
+
+| Variante | File | Note |
+|---|---|---|
+| Default (presenter) | `public/assets/logo-hero.svg` | Da `uploads/orso hero section-01.svg` |
+| Alternativo | `public/assets/logo-hero-alt.svg` | Da `uploads/orso hero section-alternativo-01.svg` |
+
+**File:** `lib/hero-bear.ts`, componenti `HeroBearDesktop` / `HeroBearMobile`.
+
+**Attivare:** `NEXT_PUBLIC_HERO_BEAR=alt`, poi riavvio dev / redeploy.
+
+**Rollback:** variabile assente o `NEXT_PUBLIC_HERO_BEAR=default`.
+
 ### 1.2 Neutri
 
 | Nome | HEX | Uso |
@@ -253,7 +279,7 @@ Tre tipi, da alternare per dare ritmo. **Mai due sezioni a gradiente consecutive
 |---|---|
 | `mobile-nav.js` | Drawer di navigazione sotto 900px (§7.1). Va incluso in `<head>` di **ogni** pagina |
 | `assets/logo-header.png` | Logo dell'header |
-| `assets/logo-hero.svg` | Logo/orso usato come filigrana nell'hero della home |
+| `assets/logo-hero.svg` / `logo-hero-alt.svg` | Filigrana hero home (toggle §1.1c) |
 
 ### Header
 ```

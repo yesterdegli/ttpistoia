@@ -1,0 +1,25 @@
+/**
+ * Token colore brand — palette ufficiale e alternativa.
+ * Rollback: NEXT_PUBLIC_BRAND_PALETTE=default o variabile assente.
+ */
+
+:root,
+html[data-brand-palette="default"] {
+  --brand-blue: #01017b;
+  --brand-blue-light: #0a0a8f;
+  --brand-red-deep: #8c0a19;
+  --brand-red: #e50d22;
+  --brand-red-text: #c00c1e;
+  --brand-blue-rgb: 1 1 123;
+  --brand-red-rgb: 229 13 34;
+}
+
+html[data-brand-palette="alt"] {
+  --brand-blue: #2f3347;
+  --brand-blue-light: #343a52;
+  --brand-red-deep: #552929;
+  --brand-red: #552929;
+  --brand-red-text: #552929;
+  --brand-blue-rgb: 47 51 71;
+  --brand-red-rgb: 85 41 41;
+}

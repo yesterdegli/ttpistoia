@@ -29,7 +29,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency:
         path === "" || path === "/news" ? ("weekly" as const) : ("monthly" as const),
-      priority: path === "" ? 1 : 0.7,
+      priority:
+        path === ""
+          ? 1
+          : path === "/storia" || path === "/contatti"
+            ? 0.85
+            : 0.7,
     })),
     ...(NEWS_SECTION_ENABLED
       ? articles.map((article) => ({
