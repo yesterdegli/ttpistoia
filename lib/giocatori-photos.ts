@@ -10,6 +10,13 @@ const GIOCATORI_PHOTO_DIR = path.join(
 
 const PHOTO_EXTS = new Set(["webp", "jpg", "jpeg", "png"]);
 
+const EXT_PRIORITY: Record<string, number> = {
+  webp: 0,
+  png: 1,
+  jpg: 2,
+  jpeg: 2,
+};
+
 export type GiocatoriPhotoIndex = ReadonlyMap<string, string>;
 
 /** Minuscole, senza accenti; spazi e apostrofi → `_` (es. Degl'innocenti → degl_innocenti). */
@@ -79,7 +86,15 @@ export function getGiocatoriPhotoIndex(): GiocatoriPhotoIndex {
         const parsed = path.parse(name);
         const ext = parsed.ext.slice(1).toLowerCase();
         if (!PHOTO_EXTS.has(ext)) continue;
-        byBaseLower.set(parsed.name.toLowerCase(), name);
+        const base = parsed.name.toLowerCase();
+        const prev = byBaseLower.get(base);
+        const prio = EXT_PRIORITY[ext] ?? 9;
+        const prevPrio = prev
+          ? (EXT_PRIORITY[path.parse(prev).ext.slice(1).toLowerCase()] ?? 9)
+          : 99;
+        if (!prev || prio < prevPrio) {
+          byBaseLower.set(base, name);
+        }
       }
     }
   } catch {

@@ -12,7 +12,9 @@ Esempi:
   chiara_dabizzi.jpg
   alessandro_guarino_lo_bianco.webp   (nome = ultima parola in scheda)
 
-Formati accettati: .webp .jpg .jpeg .png
+Formato consigliato: .webp (trasparenza). Accettati anche .png .jpg
+
+Nuove foto PNG: npm run convert-giocatori-webp (qualità 98, elimina i PNG).
 
 In scheda il testo può essere "Nome Cognome" o "Cognome Nome":
 il sito prova entrambi gli ordini (es. Pancani Luca → luca_pancani).
