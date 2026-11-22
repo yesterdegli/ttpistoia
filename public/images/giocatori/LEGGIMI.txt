@@ -1,0 +1,23 @@
+Foto giocatori — pagina /giocatori
+==================================
+
+Cartella di consegna:
+  public/images/giocatori/
+
+Nome file (senza spazi):
+  nome_cognome.<estensione>
+
+Esempi:
+  luca_pancani.webp   (va bene anche Luca_Pancani.png)
+  chiara_dabizzi.jpg
+  alessandro_guarino_lo_bianco.webp   (nome = ultima parola in scheda)
+
+Formati accettati: .webp .jpg .jpeg .png
+
+In scheda il testo può essere "Nome Cognome" o "Cognome Nome":
+il sito prova entrambi gli ordini (es. Pancani Luca → luca_pancani).
+
+Se il nome non combacia, rinomina il file o chiedi di aggiungere
+un override in lib/content/giocatori.ts.
+
+Dopo aver copiato i file: commit/push e ricarica /giocatori (Ctrl+F5).

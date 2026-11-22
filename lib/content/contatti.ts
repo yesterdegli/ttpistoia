@@ -22,6 +22,7 @@ export const contactVenues: readonly ContactVenue[] = [
     hours: [
       { day: "Martedì", hours: "21:00 – 23:30" },
       { day: "Giovedì", hours: "21:00 – 23:30" },
+      { day: "Venerdì", hours: "21:00 – 23:30" },
       { day: "Altri giorni", hours: "Chiuso" },
     ],
     mapEmbedUrl:

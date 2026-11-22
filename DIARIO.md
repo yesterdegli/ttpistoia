@@ -1,7 +1,7 @@
 # Diario di progetto — TT Pistoia asd
 
 Documento di lavoro per tenere traccia di avanzamento, decisioni e pendenti.
-Aggiornato: **12 ottobre 2026**.
+Aggiornato: **14 ottobre 2026**.
 
 ---
 
@@ -25,13 +25,13 @@ Aggiornato: **12 ottobre 2026**.
 | Route | Stato | Note |
 |---|---|---|
 | `/` | ✅ | Hero animato, stats animate, news, **banda video**, campionati, chi siamo, milestone, CTA; pattern dot grid su sezioni |
-| `/giocatori` | ✅ | Roster reali C2, D1/A–D2/B; D3 ancora demo; griglia 2+3 centrata |
+| `/giocatori` | ✅ | Roster C2, D1/A–D2/B; **D3** con 3 nomi reali (da ampliare); griglia 2+3 (5 giocatori) o 3 card in fila (D3) |
 | `/storia` | ✅ | Dati da `real-data/storia.ts`; accordion, pill, slider, lightbox (fix tap pillole sticky, ott 2026) |
 | `/news` | ⏸️ | Route attive ma **nascoste** (`NEWS_SECTION_ENABLED=false`): no menu/home, noindex in sitemap |
 | `/news/[slug]` | ⏸️ | Come sopra — 7 articoli placeholder |
 | `/campionati` | ✅ | Embed FITeT calendario + classifica (proxy API); ranking modale; anchor `#campionato-*` |
 | `/regole` | ✅ | Regolamento FITeT |
-| `/contatti` | ✅ | Dati reali; mappa Google dietro consenso cookie |
+| `/contatti` | ✅ | **Due sedi** (Pistoia Einaudi + Quarrata Manzi), orari per sede, telefono/email condivisi; mappe Google dietro consenso cookie |
 | `/privacy` | ✅ | Privacy policy |
 | `/cookie` | ✅ | Cookie policy |
 | `/documenti-storici` | ✅ | Rassegna stampa / archivio; accordion + pill come Storia; box «Norme del pongista» |
@@ -40,6 +40,8 @@ Aggiornato: **12 ottobre 2026**.
 **Build:** `npm run build` OK (~26 route statiche/SSG).
 
 **Deploy:** sito su **Netlify** collegato a GitHub (`yesterdegli/ttpistoia`); runtime Next.js; `netlify.toml` con `publish = ".next"` e plugin `@netlify/plugin-nextjs`.
+
+**Preview brand (non in repo):** palette alternativa e orso hero alternativo attivabili con env `NEXT_PUBLIC_BRAND_PALETTE=alt` e `NEXT_PUBLIC_HERO_BEAR=alt` (locale `.env.local` o variabili Netlify + redeploy). Rollback: `default` o variabile assente. Vedi `STYLEGUIDE.md` §1.1b–c.
 
 ### Componenti condivisi
 
@@ -51,7 +53,9 @@ UI: `ButtonPrimary`, `TextLink`, card varie (`NewsCard`, `ChampionshipCard`, `Mi
 
 Layout globale: `body` flex column + `main` flex-1 → footer appoggiato al fondo su tutte le pagine.
 
-Cookie: banner + `CookieConsentRoot`; mappa condizionata (`ConsentMapEmbed`).
+Cookie: banner + `CookieConsentRoot`; mappe condizionate per sede (`ContactVenueMap` / consenso).
+
+Brand: `app/brand-tokens.css` + `data-brand-palette` in `layout.tsx` (`lib/brand-palette.ts`).
 
 ---
 
@@ -110,9 +114,9 @@ Iterazioni sulla home hero sotto `max-md` (`components/layout/HomeHero.tsx`):
 | C2 | ✅ Completa |
 | D1/A | ⚠️ 4 nomi reali + **Luca Ferretti** (fittizio, quinto giocatore da confermare) |
 | D1/B | ✅ Completa |
-| D2/A | ✅ Completa |
+| D2/A | ✅ Completa (corretto scambio con D2/B, ott 2026) |
 | D2/B | ✅ Completa |
-| D3 | ⚠️ Ancora placeholder (da aggiornare) |
+| D3 | ⚠️ **3 nomi reali** — roster da completare |
 
 **Layout card** (`app/giocatori/page.tsx`) — deviazione dal HANDOFF §2.2 (2 card larghe span-3 + 3 strette span-2):
 
@@ -218,7 +222,7 @@ Problema segnalato: video background “saltato” / non visibile.
 - **Ordine menu finale:** Home → Storia → Giocatori → Campionati → News → Le regole → Documenti storici → Contatti (`lib/site.ts`).
 - **Home:** testo intro dopo stats; stat aggiornate (1991, 35 tesserati, 6 squadre, 2 palestre); griglia stats 2 colonne su mobile.
 - **News:** tutti gli articoli placeholder («Titolo in arrivo», …) fino a contenuti reali.
-- **Footer:** solo link Facebook (icona brand); rimossi IG/YT. `FACEBOOK_URL = "#"` finché non c’è URL reale.
+- **Footer:** solo link Facebook (icona brand); rimossi IG/YT. *(URL gruppo aggiornato ott 2026 — vedi §3 sessione 13–14 ott.)*
 - **Campionati:** un solo pulsante «Ranking individuale»; sezioni continue senza gap `border-t`.
 
 ### SEO e metadata (9 set 2026)
@@ -348,6 +352,41 @@ Motivo: su telefono `object-cover` tagliava troppo ai lati con banda troppo alta
 - **`scripts/dev.mjs`**: se la porta 3000 è occupata, oltre a killare il processo precedente cancella `.next/cache` e `.next/static` (chunk CSS inconsistenti dopo `build` + `dev` sovrapposti).
 - Reminder: **`npm run dev:clean`** + hard refresh se gli stili spariscono; non lanciare `npm run build` con il dev ancora acceso.
 
+### Sessione — Contatti, brand, hero, roster, SEO pre-cutover (13–14 ott 2026)
+
+#### Contatti — due sedi e orari
+- **`lib/content/contatti.ts`**: `contactVenues[]` con Pistoia (Palestra Einaudi) e Quarrata (scuola Manzi, Via Torino 61); orari **per sede**; embed mappa + link Google Maps per ciascuna.
+- **`app/contatti/page.tsx`**: blocco referente/contatti condivisi, poi sezioni per sede (`ContactVenueSection`, `ContactVenueMap`).
+- **Orari Pistoia:** martedì, giovedì e **venerdì** 21:00–23:30; Quarrata lun/mer 21:00–23:00.
+- **Footer** (`SITE.hours` in `lib/site.ts`): riassunto entrambe le sedi.
+- **JSON-LD** (`lib/site-seo.ts`): due `SportsActivityLocation` con `openingHoursSpecification` da `contactVenues`.
+
+#### Palette colori alternativa
+- Token CSS in **`app/brand-tokens.css`**: default (blu/rosso ufficiale) vs `html[data-brand-palette="alt"]` (#2f3347 / #552929).
+- Toggle: **`NEXT_PUBLIC_BRAND_PALETTE`** → `resolveBrandPalette()` in `app/layout.tsx`.
+- Tailwind/globals usano variabili CSS per gradienti, hero, glow, pattern.
+
+#### Orso hero alternativo
+- Asset: **`public/assets/logo-hero.svg`** (presenter) e **`logo-hero-alt.svg`** (da upload club).
+- Toggle: **`NEXT_PUBLIC_HERO_BEAR`** via **`lib/hero-bear.ts`** → `HeroBearDesktop` / `HeroBearMobile`.
+- **Fix Internal Server Error:** SVG serviti con `<Image unoptimized />` (Next.js blocca l’optimizer SVG senza `dangerouslyAllowSVG`).
+
+#### Giocatori
+- Correzione rose **D2/A ↔ D2/B** (nomi scambiati).
+- **D3:** per ora **3 card** — Dabizzi Chiara, Guarino Lo Bianco Alessandro, Moriconi Alberto (`lib/content/giocatori.ts`).
+- Griglia desktop: `col-start-2` solo con **5** giocatori (D3 in una riga da 3).
+
+#### SEO e migrazione dominio (pre go-live)
+- Redirect `.htm` → route App Router (`lib/legacy-redirects.ts`, `next.config.ts`, `netlify.toml`).
+- Canonical www + HTTPS in `netlify.toml`; metadata per pagina (`lib/page-metadata.ts`); env documentate per `NEXT_PUBLIC_SITE_URL` e `NEXT_PUBLIC_ALLOW_INDEX=false` fino al cutover.
+
+#### Altro
+- **Facebook:** URL gruppo reale in `FACEBOOK_URL` (`lib/site.ts`), link footer esterno.
+- **Dev:** `scripts/dev.mjs` pulisce `.next/cache` e `.next/static` **ad ogni** `npm run dev` (non solo se kill porta 3000).
+- **Spacing:** padding sezioni (`SectionContainer`, home campionati/chi siamo) leggermente aumentato.
+
+**Netlify — far vedere palette/orso ai colleghi:** impostare in Environment variables `NEXT_PUBLIC_BRAND_PALETTE=alt` (e opz. `NEXT_PUBLIC_HERO_BEAR=alt`), poi **redeploy** (build-time).
+
 ---
 
 ## 4. Dati
@@ -355,9 +394,9 @@ Motivo: su telefono `object-cover` tagliava troppo ai lati con banda troppo alta
 | Area | Fonte | Stato |
 |---|---|---|
 | Stagioni / storia | `real-data/storia.ts` | ✅ Reale |
-| Contatti | `lib/content/contatti.ts` | ✅ Reale |
+| Contatti | `lib/content/contatti.ts` | ✅ Reale — 2 sedi, orari Pistoia mar/gio/ven |
 | News | `lib/content/news.ts` | ⚠️ Placeholder |
-| Giocatori / roster | `lib/content/giocatori.ts` | ⚠️ Parziale — C2, D1/A–D2/B reali (D1/A: 1 nome fittizio); D3 demo |
+| Giocatori / roster | `lib/content/giocatori.ts` | ⚠️ Parziale — C2, D1/A–D2/B reali (D1/A: 1 nome fittizio); **D3: 3/5 nomi** |
 | Campionati (embed live) | `lib/content/campionati.ts` + FITeT | ✅ Calendario/classifica embed; posizioni home da `getClubStandingPosition()` su dati demo finché non allineati al live |
 | Norme del pongista | `real-data/norme-pongista.ts` | ✅ 18 slide WebP + PDF Morassi |
 | Home stats | `lib/content/home.ts` | ⚠️ 1991, 35 tesserati, 6 squadre, 2 palestre — da confermare con il club |
@@ -370,13 +409,13 @@ Motivo: su telefono `object-cover` tagliava troppo ai lati con banda troppo alta
 ### Contenuti e asset
 - [x] Logo header SVG (`public/assets/brand/logo-header.svg`).
 - [ ] Fotografia reale: giocatori, news, chi siamo, gallerie stagioni.
-- [ ] Roster **D3** + quinto giocatore **D1/A** (sostituire Luca Ferretti).
+- [ ] Completare roster **D3** (oggi 3 giocatori) + quinto giocatore **D1/A** (sostituire Luca Ferretti).
 - [x] Calendari e classifiche FITeT embed (aggiornare CAM/ANNO a inizio stagione; D3 quando girone attivo).
 - [ ] Allineare posizioni badge home card campionati ai dati FITeT live.
 - [ ] Scegliere UX definitiva opuscolo Morassi se si vuole cambiare autoplay/intervallo.
 - [ ] Testi stagioni mancanti in `/storia`.
 - [ ] Testi news reali (oggi placeholder).
-- [ ] URL Facebook reale (`FACEBOOK_URL` in `lib/site.ts` ancora `#`).
+- [x] URL Facebook reale (`FACEBOOK_URL` — gruppo Facebook).
 - [ ] Confermare statistiche home con il club.
 
 ### Prodotto / tech
@@ -405,6 +444,10 @@ Motivo: su telefono `object-cover` tagliava troppo ai lati con banda troppo alta
 - [x] Fix accordion Storia / pillole sticky (pointer-events).
 - [x] News nascosta via flag (noindex, fuori menu).
 - [x] Deploy Netlify + GitHub Desktop workflow.
+- [x] Contatti due sedi (Pistoia + Quarrata) con mappe e orari.
+- [x] Palette brand alternativa (env, rollback).
+- [x] Orso hero alternativo (env + asset SVG).
+- [x] Redirect legacy `.htm` e note SEO pre-cutover.
 - [x] Menu mobile canvas full-screen con pattern dots.
 - [x] Fix menu mobile iOS Safari (portal `body`, `100svh`, z-index, pattern scroll).
 - [x] Scroll reveal (opt-in, non su pagine contenuto).
@@ -472,9 +515,15 @@ public/assets/
   video/palestra.mp4      # Banda video home (~1.2 MB — committare per Netlify)
   brand/logo-header.svg
 netlify.toml              # Node 20, publish .next, plugin Next.js
-.env.example              # NEXT_PUBLIC_SITE_URL, NEXT_PUBLIC_ALLOW_INDEX
+.env.example              # SITE_URL, ALLOW_INDEX, BRAND_PALETTE, HERO_BEAR (opz.)
+app/brand-tokens.css      # Palette default / alt (CSS variables)
+lib/brand-palette.ts · lib/hero-bear.ts
+lib/content/contatti.ts   # contactVenues (2 sedi)
+lib/legacy-redirects.ts · lib/page-metadata.ts
+public/assets/logo-hero.svg · logo-hero-alt.svg
+components/contatti/      # ContactVenueSection, ContactVenueMap, …
 tailwind.config.ts
-scripts/dev.mjs           # Kill porta 3000 + pulizia CSS cache se stale
+scripts/dev.mjs           # Kill porta 3000; pulizia .next/cache + static ad ogni dev
 scripts/export-norme-pongista-pdf.mjs
 HANDOFF.md · STYLEGUIDE.md · DIARIO.md
 ```
@@ -484,16 +533,17 @@ HANDOFF.md · STYLEGUIDE.md · DIARIO.md
 ## 8. Note per la prossima sessione
 
 1. **Go-live Netlify:** dominio `www.ttpistoia.it`, aggiornare env (`SITE_URL` + `ALLOW_INDEX=true`), verificare video e asset su deploy remoto.
-2. **Facebook:** URL reale in `lib/site.ts`.
-3. **Contenuti:** news reali, roster D3, quinto giocatore D1/A, testi stagioni mancanti.
+2. **Contenuti:** news reali, completare roster D3, quinto giocatore D1/A, testi stagioni mancanti.
+3. **Home CTA/orari:** allineare copy «prova gratuita» (ancora mar/gio) con orari Pistoia mar/gio/ven se confermato dal club.
 4. **Giocatori:** foto quando disponibili.
 5. **Home video:** poster JPG reale; eventuale fine-tuning overlay mobile.
 6. **Menu canvas:** fix iOS applicato e verificato in locale; opzionale test Safari fisico post-deploy Netlify.
-7. Dev locale: preferire `npm run dev:clean` se CSS «salta»; non mixare `build` e `dev` contemporaneamente; hard refresh; ignorare hydration `data-cursor-ref` nel browser Cursor.
-8. Push su GitHub Desktop dopo ogni modifica → deploy automatico Netlify (includere WebP/PDF Morassi se nuovi).
-9. **News:** riattivare con `NEWS_SECTION_ENABLED = true` in `lib/site.ts` quando pronti.
-10. **FITeT:** a ogni stagione aggiornare `FITET_CAM_BY_CODE` e `FITET_SEASON_ANNO` in `lib/content/campionati.ts`.
-11. **Go-live:** dominio, env produzione, URL Facebook, contenuti news reali.
+7. Dev locale: preferire `npm run dev:clean` se CSS «salta»; hard refresh; ignorare hydration `data-cursor-ref` nel browser Cursor.
+8. Push su GitHub Desktop dopo ogni modifica → deploy automatico Netlify.
+9. **News:** riattivare con `NEWS_SECTION_ENABLED = true` quando pronti.
+10. **FITeT:** a ogni stagione aggiornare CAM/ANNO in `lib/content/campionati.ts`.
+11. **Go-live:** dominio, `ALLOW_INDEX=true`, rimuovere env palette/orso **alt** su produzione se si resta su colori ufficiali.
+12. **Preview brand:** per staging Netlify, env `NEXT_PUBLIC_BRAND_PALETTE=alt` (+ opz. `HERO_BEAR=alt`) e redeploy.
 
 ---
 

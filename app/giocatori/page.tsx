@@ -6,6 +6,10 @@ import { SectionContainer } from "@/components/ui/SectionContainer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { teamAnchor } from "@/lib/campionati-utils";
 import { giocatoriIntro, teams } from "@/lib/content/giocatori";
+import {
+  getGiocatoriPhotoIndex,
+  resolvePlayerPhotoFromIndex,
+} from "@/lib/giocatori-photos";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "I nostri giocatori",
@@ -16,6 +20,8 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default function GiocatoriPage() {
+  const photoIndex = getGiocatoriPhotoIndex();
+
   return (
     <>
       <PageHero
@@ -40,38 +46,32 @@ export default function GiocatoriPage() {
             {`Squadra ${team.code}`}
           </SectionHeading>
 
-          {/* Mobile: 2 + 3, righe centrate */}
-          <div className="flex flex-col items-center gap-[22px] md:hidden">
-            <div className="grid w-full max-w-[22rem] grid-cols-2 gap-[22px]">
-              {team.players.slice(0, 2).map((player, pi) => (
-                <PlayerCard
-                  key={`${team.code}-top-${pi}`}
-                  name={player.name}
-                  category={player.category}
-                />
-              ))}
-            </div>
-            <div className="grid w-full max-w-[33rem] grid-cols-2 gap-[22px] min-[480px]:grid-cols-3">
-              {team.players.slice(2).map((player, pi) => (
-                <PlayerCard
-                  key={`${team.code}-bottom-${pi}`}
-                  name={player.name}
-                  category={player.category}
-                />
-              ))}
-            </div>
-          </div>
+          {/* ≤640: 1 col · 641–900: 2 col · ≥901: griglia 6 col (2+3 centrata) */}
+          <div className="rtc-team-grid grid grid-cols-1 gap-[22px] md:grid-cols-2 lg:grid-cols-6">
+            {team.players.map((player, pi) => {
+              const count = team.players.length;
+              const centerWideRow =
+                (pi === 0 && (count === 5 || count === 4)) ||
+                (pi === 2 && count === 4);
 
-          {/* Tablet+ : griglia 6 col, 2 sopra centrate + 3 sotto */}
-          <div className="rtc-team-grid hidden grid-cols-6 gap-[22px] md:grid">
-            {team.players.map((player, pi) => (
-              <div
-                key={`${team.code}-${pi}`}
-                className={`col-span-2${pi === 0 ? " col-start-2" : ""}`}
-              >
-                <PlayerCard name={player.name} category={player.category} />
-              </div>
-            ))}
+              return (
+                <div
+                  key={`${team.code}-${pi}`}
+                  className={`w-full min-w-0 lg:col-span-2 ${
+                    centerWideRow ? "lg:col-start-2" : ""
+                  }`}
+                >
+                  <PlayerCard
+                    name={player.name}
+                    category={player.category}
+                    imageSrc={resolvePlayerPhotoFromIndex(
+                      photoIndex,
+                      player.name,
+                    )}
+                  />
+                </div>
+              );
+            })}
           </div>
         </SectionContainer>
       ))}

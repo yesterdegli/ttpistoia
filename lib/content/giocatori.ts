@@ -28,7 +28,6 @@ export const teams: Team[] = [
     "Alessandro Bachini",
     "Alessio Antinolfi",
     "Massimo Ferrari",
-    "Luca Ferretti",
   ]),
   roster("D1/B", [
     "Luca Pancani",
@@ -38,25 +37,25 @@ export const teams: Team[] = [
     "Marco Burlini",
   ]),
   roster("D2/A", [
-    "Antonio Frangioni",
-    "Alessandro Giacomelli",
-    "Massimo Venturi",
-    "Simone Acerbi",
-    "Fabio Frosini",
-  ]),
-  roster("D2/B", [
     "Guelfo Frateschi",
     "Augusto Figuereo Burgos",
     "Alessio Casini",
     "Bruno Campione",
     "Maurizio Seghieri",
   ]),
+  roster("D2/B", [
+    "Antonio Frangioni",
+    "Alessandro Giacomelli",
+    "Massimo Venturi",
+    "Simone Acerbi",
+    "Fabio Frosini",
+  ]),
   roster("D3", [
-    "Tommaso Galli",
-    "Sofia Neri",
-    "Riccardo Lombardi",
-    "Giulia Fontana",
-    "Davide Barbieri",
+    "Dabizzi Chiara",
+    "Guarino Lo Bianco Alessandro",
+    "Moriconi Alberto",
+    "Fortino Lorenzo",
+    "Bernardini Massimiliano",
   ]),
 ];
 

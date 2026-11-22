@@ -14,6 +14,10 @@ type Props = {
   /** Nasconde la riga «Foto non disponibile» (es. card giocatori) */
   hideUnavailableCaption?: boolean;
   labelClassName?: string;
+  objectFit?: "cover" | "contain";
+  imageClassName?: string;
+  /** PNG scontornati / asset locali — evita errori dell’optimizer Next */
+  unoptimized?: boolean;
 };
 
 function Fallback({
@@ -61,8 +65,13 @@ export function ImagePlaceholder({
   fill,
   hideUnavailableCaption,
   labelClassName,
+  objectFit = "cover",
+  imageClassName = "",
+  unoptimized = false,
 }: Props) {
   const [failed, setFailed] = useState(false);
+  const fitClass =
+    objectFit === "contain" ? "object-contain" : "object-cover";
 
   if (!src || failed) {
     return (
@@ -83,9 +92,10 @@ export function ImagePlaceholder({
           src={src}
           alt={alt}
           fill
-          className="object-cover"
+          className={`${fitClass} ${imageClassName}`.trim()}
           loading="lazy"
           sizes="(max-width: 900px) 100vw, 50vw"
+          unoptimized={unoptimized}
           onError={() => setFailed(true)}
         />
       </div>
@@ -98,8 +108,9 @@ export function ImagePlaceholder({
       alt={alt}
       width={width ?? 800}
       height={height ?? 600}
-      className={`h-full w-full object-cover ${className}`}
+      className={`h-full w-full ${fitClass} ${imageClassName} ${className}`.trim()}
       loading="lazy"
+      unoptimized={unoptimized}
       onError={() => setFailed(true)}
     />
   );
