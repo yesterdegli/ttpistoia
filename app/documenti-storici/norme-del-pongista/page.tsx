@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { normePongistaMeta } from "@/lib/content/page-meta";
 import { buildPageMetadata } from "@/lib/page-metadata";
 import Link from "next/link";
 import { NormePongistaPageClient } from "@/components/norme-pongista/NormePongistaPageClient";
@@ -9,13 +10,7 @@ import {
   normePongistaPages,
 } from "@/real-data/norme-pongista";
 
-export const metadata: Metadata = buildPageMetadata({
-  title: "Norme del bravo pongista",
-  description:
-    "«Norme di comportamento del bravo pongista»: vignette ironiche di Roberto Morassi per il Tennistavolo Pistoia. Opuscolo storico da sfogliare online o in PDF.",
-  path: "/documenti-storici/norme-del-pongista",
-  keywords: ["Roberto Morassi", "norme del pongista", "vignette tennistavolo"],
-});
+export const metadata: Metadata = buildPageMetadata(normePongistaMeta);
 
 export default function NormeDelPongistaPage() {
   return (

@@ -1,39 +1,37 @@
 import type { Metadata } from "next";
 import { SITE } from "@/lib/site";
-import { SITE_KEYWORDS } from "@/lib/site-seo";
 
 type PageMetaInput = {
   title: string;
   description: string;
   /** Percorso canonico, es. `/storia` o `` per home. */
   path: `/${string}` | "";
-  /** Keyword aggiuntive oltre al set globale del sito. */
-  keywords?: string[];
 };
 
 export function buildPageMetadata({
   title,
   description,
   path,
-  keywords,
 }: PageMetaInput): Metadata {
   const canonical = path || "/";
-  const keywordsMerged = keywords
-    ? [...new Set([...SITE_KEYWORDS, ...keywords])]
-    : [...SITE_KEYWORDS];
+  const isHome = path === "";
+  const socialTitle = isHome ? title : `${title} · ${SITE.name}`;
 
   return {
-    title,
+    title: isHome ? { absolute: title } : title,
     description,
-    keywords: keywordsMerged,
     alternates: { canonical },
     openGraph: {
-      title: `${title} · ${SITE.name}`,
+      type: "website",
+      locale: "it_IT",
+      siteName: SITE.name,
+      title: socialTitle,
       description,
       url: canonical,
     },
     twitter: {
-      title: `${title} · ${SITE.name}`,
+      card: "summary_large_image",
+      title: socialTitle,
       description,
     },
   };

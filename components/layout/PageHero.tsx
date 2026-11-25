@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { GradientHeaderShell } from "@/components/layout/GradientHeaderShell";
-
 type Props = {
   breadcrumb: { label: string; href?: string }[];
   title: string;

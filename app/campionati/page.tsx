@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { campionatiMeta } from "@/lib/content/page-meta";
 import { buildPageMetadata } from "@/lib/page-metadata";
 import { CampionatiRankingTrigger } from "@/components/content/CampionatiRankingTrigger";
 import { FitetEmbed } from "@/components/content/FitetEmbed";
@@ -8,13 +9,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { categoryAnchor } from "@/lib/campionati-utils";
 import { categories } from "@/lib/content/campionati";
 
-export const metadata: Metadata = buildPageMetadata({
-  title: "Campionati FITeT",
-  description:
-    "Classifiche e calendario campionati FITeT del Tennistavolo Pistoia: serie D, C e B, gironi toscani. Risultati aggiornati dal portale federale.",
-  path: "/campionati",
-  keywords: ["classifica tennistavolo", "campionato FITeT Toscana", "serie D Pistoia"],
-});
+export const metadata: Metadata = buildPageMetadata(campionatiMeta);
 
 export default function CampionatiPage() {
   return (

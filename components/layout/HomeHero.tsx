@@ -28,7 +28,7 @@ export function HomeHero() {
         <div className="absolute left-1/2 top-0 z-[2] flex h-full w-full max-w-[1280px] -translate-x-1/2 items-center px-10 max-md:hidden">
           <div className="max-w-[620px]">
             <div className="mb-3.5 text-[13px] font-bold uppercase tracking-[0.12em] text-white/85">
-              Fondato nel 1991
+              TT Pistoia asd · dal 1992
             </div>
             <h1 className="mb-7 font-display text-[64px] font-bold leading-[1.05] tracking-[-0.02em] text-white [text-shadow:0_4px_24px_rgba(0,0,0,0.35)] max-lg:mb-6 max-lg:text-[48px]">
               Anni di storia, un&apos;unica
@@ -49,7 +49,7 @@ export function HomeHero() {
           <div className="flex w-full max-w-[22rem] flex-col items-start">
             <div className="relative shrink-0">
               <div className="mb-2 text-[clamp(0.625rem,2.8vw,0.6875rem)] font-bold uppercase tracking-[0.06em] text-white/85">
-                Fondato nel 1991
+                TT Pistoia asd · dal 1992
               </div>
               <h1 className="font-display text-[clamp(1.5rem,7.8vw,1.875rem)] font-bold leading-[1.12] text-white">
                 Anni di storia, un&apos;unica

@@ -1,7 +1,7 @@
 import { getHomeNews } from "@/lib/content/news";
 
 export const homeStats = [
-  { value: "1991", label: "Anno di fondazione" },
+  { value: "1992", label: "Anno di fondazione" },
   { value: "35", label: "Tesserati" },
   { value: "6", label: "Squadre nei campionati" },
   { value: "2", label: "Palestre di allenamento" },

@@ -57,7 +57,7 @@ const FITET_CAM_BY_CODE: Record<string, number> = {
   "D1/B": 1007,
   "D2/A": 1011,
   "D2/B": 1012,
-  D3: 0,
+  D3: 1023,
 };
 
 export const categories: CategoryData[] = [

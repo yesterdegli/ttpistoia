@@ -33,7 +33,9 @@ export function SiteFooter() {
               {SITE.phone}
             </a>
             <br />
-            {SITE.hours}
+            {SITE.hoursLines[0]}
+            <br />
+            {SITE.hoursLines[1]}
           </p>
         </div>
         <div>

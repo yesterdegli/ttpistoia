@@ -5,13 +5,11 @@ import { LegalDocument } from "@/components/content/LegalDocument";
 import { PageHero } from "@/components/layout/PageHero";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { cookieCategories, cookieMeta, cookieSections } from "@/lib/content/cookies";
+import { cookieMetaPage } from "@/lib/content/page-meta";
+import { buildPageMetadata } from "@/lib/page-metadata";
 import { SITE } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Cookie policy",
-  description:
-    "Informativa sui cookie e sulle tecnologie simili utilizzate dal sito TT Pistoia asd.",
-};
+export const metadata: Metadata = buildPageMetadata(cookieMetaPage);
 
 export default function CookiePage() {
   return (

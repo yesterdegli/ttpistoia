@@ -10,6 +10,8 @@ import { SectionContainer } from "@/components/ui/SectionContainer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { articles, getArticle } from "@/lib/content/news";
 import { NEWS_SECTION_ENABLED } from "@/lib/site";
+import { buildPageMetadata } from "@/lib/page-metadata";
+import { SITE } from "@/lib/site";
 import { newsDraftRobotsMetadata } from "@/lib/site-seo";
 
 type Props = {
@@ -23,8 +25,20 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const article = getArticle(slug);
+  if (!article) {
+    return { title: "Articolo non trovato" };
+  }
+
+  const description =
+    article.dek?.trim() ||
+    `${article.title} — news dal ${SITE.name}.`;
+
   return {
-    title: article?.title ?? "Articolo",
+    ...buildPageMetadata({
+      title: article.title,
+      description,
+      path: `/news/${article.slug}`,
+    }),
     ...(!NEWS_SECTION_ENABLED ? newsDraftRobotsMetadata() : {}),
   };
 }

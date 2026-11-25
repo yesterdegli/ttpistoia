@@ -2,32 +2,10 @@ import type { Metadata } from "next";
 import { contactVenues } from "@/lib/content/contatti";
 import { FACEBOOK_URL, SITE } from "@/lib/site";
 
-/** Meta description home (~155 caratteri, località + FITeT). */
-export const SITE_DESCRIPTION =
-  "Tennistavolo e ping pong a Pistoia e Quarrata dal 1992. ASD affiliata FITeT: allenamenti, campionati dalla serie D alla C2, due palestre. Prova gratuita.";
+import { homeMeta } from "@/lib/content/page-meta";
 
-export const SITE_KEYWORDS = [
-  "tennistavolo",
-  "tennis tavolo",
-  "ping pong",
-  "ping-pong",
-  "Pistoia",
-  "Quarrata",
-  "TT Pistoia",
-  "Tennistavolo Pistoia",
-  "Tennis Tavolo Pistoia",
-  "ttpistoia",
-  "FITeT",
-  "FITET Toscana",
-  "palestra Einaudi",
-  "Viale Pacinotti",
-  "Alberto Manzi Quarrata",
-  "campionati tennistavolo",
-  "serie D tennistavolo",
-  "associazione sportiva Pistoia",
-  "Toscana",
-  "Provincia di Pistoia",
-] as const;
+/** Description predefinita sito (home + JSON-LD + Open Graph globali). */
+export const SITE_DESCRIPTION = homeMeta.description;
 
 const DAY_TO_SCHEMA: Record<string, string> = {
   Lunedì: "Monday",
@@ -104,11 +82,10 @@ export function buildSiteMetadata(): Metadata {
   return {
     metadataBase: new URL(siteUrl),
     title: {
-      default: "Tennistavolo Pistoia — ping pong e campionati FITeT",
+      default: homeMeta.title,
       template: `%s · ${SITE.name}`,
     },
     description: SITE_DESCRIPTION,
-    keywords: [...SITE_KEYWORDS],
     applicationName: SITE.name,
     robots: allowIndex
       ? {
@@ -131,12 +108,12 @@ export function buildSiteMetadata(): Metadata {
       locale: "it_IT",
       url: siteUrl,
       siteName: SITE.name,
-      title: "Tennistavolo Pistoia — ping pong e campionati FITeT",
+      title: homeMeta.title,
       description: SITE_DESCRIPTION,
     },
     twitter: {
       card: "summary_large_image",
-      title: "Tennistavolo Pistoia — ping pong e campionati FITeT",
+      title: homeMeta.title,
       description: SITE_DESCRIPTION,
     },
     category: "sport",
@@ -164,6 +141,11 @@ export function buildOrganizationJsonLd() {
         postalCode,
         addressRegion: "PT",
         addressCountry: "IT",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: venue.geo.latitude,
+        longitude: venue.geo.longitude,
       },
       openingHoursSpecification: venueOpeningHours(venue),
     };

@@ -11,10 +11,12 @@ import {
   getGridArticles,
 } from "@/lib/content/news";
 import { NEWS_SECTION_ENABLED } from "@/lib/site";
+import { newsMeta } from "@/lib/content/page-meta";
+import { buildPageMetadata } from "@/lib/page-metadata";
 import { newsDraftRobotsMetadata } from "@/lib/site-seo";
 
 export const metadata: Metadata = {
-  title: "News",
+  ...buildPageMetadata(newsMeta),
   ...(!NEWS_SECTION_ENABLED ? newsDraftRobotsMetadata() : {}),
 };
 

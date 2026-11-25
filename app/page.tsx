@@ -21,15 +21,10 @@ import { HomeHero } from "@/components/layout/HomeHero";
 import { GradientHeaderShell } from "@/components/layout/GradientHeaderShell";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { homeMeta } from "@/lib/content/page-meta";
 import { buildPageMetadata } from "@/lib/page-metadata";
 
-export const metadata: Metadata = buildPageMetadata({
-  title: "Tennistavolo Pistoia — ping pong e campionati FITeT",
-  description:
-    "ASD Tennistavolo Pistoia: ping pong a Pistoia (Palestra Einaudi) e Quarrata. Dal 1992, campionati FITeT, allenamenti per tutti. Prova gratuita martedì e giovedì.",
-  path: "",
-  keywords: ["prova gratuita ping pong", "scuola tennistavolo Pistoia"],
-});
+export const metadata: Metadata = buildPageMetadata(homeMeta);
 
 export default function HomePage() {
   return (
@@ -104,11 +99,14 @@ export default function HomePage() {
       <SectionContainer className="pb-20 md:pb-24">
         <CtaPanel
           title="Vieni a provare"
-          text="Il martedì e il giovedì a Pistoia, lunedì e mercoledì a Quarrata: racchette e tavoli li mettiamo noi. Prima prova gratuita, nessun impegno."
+          text="A Pistoia lunedì (22:00–23:30), martedì e giovedì; a Quarrata lunedì e mercoledì: racchette e tavoli li mettiamo noi. Prima prova gratuita, nessun impegno."
           primaryCta={{ href: "/contatti", label: "Prenota una prova" }}
           secondaryCta={{ href: "/regole", label: "Come si gioca" }}
           infoRows={[
-            { label: "Pistoia", value: "Mar e gio 21:00 – 23:30 · Einaudi" },
+            {
+              label: "Pistoia",
+              value: "Lun 22:00 – 23:30 · mar e gio 21:00 – 23:30 · Einaudi",
+            },
             { label: "Quarrata", value: "Lun e mer 21:00 – 23:00 · Manzi" },
             { label: "Contatti", value: "335.7388152 · ttpt@ttpistoia.it" },
           ]}

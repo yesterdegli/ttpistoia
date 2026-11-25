@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { regoleMeta } from "@/lib/content/page-meta";
 import { buildPageMetadata } from "@/lib/page-metadata";
 import { ClauseList } from "@/components/content/ClauseList";
 import { SideIndex } from "@/components/content/SideIndex";
@@ -6,13 +7,7 @@ import { PageHero } from "@/components/layout/PageHero";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { regolamento } from "@/lib/content/regolamento";
 
-export const metadata: Metadata = buildPageMetadata({
-  title: "Le regole del gioco",
-  description:
-    "Regolamento del tennistavolo (ping pong): tavolo, racchetta, servizio, punteggio e regole FITeT spiegate in italiano per chi inizia al TT Pistoia.",
-  path: "/regole",
-  keywords: ["regole ping pong", "regolamento tennistavolo", "come si gioca"],
-});
+export const metadata: Metadata = buildPageMetadata(regoleMeta);
 
 export default function RegolePage() {
   return (

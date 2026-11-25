@@ -12,6 +12,7 @@ export type ContactVenue = {
   hours: readonly ContactHoursRow[];
   mapEmbedUrl: string;
   mapsOpenUrl: string;
+  geo: { latitude: number; longitude: number };
 };
 
 export const contactVenues: readonly ContactVenue[] = [
@@ -20,15 +21,16 @@ export const contactVenues: readonly ContactVenue[] = [
     title: "Pistoia",
     lines: [SITE.address.line1, SITE.address.line2, "51100 Pistoia (PT)"],
     hours: [
+      { day: "Lunedì", hours: "22:00 – 23:30" },
       { day: "Martedì", hours: "21:00 – 23:30" },
       { day: "Giovedì", hours: "21:00 – 23:30" },
-      { day: "Venerdì", hours: "21:00 – 23:30" },
       { day: "Altri giorni", hours: "Chiuso" },
     ],
     mapEmbedUrl:
       "https://www.google.com/maps?q=Palestra+Einaudi,+Viale+Pacinotti,+Pistoia&ll=43.929095,10.9104798&z=17&output=embed",
     mapsOpenUrl:
       "https://www.google.com/maps?q=Palestra+Einaudi,+Viale+Pacinotti,+Pistoia",
+    geo: { latitude: 43.929095, longitude: 10.9104798 },
   },
   {
     id: "quarrata",
@@ -47,6 +49,7 @@ export const contactVenues: readonly ContactVenue[] = [
       "https://www.google.com/maps?q=Via+Torino,+61,+51039+Quarrata+PT&z=17&output=embed",
     mapsOpenUrl:
       "https://www.google.com/maps?q=Via+Torino,+61,+51039+Quarrata+PT",
+    geo: { latitude: 43.8629, longitude: 10.9776 },
   },
 ];
 

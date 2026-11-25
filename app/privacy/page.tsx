@@ -4,13 +4,11 @@ import { LegalDocument } from "@/components/content/LegalDocument";
 import { PageHero } from "@/components/layout/PageHero";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { privacyMeta, privacySections } from "@/lib/content/privacy";
+import { privacyMeta as privacyPageMeta } from "@/lib/content/page-meta";
+import { buildPageMetadata } from "@/lib/page-metadata";
 import { SITE } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Privacy policy",
-  description:
-    "Informativa sul trattamento dei dati personali del sito TT Pistoia asd, ai sensi del Regolamento (UE) 2016/679.",
-};
+export const metadata: Metadata = buildPageMetadata(privacyPageMeta);
 
 export default function PrivacyPage() {
   return (
