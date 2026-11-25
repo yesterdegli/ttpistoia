@@ -12,7 +12,8 @@
     "lint": "next lint",
     "sync-gallery": "node scripts/sync-storia-gallery.mjs",
     "export-norme-pongista": "node scripts/export-norme-pongista-pdf.mjs",
-    "convert-giocatori-webp": "node scripts/convert-giocatori-webp.mjs"
+    "convert-giocatori-webp": "node scripts/convert-giocatori-webp.mjs",
+    "defringe-giocatori": "node scripts/defringe-giocatori.mjs"
   },
   "dependencies": {
     "next": "^15.3.0",

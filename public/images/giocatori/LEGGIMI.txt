@@ -16,6 +16,11 @@ Formato consigliato: .webp (trasparenza). Accettati anche .png .jpg
 
 Nuove foto PNG: npm run convert-giocatori-webp (qualità 98, elimina i PNG).
 
+Alone bianco sui capelli dopo lo scontorno:
+  npm run defringe-giocatori              (anteprima in _defringe-preview/)
+  npm run defringe-giocatori -- --apply   (sovrascrive WebP, backup in .backup-defringe/)
+  Il risultato migliore resta uno scontorno rifatto dal file originale (Photoshop / remove.bg).
+
 In scheda il testo può essere "Nome Cognome" o "Cognome Nome":
 il sito prova entrambi gli ordini (es. Pancani Luca → luca_pancani).
 
